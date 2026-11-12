@@ -1,0 +1,53 @@
+# Starts the whole development environment with one command:
+#   docker compose up --build
+# Everything has a default value, so no .env file is needed to get started.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-astro}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-astro}
+      POSTGRES_DB: ${POSTGRES_DB:-astro_health}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      # Scripts here run only the FIRST time the database is created.
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-astro}:${POSTGRES_PASSWORD:-astro}@db:5432/${POSTGRES_DB:-astro_health}
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      # Makes auto-reload detect file changes on Docker Desktop (Windows/macOS).
+      WATCHFILES_FORCE_POLLING: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      # Keeps the container's own node_modules instead of the host folder's.
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
