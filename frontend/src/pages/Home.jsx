@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <section className="page">
       <h1>Registered astronauts</h1>
+      <p className="muted">Health monitoring for astronauts on space missions.</p>
       <p className="muted">
         No astronauts yet. This list will be filled from the backend.
       </p>
