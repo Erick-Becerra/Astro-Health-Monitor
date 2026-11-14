@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASTRO HEALTH MONITOR // Sensor Telemetry Simulator (v1.1)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          colors: {
+            astro: {
+              deep: "#050E3C",
+              navy: "#002455",
+              crimson: "#DC0000",
+              coral: "#FF3838",
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #050E3C;
+      --bg-navy: #002455;
+      --red-deep: #DC0000;
+      --red-bright: #FF3838;
+      --cyan-hud: #00E5FF;
+      --green-bio: #00E676;
+      --amber-warn: #FFB300;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(0, 36, 85, 0.95) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(220, 0, 0, 0.16) 0%, transparent 50%);
+    }
+
+    /* Tactical HUD Grid matching your palette */
+    .medical-grid-bg {
+      background-color: #040B2E;
+      background-image:
+        linear-gradient(to right, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 50% 45%, rgba(0, 36, 85, 0.75) 0%, transparent 70%);
+      background-size: 24px 24px, 24px 24px, 100% 100%;
+    }
+
+    /* Interactive SVG Organ Zones */
+    .organ-zone {
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0.75;
+    }
+    .organ-zone:hover {
+      opacity: 1;
+      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.85));
+    }
+    .organ-zone.active {
+      opacity: 1;
+      filter: drop-shadow(0 0 14px rgba(255, 56, 56, 0.95));
+    }
+    .organ-zone.degraded {
+      filter: drop-shadow(0 0 10px rgba(255, 179, 0, 0.85));
+    }
+    .organ-zone.lost {
+      opacity: 0.45;
+      filter: drop-shadow(0 0 10px rgba(220, 0, 0, 0.95));
+    }
+
+    /* Beating Heart Animation */
+    @keyframes heartbeat-svg {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.09); }
+      30% { transform: scale(0.98); }
+      45% { transform: scale(1.06); }
+    }
+    .animate-heart {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: heartbeat-svg 1s infinite ease-in-out;
+    }
+
+    /* HUD Scanline */
+    @keyframes scanline {
+      0% { transform: translateY(-10%); opacity: 0.15; }
+      50% { opacity: 0.4; }
+      100% { transform: translateY(420px); opacity: 0.15; }
+    }
+    .hud-scanline {
+      animation: scanline 5.5s linear infinite;
+    }
+
+    /* Status Dot & Buttons Compatibility */
+    .status-dot.live {
+      background-color: #00E676 !important;
+      box-shadow: 0 0 10px #00E676;
+    }
+    .btn-primary.streaming {
+      background-color: #DC0000 !important;
+      border-color: #FF3838 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 14px rgba(255, 56, 56, 0.65);
+    }
+
+    .btn-chip.active {
+      background-color: rgba(220, 0, 0, 0.35) !important;
+      border-color: #FF3838 !important;
+      color: #ffffff !important;
+    }
+
+    .sys-tab.active {
+      background-color: rgba(255, 56, 56, 0.22) !important;
+      border-color: #FF3838 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(255, 56, 56, 0.25);
+    }
+
+    .control-view { display: none; }
+    .control-view.active { display: block; }
+
+    .http-badge.idle { background: #002455; color: #94a3b8; border: 1px solid rgba(148,163,184,0.25); }
+    .http-badge.ok { background: rgba(0, 230, 118, 0.15); color: #00E676; border: 1px solid rgba(0, 230, 118, 0.45); }
+    .http-badge.err { background: rgba(220, 0, 0, 0.25); color: #FF3838; border: 1px solid #FF3838; }
+
+    /* Custom Range Sliders */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #050E3C;
+      height: 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 229, 255, 0.25);
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #FF3838;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 8px rgba(255, 56, 56, 0.8);
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #050E3C; }
+    ::-webkit-scrollbar-thumb { background: #002455; border-radius: 3px; }
+  </style>
+</head>
+<body class="text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ==================== TOP HUD HEADER ==================== -->
+  <header class="bg-astro-navy/95 border-b-2 border-astro-coral sticky top-0 z-30 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand & Telemetry Status -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-astro-deep border border-astro-coral/60 flex items-center justify-center text-astro-coral shadow-[0_0_12px_rgba(255,56,56,0.25)]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-bold tracking-wider text-white font-mono">
+            ASTRO HEALTH <span class="text-astro-coral">// SENSOR TELEMETRY SIMULATOR</span>
+          </h1>
+          <div class="flex items-center gap-2 mt-0.5">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-mono bg-astro-deep border border-cyan-400/30 text-cyan-300">
+              <span id="stream-indicator" class="status-dot w-2 h-2 rounded-full bg-slate-400"></span>
+              SCHEMA: telemetry-v1.1.json
+            </span>
+            <span class="hidden md:inline text-[11px] font-mono text-slate-300">
+              ESP32 / WEARABLE HARDWARE EMULATOR
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FastAPI Stream Controls -->
+      <!-- Space Station Stream Controls -->
+      <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-between lg:justify-end">
+        <label class="flex flex-col text-[10px] font-mono text-slate-300">
+          <span>CREW ID</span>
+          <input type="text" id="astronaut-id" value="AST-01" maxlength="32"
+                 class="w-24 bg-astro-deep border border-cyan-400/30 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white outline-none focus:border-astro-coral" />
+        </label>
+
+        <label class="flex flex-col text-[10px] font-mono text-slate-300">
+          <span>X-ACTOR</span>
+          <input type="text" id="actor-name" value="Simulador"
+                 class="w-28 bg-astro-deep border border-cyan-400/30 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white outline-none focus:border-astro-coral" />
+        </label>
+
+        <label class="flex flex-col text-[10px] font-mono text-slate-300 flex-1 sm:flex-initial">
+          <span>SPACE STATION ENDPOINT (:8001)</span>
+          <input type="text" id="api-endpoint" value="http://172.20.10.2:8001/api/sim/packet"
+                 class="w-full sm:w-64 bg-astro-deep border border-cyan-400/30 rounded-lg px-2.5 py-1.5 text-xs font-mono text-cyan-200 outline-none focus:border-astro-coral" />
+        </label>
+
+        <label class="flex flex-col text-[10px] font-mono text-slate-300">
+          <span>TICK</span>
+          <select id="stream-interval" class="bg-astro-deep border border-cyan-400/30 rounded-lg px-2 py-1.5 text-xs font-mono text-white outline-none focus:border-astro-coral">
+            <option value="1100">1.1s</option>
+            <option value="2000" selected>2.0s</option>
+            <option value="5000">5.0s</option>
+          </select>
+        </label>
+
+        <div class="flex items-center gap-2 self-end">
+          <button id="btn-check-health" type="button" class="bg-astro-deep hover:border-cyan-300 text-cyan-300 font-mono font-semibold text-xs px-2.5 py-2 rounded-lg border border-cyan-400/30 transition-all cursor-pointer">
+            Ping Health
+          </button>
+          <button id="btn-toggle-stream" type="button" class="btn-primary bg-cyan-400 hover:bg-cyan-300 text-astro-deep font-mono font-bold text-xs px-3.5 py-2 rounded-lg border border-cyan-300 transition-all cursor-pointer">
+            Start Stream
+          </button>
+          <button id="btn-send-once" type="button" class="bg-astro-deep hover:border-astro-coral text-white font-mono font-semibold text-xs px-3 py-2 rounded-lg border border-cyan-400/30 transition-all cursor-pointer">
+            Push Once
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-bar: Scenario Presets & Mission Context -->
+    <div class="bg-astro-deep/85 border-t border-cyan-400/20 px-4 py-2">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-[11px] font-mono text-cyan-300 mr-1">PRESETS:</span>
+          <button class="btn-chip active bg-astro-navy/80 border border-cyan-400/25 text-slate-200 text-xs font-mono px-2.5 py-1 rounded-md cursor-pointer" data-preset="normal">
+            01. Nominal Orbit
+          </button>
+          <button class="btn-chip bg-astro-navy/80 border border-cyan-400/25 text-slate-200 text-xs font-mono px-2.5 py-1 rounded-md cursor-pointer" data-preset="attention">
+            02. Attention (CO₂ + Sleep)
+          </button>
+          <button class="btn-chip bg-astro-navy/80 border border-cyan-400/25 text-slate-200 text-xs font-mono px-2.5 py-1 rounded-md cursor-pointer" data-preset="critical_eva">
+            03. Critical (EVA + SPE)
+          </button>
+          <button class="btn-chip bg-astro-navy/80 border border-cyan-400/25 text-slate-200 text-xs font-mono px-2.5 py-1 rounded-md cursor-pointer" data-preset="sensor_lost">
+            04. Lost Respiratory Signal
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
+          <label class="flex items-center gap-1.5 text-slate-300">
+            <span class="text-[11px] text-cyan-300">ACTIVITY:</span>
+            <select id="activity-state" class="bg-astro-navy border border-cyan-400/30 rounded px-2 py-1 text-xs text-white outline-none">
+              <option value="resting" selected>resting</option>
+              <option value="sleeping">sleeping</option>
+              <option value="working">working</option>
+              <option value="exercising">exercising</option>
+              <option value="post_exercise_recovery">post_exercise_recovery</option>
+              <option value="eva">eva</option>
+            </select>
+          </label>
+
+          <label class="flex items-center gap-1.5 text-slate-300">
+            <span class="text-[11px] text-cyan-300">LATENCY (s):</span>
+            <input type="number" id="comm-latency" value="2.6" min="0" step="0.1" class="w-16 bg-astro-navy border border-cyan-400/30 rounded px-2 py-1 text-xs text-white text-center" />
+          </label>
+
+          <label class="flex items-center gap-1.5 text-slate-300">
+            <span class="text-[11px] text-cyan-300">CABIN CO₂ (mmHg):</span>
+            <input type="number" id="cabin-co2" value="2.1" min="0" max="50" step="0.1" class="w-16 bg-astro-navy border border-cyan-400/30 rounded px-2 py-1 text-xs text-white text-center" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN SPLIT WORKSPACE ==================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-5 flex flex-col gap-5">
+    <div class="flex flex-col lg:flex-row gap-5 items-stretch">
+
+      <!-- ==================== LEFT COLUMN (40%): ANATOMICAL SILHOUETTE ==================== -->
+      <section class="w-full lg:w-[40%] bg-astro-navy/90 border border-cyan-400/25 rounded-2xl p-4 flex flex-col justify-between shadow-2xl">
+        <div class="flex items-center justify-between border-b border-cyan-400/20 pb-3 mb-3">
+          <div>
+            <h2 class="text-sm font-bold font-mono text-cyan-300 tracking-wide uppercase">Anatomical Telemetry Map</h2>
+            <p class="text-xs text-slate-300">Click an organ or system to configure sensors</p>
+          </div>
+          <span class="text-[11px] font-mono px-2.5 py-1 rounded bg-astro-deep border border-astro-coral/50 text-astro-coral font-bold">
+            TARGET HUD
+          </span>
+        </div>
+
+        <!-- SVG Stage with Tactical Grid & Scanline -->
+        <div class="relative flex-1 min-h-[430px] medical-grid-bg rounded-xl border border-cyan-400/25 overflow-hidden flex items-center justify-center p-2">
+          <div class="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-astro-coral/15 to-transparent pointer-events-none hud-scanline"></div>
+
+          <div class="absolute top-3 left-3 text-[10px] font-mono text-cyan-300/80 pointer-events-none leading-relaxed">
+            <div>SCAN: BIO-MONITOR v1.1</div>
+            <div>ENV: LUNAR / ORBITAL HABITAT</div>
+          </div>
+          <div class="absolute top-3 right-3 text-[10px] font-mono text-right pointer-events-none leading-relaxed">
+            <div id="hudSelectedLabel" class="text-astro-coral font-bold">CARDIOVASCULAR</div>
+            <div class="text-slate-300">CHANNELS: 5 BLOCKS</div>
+          </div>
+
+          <!-- DETAILED ANATOMICAL SVG -->
+          <svg id="humanBodySvg" viewBox="0 0 320 500" class="w-full h-full max-h-[420px] select-none z-10" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bodyFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#002455" stop-opacity="0.9" />
+                <stop offset="50%" stop-color="#050E3C" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#002455" stop-opacity="0.95" />
+              </linearGradient>
+              <linearGradient id="radField" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF3838" stop-opacity="0.16" />
+                <stop offset="50%" stop-color="#00E5FF" stop-opacity="0.06" />
+                <stop offset="100%" stop-color="#DC0000" stop-opacity="0.2" />
+              </linearGradient>
+            </defs>
+
+            <!-- 1. FULL-BODY RADIATION DOSIMETRY (radiation) -->
+            <g id="zone-radiation" class="organ-zone" data-system="radiation">
+              <ellipse cx="160" cy="250" rx="116" ry="230" fill="url(#radField)" stroke="#FF3838" stroke-width="1.3" stroke-dasharray="5 5" />
+              <ellipse cx="160" cy="250" rx="126" ry="238" fill="none" stroke="#00E5FF" stroke-width="0.7" stroke-dasharray="2 6" opacity="0.6" />
+              <text x="226" y="88" fill="#FF3838" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">RAD // mSv</text>
+            </g>
+
+            <!-- ANATOMICAL HUMAN SILHOUETTE -->
+            <path d="M160,24 
+                     C178,24 190,37 190,55 
+                     C190,69 182,80 174,85 
+                     L175,96 
+                     C196,101 218,110 225,128 
+                     L244,210 C247,223 245,243 240,260 
+                     C237,267 230,266 228,258 
+                     L213,180 L206,148 
+                     L202,213 L198,263 
+                     L204,353 L201,450 
+                     C201,461 193,467 185,467 
+                     C178,467 174,460 174,450 
+                     L168,338 L160,293 L152,338 
+                     L146,450 C146,460 142,467 135,467 
+                     C127,467 119,461 119,450 
+                     L116,353 L122,263 
+                     L118,213 L114,148 
+                     L107,180 L92,258 
+                     C90,266 83,267 80,260 
+                     C75,243 73,223 76,210 
+                     L95,128 C102,110 124,101 145,96 
+                     L146,85 C138,80 130,69 130,55 
+                     C130,37 142,24 160,24 Z"
+                  fill="url(#bodyFill)" stroke="#00E5FF" stroke-width="1.6" stroke-opacity="0.7" />
+
+            <!-- Spinal Axis -->
+            <line x1="160" y1="86" x2="160" y2="275" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4" />
+
+            <!-- 2. THERMOREGULATION (thermoregulation: Double Sensor Forehead + Core Torso) -->
+            <g id="zone-thermoregulation" class="organ-zone" data-system="thermoregulation">
+              <path d="M126,188 C140,184 180,184 194,188 L190,242 C175,248 145,248 130,242 Z"
+                    fill="#FFB300" fill-opacity="0.22" stroke="#FFB300" stroke-width="1.4" stroke-dasharray="3 2" />
+              <rect x="150" y="34" width="20" height="6" rx="2" fill="#FFB300" fill-opacity="0.7" stroke="#ffffff" stroke-width="0.9" />
+              <text x="52" y="218" fill="#FFB300" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">CORE TEMP</text>
+              <line x1="104" y1="215" x2="128" y2="215" stroke="#FFB300" stroke-width="0.9" />
+            </g>
+
+            <!-- 3. CNS / DAILY ASSESSMENT (daily_assessment: Sleep & PVT-B) -->
+            <g id="zone-daily_assessment" class="organ-zone" data-system="daily_assessment">
+              <path d="M142,52 C140,40 149,31 160,31 C171,31 180,40 178,52 C180,60 173,66 164,66 L156,66 C147,66 140,60 142,52 Z"
+                    fill="#00E5FF" fill-opacity="0.38" stroke="#00E5FF" stroke-width="1.8" />
+              <path d="M160,32 L160,65 M147,46 Q154,42 159,47 M173,46 Q166,42 161,47" stroke="#ffffff" stroke-width="0.9" fill="none" />
+              <text x="202" y="46" fill="#00E5FF" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">CNS / SLEEP</text>
+              <line x1="179" y1="46" x2="199" y2="44" stroke="#00E5FF" stroke-width="0.9" />
+            </g>
+
+            <!-- 4. RESPIRATORY / LUNGS (respiratory: SpO2 & RPM) -->
+            <g id="zone-respiratory" class="organ-zone" data-system="respiratory">
+              <path d="M155,112 C137,114 125,132 125,160 C125,174 135,180 154,176 Z"
+                    fill="#00E676" fill-opacity="0.25" stroke="#00E676" stroke-width="1.5" />
+              <path d="M165,112 C183,114 195,132 195,160 C195,174 185,180 166,176 Z"
+                    fill="#00E676" fill-opacity="0.25" stroke="#00E676" stroke-width="1.5" />
+              <text x="48" y="132" fill="#00E676" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">LUNGS / SpO₂</text>
+              <line x1="112" y1="130" x2="128" y2="138" stroke="#00E676" stroke-width="0.9" />
+            </g>
+
+            <!-- 5. CARDIOVASCULAR / HEART & CUFF (cardiovascular) -->
+            <g id="zone-cardiovascular" class="organ-zone active" data-system="cardiovascular">
+              <!-- Major Vessels -->
+              <path d="M156,68 L156,120 M164,68 L164,120 M160,118 L122,128 M160,118 L198,128"
+                    stroke="#FF3838" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85" />
+              <!-- Periodic Blood Pressure Cuff on Left Arm -->
+              <rect x="204" y="150" width="15" height="22" rx="3" transform="rotate(-12 211 161)"
+                    fill="#DC0000" fill-opacity="0.55" stroke="#FF3838" stroke-width="1.3" />
+              <!-- Pulsing Heart -->
+              <path id="svgHeartIcon" class="animate-heart"
+                    d="M163,130 C158,123 148,126 148,135 C148,145 162,155 166,159 C170,155 180,144 178,134 C177,126 168,124 163,130 Z"
+                    fill="#FF3838" fill-opacity="0.88" stroke="#ffffff" stroke-width="1.6" />
+              <text x="50" y="168" fill="#FF3838" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">HEART / BP</text>
+              <line x1="106" y1="165" x2="148" y2="144" stroke="#FF3838" stroke-width="0.9" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Quick System Selector Buttons -->
+        <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-1.5" id="system-tabs">
+          <button class="sys-tab active px-2.5 py-2 rounded-lg text-xs font-mono border border-cyan-400/25 bg-astro-deep text-slate-200 transition-all cursor-pointer" data-system="cardiovascular">
+            Cardiovascular
+          </button>
+          <button class="sys-tab px-2.5 py-2 rounded-lg text-xs font-mono border border-cyan-400/25 bg-astro-deep text-slate-200 transition-all cursor-pointer" data-system="respiratory">
+            Respiratory
+          </button>
+          <button class="sys-tab px-2.5 py-2 rounded-lg text-xs font-mono border border-cyan-400/25 bg-astro-deep text-slate-200 transition-all cursor-pointer" data-system="thermoregulation">
+            Thermoregulation
+          </button>
+          <button class="sys-tab px-2.5 py-2 rounded-lg text-xs font-mono border border-cyan-400/25 bg-astro-deep text-slate-200 transition-all cursor-pointer" data-system="radiation">
+            Radiation
+          </button>
+          <button class="sys-tab col-span-2 px-2.5 py-2 rounded-lg text-xs font-mono border border-cyan-400/25 bg-astro-deep text-slate-200 transition-all cursor-pointer" data-system="daily_assessment">
+            CNS / Sleep & PVT-B
+          </button>
+        </div>
+      </section>
+
+      <!-- ==================== RIGHT COLUMN (60%): SENSOR CONTROLS & LIVE JSON ==================== -->
+      <section class="w-full lg:w-[60%] bg-astro-navy/90 border border-cyan-400/25 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-2xl">
+        
+        <div>
+          <!-- Live ECG Waveform Bar (Always visible for real-time telemetry feedback) -->
+          <div class="bg-astro-deep border border-cyan-400/25 rounded-xl p-3 mb-4">
+            <div class="flex items-center justify-between text-[11px] font-mono mb-1.5">
+              <span class="flex items-center gap-1.5 text-cyan-300">
+                <span class="w-2 h-2 rounded-full bg-astro-coral animate-ping"></span>
+                BIO-MONITOR ECG LEAD II // LIVE STREAM
+              </span>
+              <span id="ecgBpmReadout" class="text-emerald-400 font-bold">68 BPM [NOMINAL]</span>
+            </div>
+            <div class="w-full h-16">
+              <canvas id="ecgCanvas" class="w-full h-full block"></canvas>
+            </div>
+          </div>
+
+          <!-- 1. CARDIOVASCULAR CONTROLS -->
+          <div class="control-view active space-y-3" id="view-cardiovascular">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-400/20 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white font-mono">CARDIOVASCULAR SYSTEM</h2>
+                <p class="text-xs text-slate-300">Hardware: Bio-Monitor ECG + Periodic Oscillometric Cuff</p>
+              </div>
+              <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-deep px-3 py-1.5 rounded-lg border border-cyan-400/30">
+                <span>SIGNAL:</span>
+                <select id="cv-quality" data-quality-target="cardiovascular" class="bg-transparent text-white font-bold outline-none cursor-pointer">
+                  <option value="good" class="bg-astro-deep" selected>good</option>
+                  <option value="degraded" class="bg-astro-deep">degraded</option>
+                  <option value="lost" class="bg-astro-deep">lost (nulls values)</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex justify-between items-center mb-2">
+                <label for="hr-slider" class="text-xs font-mono text-slate-200 uppercase">Heart Rate (bpm)</label>
+                <input type="number" id="hr-num" value="68" min="20" max="240" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="hr-slider" value="68" min="20" max="240" class="w-full" />
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
+                <span>20</span>
+                <span>Orbit Rest: 60–75 bpm</span>
+                <span>EVA Peak: 160</span>
+                <span>240</span>
+              </div>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div>
+                  <div class="text-xs font-mono font-bold text-white uppercase">Periodic Blood Pressure (mmHg)</div>
+                  <div class="text-[11px] text-slate-400">Null in continuous stream unless cuff reading is triggered</div>
+                </div>
+                <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-navy px-2.5 py-1.5 rounded-lg border border-cyan-400/30 cursor-pointer">
+                  <input type="checkbox" id="bp-include" class="accent-astro-coral" />
+                  <span>Include in Stream</span>
+                </label>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label for="bp-sys" class="block text-[11px] font-mono text-slate-300 mb-1">Systolic (mmHg)</label>
+                  <input type="number" id="bp-sys" value="118" min="40" max="260" disabled class="w-full bg-astro-navy border border-cyan-400/30 rounded-lg px-3 py-1.5 text-sm font-mono text-white disabled:opacity-40" />
+                </div>
+                <div>
+                  <label for="bp-dia" class="block text-[11px] font-mono text-slate-300 mb-1">Diastolic (mmHg)</label>
+                  <input type="number" id="bp-dia" value="76" min="20" max="160" disabled class="w-full bg-astro-navy border border-cyan-400/30 rounded-lg px-3 py-1.5 text-sm font-mono text-white disabled:opacity-40" />
+                </div>
+              </div>
+
+              <button type="button" id="btn-trigger-bp" class="bg-astro-crimson hover:bg-astro-coral text-white font-mono font-bold text-xs px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
+                Trigger Cuff Reading Now (One-Shot)
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. RESPIRATORY CONTROLS -->
+          <div class="control-view space-y-3" id="view-respiratory">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-400/20 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white font-mono">RESPIRATORY SYSTEM</h2>
+                <p class="text-xs text-slate-300">Hardware: Pulse Oximeter / EVA Suit Sensor</p>
+              </div>
+              <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-deep px-3 py-1.5 rounded-lg border border-cyan-400/30">
+                <span>SIGNAL:</span>
+                <select id="resp-quality" data-quality-target="respiratory" class="bg-transparent text-white font-bold outline-none cursor-pointer">
+                  <option value="good" class="bg-astro-deep" selected>good</option>
+                  <option value="degraded" class="bg-astro-deep">degraded</option>
+                  <option value="lost" class="bg-astro-deep">lost (nulls values)</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex justify-between items-center mb-2">
+                <label for="spo2-slider" class="text-xs font-mono text-slate-200 uppercase">Oxygen Saturation — SpO₂ (%)</label>
+                <input type="number" id="spo2-num" value="98" min="50" max="100" step="0.5" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="spo2-slider" value="98" min="50" max="100" step="0.5" class="w-full" />
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
+                <span>50%</span>
+                <span>Critical: &lt; 90%</span>
+                <span>Nominal: ≥ 95%</span>
+                <span>100%</span>
+              </div>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex justify-between items-center mb-2">
+                <label for="rr-slider" class="text-xs font-mono text-slate-200 uppercase">Respiratory Rate (rpm)</label>
+                <input type="number" id="rr-num" value="14" min="4" max="60" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="rr-slider" value="14" min="4" max="60" class="w-full" />
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
+                <span>4</span>
+                <span>Nominal: 12–20 rpm</span>
+                <span>60</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. THERMOREGULATION CONTROLS -->
+          <div class="control-view space-y-3" id="view-thermoregulation">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-400/20 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white font-mono">CORE THERMOREGULATION</h2>
+                <p class="text-xs text-slate-300">Hardware: Double Sensor Forehead (Zero-Heat-Flux)</p>
+              </div>
+              <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-deep px-3 py-1.5 rounded-lg border border-cyan-400/30">
+                <span>SIGNAL:</span>
+                <select id="temp-quality" data-quality-target="thermoregulation" class="bg-transparent text-white font-bold outline-none cursor-pointer">
+                  <option value="good" class="bg-astro-deep" selected>good</option>
+                  <option value="degraded" class="bg-astro-deep">degraded</option>
+                  <option value="lost" class="bg-astro-deep">lost (nulls values)</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex justify-between items-center mb-2">
+                <label for="temp-slider" class="text-xs font-mono text-slate-200 uppercase">Core Body Temperature (°C)</label>
+                <input type="number" id="temp-num" value="37.1" min="30.0" max="44.0" step="0.1" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="temp-slider" value="37.1" min="30.0" max="44.0" step="0.1" class="w-full" />
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
+                <span>30.0°C</span>
+                <span>Rest: 36.1–37.2°C</span>
+                <span>Space Fever: ≥ 38.0°C</span>
+                <span>Hyperthermia: ≥ 40.0°C</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. RADIATION DOSIMETRY CONTROLS -->
+          <div class="control-view space-y-3" id="view-radiation">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-400/20 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white font-mono">RADIATION DOSIMETRY</h2>
+                <p class="text-xs text-slate-300">Hardware: RAD / Liulin Active Dosimeter</p>
+              </div>
+              <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-deep px-3 py-1.5 rounded-lg border border-cyan-400/30">
+                <span>SIGNAL:</span>
+                <select id="rad-quality" data-quality-target="radiation" class="bg-transparent text-white font-bold outline-none cursor-pointer">
+                  <option value="good" class="bg-astro-deep" selected>good</option>
+                  <option value="degraded" class="bg-astro-deep">degraded</option>
+                  <option value="lost" class="bg-astro-deep">lost (nulls values)</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4">
+              <div class="flex justify-between items-center mb-2">
+                <label for="rad-rate-slider" class="text-xs font-mono text-slate-200 uppercase">Daily Effective Dose Rate (mSv/day)</label>
+                <input type="number" id="rad-rate-num" value="0.42" min="0" max="50" step="0.01" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="rad-rate-slider" value="0.42" min="0" max="25" step="0.01" class="w-full" />
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
+                <span>0</span>
+                <span>ISS Nominal: 0.2–0.5 mSv/day</span>
+                <span>25+</span>
+              </div>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-astro-crimson/50 rounded-xl p-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div>
+                  <div class="text-xs font-mono font-bold text-astro-coral uppercase">Solar Particle Event (SPE)</div>
+                  <div class="text-[11px] text-slate-400">NASA acute SPE shelter threshold: 250 mSv</div>
+                </div>
+                <label class="flex items-center gap-2 text-xs font-mono text-white bg-astro-crimson/30 px-2.5 py-1.5 rounded-lg border border-astro-coral cursor-pointer">
+                  <input type="checkbox" id="spe-active" class="accent-astro-coral" />
+                  <span>SPE Active</span>
+                </label>
+              </div>
+
+              <div class="flex justify-between items-center mb-2">
+                <label for="spe-dose-slider" class="text-xs font-mono text-slate-200">Event Accumulated Dose (mSv)</label>
+                <input type="number" id="spe-dose-num" value="0.0" min="0" max="1000" step="1" class="w-20 bg-astro-navy border border-astro-coral/50 rounded-lg px-2 py-1 text-sm font-mono font-bold text-white text-center" />
+              </div>
+              <input type="range" id="spe-dose-slider" value="0.0" min="0" max="500" step="1" class="w-full" />
+            </div>
+          </div>
+
+          <!-- 5. DAILY ASSESSMENT CONTROLS -->
+          <div class="control-view space-y-3" id="view-daily_assessment">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-400/20 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white font-mono">DAILY SLEEP & PVT-B ASSESSMENT</h2>
+                <p class="text-xs text-slate-300">Hardware: Actiwatch / PVT-B Psychomotor Reaction Test</p>
+              </div>
+              <label class="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-astro-deep px-3 py-1.5 rounded-lg border border-cyan-400/30 cursor-pointer">
+                <input type="checkbox" id="daily-include" class="accent-astro-coral" />
+                <span>Attach Daily Report</span>
+              </label>
+            </div>
+
+            <div class="bg-astro-deep/80 border border-cyan-400/20 rounded-xl p-4 space-y-3" id="daily-inputs-wrapper">
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label for="daily-date" class="block text-[11px] font-mono text-slate-300 mb-1">Assessment Date</label>
+                  <input type="date" id="daily-date" disabled class="w-full bg-astro-navy border border-cyan-400/30 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white disabled:opacity-40" />
+                </div>
+                <div>
+                  <label for="daily-quality" class="block text-[11px] font-mono text-slate-300 mb-1">Signal Quality</label>
+                  <select id="daily-quality" disabled class="w-full bg-astro-navy border border-cyan-400/30 rounded-lg px-2.5 py-1.5 text-xs font-mono text-white disabled:opacity-40">
+                    <option value="good" selected>good</option>
+                    <option value="degraded">degraded</option>
+                    <option value="lost">lost</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label for="sleep-slider" class="text-xs font-mono text-slate-200">Sleep Hours Last Night (h)</label>
+                  <input type="number" id="sleep-num" value="6.1" min="0" max="24" step="0.1" disabled class="w-20 bg-astro-navy border border-cyan-400/30 rounded px-2 py-1 text-xs font-mono text-white text-center disabled:opacity-40" />
+                </div>
+                <input type="range" id="sleep-slider" value="6.1" min="0" max="14" step="0.1" disabled class="w-full" />
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label for="pvt-slider" class="text-xs font-mono text-slate-200">PVT-B Reaction Time (ms)</label>
+                  <input type="number" id="pvt-num" value="265" min="100" max="5000" step="5" disabled class="w-20 bg-astro-navy border border-cyan-400/30 rounded px-2 py-1 text-xs font-mono text-white text-center disabled:opacity-40" />
+                </div>
+                <input type="range" id="pvt-slider" value="265" min="100" max="1000" step="5" disabled class="w-full" />
+              </div>
+
+              <button type="button" id="btn-trigger-daily" class="bg-astro-crimson hover:bg-astro-coral text-white font-mono font-bold text-xs px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
+                Transmit Daily Report Once
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LIVE OUTBOUND JSON INSPECTOR -->
+        <div class="mt-5 bg-astro-deep border border-cyan-400/25 rounded-xl overflow-hidden">
+          <div class="bg-astro-navy/70 border-b border-cyan-400/20 px-3 py-2 flex items-center justify-between text-[11px] font-mono">
+            <span class="text-cyan-300 font-semibold">OUTBOUND TELEMETRY PACKET // telemetry-v1.1.json</span>
+            <span id="http-status" class="http-badge idle px-2 py-0.5 rounded text-[10px] font-bold">STANDBY • READY</span>
+          </div>
+          <pre id="json-preview" class="p-3 font-mono text-xs leading-relaxed text-slate-200 max-h-56 overflow-y-auto"></pre>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Existing Simulator Modules -->
+  <script src="js/presets.js"></script>
+  <script src="js/anatomy-map.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Live ECG Canvas + Dynamic HUD Label Sync -->
+  <script>
+    (function initHudExtras() {
+      const canvas = document.getElementById("ecgCanvas");
+      const ctx = canvas.getContext("2d");
+      const hrNum = document.getElementById("hr-num");
+      const cvQuality = document.getElementById("cv-quality");
+      const readout = document.getElementById("ecgBpmReadout");
+      const heartIcon = document.getElementById("svgHeartIcon");
+      const hudLabel = document.getElementById("hudSelectedLabel");
+
+      const systemNames = {
+        cardiovascular: "CARDIOVASCULAR",
+        respiratory: "RESPIRATORY",
+        thermoregulation: "THERMOREGULATION",
+        radiation: "RADIATION DOSIMETRY",
+        daily_assessment: "CNS / SLEEP & PVT-B",
+      };
+
+      document.querySelectorAll("[data-system]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const sys = el.dataset.system;
+          if (systemNames[sys]) hudLabel.textContent = systemNames[sys];
+        });
+      });
+
+      function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width || 400;
+        canvas.height = rect.height || 64;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      let phase = 0;
+      let points = new Array(Math.floor(canvas.width)).fill(canvas.height / 2);
+
+      function getEcgSample(t, lost, degraded) {
+        const mid = canvas.height / 2;
+        if (lost) return mid;
+        let y = mid;
+        if (t > 0.1 && t < 0.18) y -= 5 * Math.sin(((t - 0.1) / 0.08) * Math.PI);
+        else if (t >= 0.24 && t < 0.27) y += 6;
+        else if (t >= 0.27 && t < 0.31) y -= 23 * Math.sin(((t - 0.27) / 0.04) * Math.PI);
+        else if (t >= 0.31 && t < 0.35) y += 9;
+        else if (t >= 0.48 && t < 0.62) y -= 7 * Math.sin(((t - 0.48) / 0.14) * Math.PI);
+        if (degraded) y += (Math.random() - 0.5) * 10;
+        return y;
+      }
+
+      function draw() {
+        const quality = cvQuality.value;
+        const bpm = parseInt(hrNum.value, 10) || 68;
+
+        if (heartIcon && bpm > 0) {
+          heartIcon.style.animationDuration = `${Math.max(0.35, Math.min(1.6, 60 / bpm)).toFixed(2)}s`;
+        }
+
+        let strokeColor = "#00E676";
+        if (quality === "lost") {
+          strokeColor = "#DC0000";
+          readout.textContent = "NO SIGNAL";
+        } else if (quality === "degraded") {
+          strokeColor = "#FFB300";
+          readout.textContent = `${bpm} BPM [DEGRADED]`;
+        } else if (bpm > 110 || bpm < 50) {
+          strokeColor = "#FF3838";
+          readout.textContent = `${bpm} BPM [ALERT]`;
+        } else {
+          readout.textContent = `${bpm} BPM [NOMINAL]`;
+        }
+        readout.style.color = strokeColor;
+
+        if (points.length !== Math.floor(canvas.width)) {
+          points = new Array(Math.floor(canvas.width)).fill(canvas.height / 2);
+        }
+
+        const beatsPerSec = bpm / 60;
+        phase = (phase + beatsPerSec * 0.016) % 1;
+        points.shift();
+        points.push(getEcgSample(phase, quality === "lost", quality === "degraded"));
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = 1.9;
+        ctx.beginPath();
+        points.forEach((y, x) => {
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    })();
+  </script>
+</body>
+</html>
