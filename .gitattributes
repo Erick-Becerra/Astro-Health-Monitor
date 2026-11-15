@@ -1,2 +1,0 @@
-# Keep Unix line endings so files work inside Linux containers (important on Windows).
-* text=auto eol=lf
