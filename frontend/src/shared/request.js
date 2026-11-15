@@ -28,7 +28,7 @@ function describeDetail(detail) {
 }
 
 export const describeError = (error) =>
-  error instanceof ApiError ? error.message : "No se pudo contactar con el servidor";
+  error instanceof ApiError ? error.message : "Could not reach the server";
 
 /**
  * One call to the API. `mock` is the file of docs/mocks used when VITE_USE_MOCKS is on.
@@ -62,3 +62,4 @@ export const qs = (params) => {
   const clean = Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== "");
   return clean.length ? "?" + new URLSearchParams(clean).toString() : "";
 };
+

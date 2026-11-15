@@ -1,61 +1,113 @@
-/* Astro Health Monitor · tema Tierra. Importar una vez en main.jsx. Colores base: tu paleta (azul noche + rojos). */
-:root{--ink:#060e3d;--deep:#002456;--line:#1b3f7a;--bone:#ece7da;--steel:#8fa2c4;
---red-deep:#dd0000;--red:#fe3938;--green:#34c38f;--yellow:#f4c542;--orange:#ff8a1f;
+/* Astro Health Monitor · Earth theme. Navy base + bone text; status colors come from data-level / inline styles. */
+:root{--ink:#060e3d;--deep:#002456;--line:#1b3f7a;--bone:#ece7da;--steel:#8fa2c4;--console:#03050d;
+--red:#fe3938;--red-deep:#dd0000;--green:#34c38f;--yellow:#f4c542;--orange:#ff8a1f;
 --head:"Chakra Petch",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
 html,body{margin:0;min-height:100%;background:var(--ink);color:var(--bone);font-family:var(--head)}
 body{background-image:linear-gradient(rgba(27,63,122,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(27,63,122,.16) 1px,transparent 1px);background-size:32px 32px}
-/* el color de estado viene SIEMPRE de data-level (lo manda el backend) */
 [data-level=green]{--lv:var(--green)}[data-level=yellow]{--lv:var(--yellow)}
 [data-level=orange]{--lv:var(--orange)}[data-level=red]{--lv:var(--red)}[data-level=unknown]{--lv:var(--steel)}
-.earth{display:flex;flex-direction:column;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
-.earth>header{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--deep);padding:10px 16px;font:.78rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
-.panel,.alerts,.astronaut-list{border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
-.hud-label{font:.7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 button{font:inherit;color:var(--bone);background:transparent;border:1px solid var(--line);border-radius:3px;padding:6px 12px;cursor:pointer}
 button:hover{border-color:var(--steel)}
-.astronaut-list{list-style:none;margin:0;padding:6px;display:grid;gap:6px}
-.astronaut-list button{display:grid;grid-template-columns:12px 1fr auto;gap:2px 10px;align-items:center;width:100%;text-align:left;padding:10px;border:0;border-left:3px solid var(--lv);background:rgba(6,14,61,.55)}
-.astronaut-list button[aria-pressed=true]{background:rgba(6,14,61,.95);box-shadow:inset 0 0 0 1px var(--lv)}
-.astronaut-list .dot{width:10px;height:10px;border-radius:50%}
-.astronaut-list .badge{font:.68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lv);border:1px solid var(--lv);padding:2px 8px;border-radius:2px}
-.astronaut-list .latest{grid-column:2/-1;font:.74rem var(--mono);color:var(--steel)}
-.alerts{padding:8px;display:grid;gap:8px}.alerts:empty{display:none}
-.alerts article{border-left:3px solid var(--red);padding:6px 10px;background:rgba(6,14,61,.6)}
-.alerts small{font:.7rem var(--mono);color:var(--steel)}.alerts p{margin:4px 0}
-.card{border:1px solid var(--lv,var(--line));border-top-width:3px;background:rgba(6,14,61,.7);padding:10px;border-radius:3px}
-.card b{display:block;font:600 1.5rem var(--mono)}
-.card[data-level=red]{box-shadow:0 0 0 1px var(--red-deep)}
-
-/* ===== Página Tierra: clases reales del kit (EarthPage, DashboardView) ===== */
-.earth{display:grid;grid-template-columns:320px 1fr;align-items:start}
-.earth>header{grid-column:1/-1}
-.earth>.astronaut-list,.earth>.alerts,.earth>p{grid-column:1}
-.earth>.dashboard{grid-column:2;grid-row:2/span 3}
-.earth>.thresholds{grid-column:2}
-.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
 .muted{color:var(--steel)}
-.dashboard{display:grid;grid-template-columns:230px 1fr;gap:16px}
-.crew-status{grid-column:1/-1;display:flex;gap:14px;align-items:center;padding:12px 16px;border:1px solid var(--lv);border-left-width:6px;background:rgba(0,36,86,.8);font-family:var(--mono)}
-.crew-status .label,.system-panel dt,.protocol h3,.physiology h3,.radiation-meter h3,.card .title{font:.7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin:0}
-.crew-status strong{letter-spacing:.12em;text-transform:uppercase;font-size:1.1rem}
-.stale{color:var(--yellow);border:1px solid var(--yellow);padding:2px 8px;font-size:.72rem}
-.system-map{display:grid;gap:6px;align-content:start}
-.system-map button{display:flex;align-items:center;gap:10px;text-align:left;border:0;border-left:3px solid var(--lv);background:rgba(6,14,61,.6);font:.78rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
-.system-map button[aria-pressed=true]{background:var(--ink);box-shadow:inset 0 0 0 1px var(--lv)}
-.system-panel{border:1px solid var(--line);border-top:3px solid var(--lv);background:rgba(0,36,86,.72);padding:18px;border-radius:4px}
-.system-panel h2{margin:0 0 4px;font-size:1.4rem}
-.system-panel dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:14px 0}.system-panel dd{margin:0}
-.drivers{list-style:none;padding:0;display:grid;gap:6px}
-.drivers li{display:flex;gap:8px;align-items:center;border-left:3px solid var(--lv);padding:6px 10px;background:rgba(6,14,61,.55);font-family:var(--mono)}
-.protocol{border:1px solid var(--lv);padding:12px;margin:14px 0;background:rgba(6,14,61,.6)}
-.cards{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}
-.cards .card{display:flex;flex-direction:column;gap:4px;text-align:left;padding:10px}
-.card .value{font:600 1.3rem var(--mono)}.card .level{color:var(--lv);font:.68rem var(--mono);letter-spacing:.1em}
-.radiation-meter{grid-column:1/-1}.radiation-meter .bar{height:10px;background:var(--ink);border:1px solid var(--line)}.radiation-meter .fill{height:100%}
-.solar-alert{color:var(--red);font-weight:600}
-.data-quality{grid-column:1/-1;list-style:none;display:flex;gap:8px;padding:0;flex-wrap:wrap}
-.data-quality li{border:1px solid var(--yellow);color:var(--yellow);padding:3px 10px;font:.74rem var(--mono)}
-.data-quality li[data-quality=lost]{border-color:var(--red);color:var(--red)}
-.thresholds{border:1px solid var(--line);background:rgba(0,36,86,.72);padding:14px;border-radius:4px}
-.thresholds input,.thresholds select{background:var(--ink);color:var(--bone);border:1px solid var(--line);padding:4px 6px;font-family:var(--mono)}
-@media(max-width:900px){.earth,.dashboard{grid-template-columns:1fr}.earth>*{grid-column:1!important;grid-row:auto!important}}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+
+/* ---- page layout: three columns, each one scrolls on its own ---- */
+.earth{display:grid;grid-template-columns:300px minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);gap:12px;padding:12px;height:calc(100vh - 44px);box-sizing:border-box;overflow:hidden}
+.earth>.topline{grid-column:1/-1;display:flex;gap:16px;padding:6px 12px;border:1px solid var(--yellow);color:var(--yellow);font:.78rem var(--mono)}
+.crew,.feed,.center{grid-row:2;min-height:0}
+.crew{overflow-y:auto}
+.center{display:flex;flex-direction:column;gap:10px}
+
+/* ---- crew list ---- */
+.astronaut-list{list-style:none;margin:0;padding:6px;display:grid;gap:6px;border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
+.astronaut-list>li>button{display:grid;grid-template-columns:12px 1fr auto;gap:3px 10px;align-items:center;width:100%;text-align:left;padding:10px;border:0;border-left:3px solid var(--lv);background:rgba(6,14,61,.55)}
+.astronaut-list>li>button[aria-pressed=true]{background:var(--ink);box-shadow:inset 0 0 0 1px var(--lv)}
+.astronaut-list .dot{grid-column:1;grid-row:1}
+.astronaut-list strong{grid-column:2;grid-row:1}
+.astronaut-list small{grid-column:3;grid-row:1;color:var(--steel)}
+.astronaut-list .badge{grid-column:2/-1;grid-row:2;justify-self:start;font:.68rem var(--mono);letter-spacing:.08em;color:var(--lv);border:1px solid var(--lv);padding:2px 8px;border-radius:2px}
+.astronaut-list .latest{grid-column:2/-1;grid-row:3;font:.74rem var(--mono);color:var(--steel)}
+
+/* ---- report bar ---- */
+.report-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;padding:10px 12px;border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
+.report-bar label{display:grid;gap:4px;font-size:.8rem;color:var(--steel)}
+.report-bar input{color-scheme:dark;background:var(--ink);color:var(--bone);border:1px solid var(--line);border-radius:3px;padding:6px 8px;font:.85rem var(--mono)}
+.report-bar>button{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:600}
+.notice{flex-basis:100%;display:flex;justify-content:space-between;align-items:center;margin:0;padding:6px 10px;border-left:3px solid var(--red);background:rgba(254,57,56,.12)}
+.notice[data-kind=ok]{border-left-color:var(--green);background:rgba(52,195,143,.12)}
+.notice button{border:0;padding:0 6px;font-size:1.1rem}
+
+/* ---- console ---- */
+.console{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:var(--console);border:1px solid var(--line);border-radius:4px}
+.console-head{display:flex;gap:16px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font:.8rem var(--mono)}
+.stale{color:var(--yellow);border:1px solid var(--yellow);padding:1px 8px;font-size:.72rem}
+.console-body{flex:1;min-height:0;overflow-y:auto;padding:14px;font:.85rem/1.6 var(--mono)}
+.block{display:flex;flex-wrap:wrap;gap:2px 28px;margin-bottom:1.2rem}
+.entry{white-space:nowrap}.tag{font-weight:600}
+.follow{margin-left:auto;border:0;background:none;padding:0;font:.78rem var(--mono);color:var(--bone);text-decoration:underline;cursor:pointer}
+.follow:disabled{opacity:.35;text-decoration:none;cursor:default}
+
+/* ---- alert feed ---- */
+.feed{display:flex;flex-direction:column;border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
+.feed-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line)}
+.feed-head h2{margin:0;font-size:1rem}
+.feed-scroll{flex:1;min-height:0;overflow-y:auto;padding:8px;display:grid;gap:8px;align-content:start}
+.feed article{border-left:3px solid var(--red);padding:6px 10px;background:rgba(6,14,61,.6);font-size:.85rem}
+.feed article[data-severity=attention]{border-left-color:var(--orange)}
+.feed article[data-severity=info]{border-left-color:var(--steel)}
+.feed small{font:.7rem var(--mono);color:var(--steel)}.feed p{margin:4px 0}
+
+
+@media(max-width:1100px){.earth{grid-template-columns:1fr;grid-template-rows:none;height:auto;overflow:visible}
+.crew,.feed,.center{grid-row:auto}.console{min-height:60vh}.feed{max-height:50vh}}
+
+/* ---- pinned manual captures + small helpers ---- */
+.hud-label{font:.7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.pinned{padding:8px 14px 10px;border-bottom:1px solid var(--line);background:rgba(0,36,86,.35);font:.82rem/1.6 var(--mono)}
+.pinned .block{margin:4px 0 0}
+.notice[data-kind=warn]{border-left-color:var(--yellow);background:rgba(244,197,66,.12)}
+
+/* ---- record summary under the selected astronaut ---- */
+.crew-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.crew-head button{font-size:.8rem;padding:4px 10px}
+.record-summary{margin:2px 0 0;padding:8px 12px;border-left:3px solid var(--line);background:rgba(6,14,61,.85);font:.76rem/1.5 var(--mono)}
+.record-summary p{margin:2px 0}
+.record-actions{display:flex;gap:8px;margin-top:6px}.record-actions button{font-size:.74rem;padding:3px 10px}
+
+/* ---- dialogs: new astronaut form and record panel ---- */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(3,5,13,.78);padding:16px}
+.modal-card{width:min(760px,100%);max-height:calc(100vh - 32px);display:flex;flex-direction:column;background:var(--deep);border:1px solid var(--line);border-radius:4px}
+.modal-card.wide{width:min(1000px,100%)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line)}
+.modal-head h2{margin:0;font-size:1.1rem}.modal-head button{border:0;font-size:1.3rem;padding:0 6px}
+.modal-body{overflow-y:auto;padding:12px 16px;display:grid;gap:12px}
+.modal-body fieldset{border:1px solid var(--line);border-radius:3px;margin:0;padding:8px 12px 12px}
+.modal-body legend{padding:0 6px;font:.72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.field{display:grid;gap:4px;font-size:.8rem;color:var(--steel)}.field.wide{grid-column:1/-1}
+.field input,.field select,.field textarea,.record-bar input[type=text],.record-bar select{background:var(--ink);color:var(--bone);border:1px solid var(--line);border-radius:3px;padding:6px 8px;font:.85rem var(--mono);color-scheme:dark}
+.modal-card>.notice{margin:0 16px 8px}
+.modal-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-size:.8rem}
+.modal-foot .spacer{flex:1}.check{display:flex;gap:6px;align-items:center}
+button.primary{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:600}
+button.link{border:0;background:none;padding:0;text-decoration:underline;color:var(--bone);cursor:pointer}
+.record-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.record-bar label{display:flex;gap:8px;align-items:center;font-size:.8rem}
+.record-bar a{color:var(--bone)}
+.table-wrap{max-height:42vh;overflow:auto;border:1px solid var(--line)}
+.table-wrap table{border-collapse:collapse;width:100%;font:.78rem var(--mono)}
+.table-wrap th{position:sticky;top:0;background:var(--ink);text-align:left}
+.table-wrap th,.table-wrap td{padding:4px 10px;border-bottom:1px solid rgba(27,63,122,.5)}
+
+/* ---- tabs and symptom reports ---- */
+.tabs{display:flex;gap:4px}
+.tabs button{border-radius:3px 3px 0 0;border-bottom:0;font-size:.85rem;padding:6px 16px;color:var(--steel)}
+.tabs button[aria-selected=true]{background:var(--console);color:var(--bone);border-color:var(--steel)}
+.tabs .count{margin-left:8px;padding:0 7px;border-radius:9px;background:var(--red);color:#fff;font:600 .72rem var(--mono)}
+.tab-pane{flex:1;min-height:0;display:flex}.tab-pane[hidden]{display:none}
+.follow-select{margin-left:auto;background:var(--ink);color:var(--bone);border:1px solid var(--line);border-radius:3px;padding:2px 6px;font:.75rem var(--mono);color-scheme:dark}
+.symptom{border:1px solid var(--line);border-left:4px solid var(--lv);background:rgba(0,36,86,.35);padding:8px 12px;margin-bottom:10px;font-family:var(--head)}
+.symptom header{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.symptom .badge{font:.68rem var(--mono);letter-spacing:.08em;color:var(--lv);border:1px solid var(--lv);padding:1px 8px;border-radius:2px}
+.symptom time{margin-left:auto;font:.74rem var(--mono)}
+.symptom p{margin:4px 0}.symptom-text{white-space:pre-wrap}
+.symptom-vitals{font:.76rem var(--mono);color:var(--steel)}

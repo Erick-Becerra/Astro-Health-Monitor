@@ -17,7 +17,7 @@ export default function TrendChart({ readings, history = [], keys, t, group = "c
     <LineChart width={width} height={height} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="time" type="number" scale="time" domain={["dataMin", "dataMax"]}
-             tickFormatter={(ms) => new Date(ms).toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" })} />
+             tickFormatter={(ms) => new Date(ms).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })} />
       <YAxis domain={["auto", "auto"]} />
       {bands.map((b) => (
         <ReferenceArea key={b.from} x1={Math.max(b.from, first)} x2={Math.min(b.to, last)} fill={t.levelColor(b.level)} fillOpacity={0.12} />

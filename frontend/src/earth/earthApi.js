@@ -1,9 +1,26 @@
 // Client of the EARTH BASE server (port 8000). For the Earth monitoring app (App 1).
 // It never calls the station: what the station sends reaches Earth by itself, after the link latency.
-import { request, EARTH_URL, qs } from "../shared/request.js";
+import { request, EARTH_URL, qs, ApiError, ACTOR, USE_MOCKS } from "../shared/request.js";
 
 const get = (path, mock) => request(EARTH_URL, "GET", path, { mock });
 const send = (method, path, body, actor) => request(EARTH_URL, method, path, { body, actor });
+
+// Uploads a file as multipart form data (the browser sets the content type itself).
+async function upload(path, file, actor, note) {
+  if (USE_MOCKS) return { mocked: true };
+  const form = new FormData();
+  form.append("file", file);
+  if (note) form.append("note", note);
+  let response;
+  try {
+    response = await fetch(EARTH_URL + path, { method: "POST", headers: { "X-Actor": actor ?? ACTOR }, body: form });
+  } catch {
+    throw new ApiError(0, "No answer from the server", path);
+  }
+  const data = await response.json().catch(() => null);
+  if (!response.ok) throw new ApiError(response.status, data?.detail ?? response.statusText, path);
+  return data;
+}
 
 export const earth = {
   // ---- reads ----
@@ -49,4 +66,23 @@ export const earth = {
   /** kind: note | prescription. severity: info | attention | critical. */
   addNote: (id, { body, kind = "note", severity = "info" }, actor) => send("POST", `/api/astronauts/${id}/notes`, { body, kind, severity }, actor),
   sendMessage: (id, { body, severity = "info" }, actor) => send("POST", `/api/astronauts/${id}/messages`, { body, severity }, actor),
+
+  // ---- astronaut record (CSV), Earth only. Every upload is a NEW VERSION; the first of the list is the current one ----
+  /** Versions, newest first, without contents: id, filename, columns, row_count, uploaded_by, uploaded_at ([] if none). */
+  records: (id) => get(`/api/astronauts/${id}/records`, `earth/records-${id}.json`),
+  /** The CSV as a table: { columns, rows, total }. fileId = a number or "latest". */
+  recordRows: (id, fileId = "latest", { offset = 0, limit = 100 } = {}) =>
+    get(`/api/astronauts/${id}/records/${fileId}/rows${qs({ offset, limit })}`, `earth/record-rows-${id}.json`),
+  /** Link to the file exactly as uploaded. */
+  recordUrl: (id, fileId = "latest") => `${EARTH_URL}/api/astronauts/${id}/records/${fileId}/download`,
+  /** CSV only, up to 2 MB. `file` is a File or Blob. Answers 413 (too big) or 422 (not a CSV, empty, binary). */
+  uploadRecord: (id, file, actor, note) => upload(`/api/astronauts/${id}/records`, file, actor, note),
+
+  // ---- symptom reports sent by the crew from the station (each one also raises an alert) ----
+  /** One astronaut, newest first. Filters: severity (mild|moderate|severe), symptom, since, until, limit. */
+  symptomReports: (id, { severity, symptom, since, until, limit = 100 } = {}) =>
+    get(`/api/astronauts/${id}/symptom-reports${qs({ severity, symptom, since, until, limit })}`, `earth/symptom-reports-${id}.json`),
+  /** Everyone's reports (same filters plus astronautId). */
+  allSymptomReports: ({ astronautId, severity, symptom, since, until, limit = 100 } = {}) =>
+    get(`/api/symptom-reports${qs({ astronaut_id: astronautId, severity, symptom, since, until, limit })}`, "earth/symptom-reports.json"),
 };

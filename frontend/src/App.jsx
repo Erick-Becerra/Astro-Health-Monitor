@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import AstronautDetail from "./pages/AstronautDetail.jsx";
 import EarthPage from "./earth/EarthPage.jsx";
+import ReportPage from "./earth/ReportPage.jsx";
 import { ACTOR } from "./shared/request.js";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/astronaut/:id" element={<AstronautDetail />} />
           <Route path="/earth" element={<EarthPage actor={ACTOR} />} />
+          <Route path="/earth/report" element={<ReportPage />} />
         </Routes>
       </main>
     </>

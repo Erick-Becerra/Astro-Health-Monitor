@@ -29,7 +29,7 @@ export default function ThresholdsEditor({ data, t, onSave }) {
       const after = Object.keys(levels).length ? levels : null; // null = back to the default
       if (norm(data.personal[key]) !== norm(after)) patch[key] = after;
     }
-    if (!Object.keys(patch).length) return setMessage("Sin cambios");
+    if (!Object.keys(patch).length) return setMessage("No changes");
     try {
       await onSave(patch);
       setMessage("Guardado. Llegará a la estación después de la latencia del enlace.");
