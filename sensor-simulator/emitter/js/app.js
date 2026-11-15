@@ -313,6 +313,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Real-time Galaxy Watch BLE stream -> Auto-POST to Space Station (:8001)
+  const btnWatch = document.getElementById("btn-connect-watch");
+  let lastBleSendTimestamp = 0;
+
+  if (btnWatch && "bluetooth" in navigator) {
+    btnWatch.addEventListener("click", async () => {
+      try {
+        btnWatch.textContent = "Scanning Watch...";
+        const device = await navigator.bluetooth.requestDevice({
+          filters: [{ services: ["heart_rate"] }],
+        });
+
+        const server = await device.gatt.connect();
+        const service = await server.getPrimaryService("heart_rate");
+        const characteristic = await service.getCharacteristic("heart_rate_measurement");
+
+        await characteristic.startNotifications();
+        btnWatch.textContent = `LIVE: ${device.name || "Galaxy Watch"}`;
+        btnWatch.classList.add("border-emerald-400", "bg-emerald-950/60");
+
+        characteristic.addEventListener("characteristicvaluechanged", async (event) => {
+          const value = event.target.value;
+          const flags = value.getUint8(0);
+          const bpm = (flags & 0x01) !== 0 ? value.getUint16(1, true) : value.getUint8(1);
+
+          if (bpm >= 20 && bpm <= 250) {
+            document.getElementById("hr-slider").value = bpm;
+            document.getElementById("hr-num").value = bpm;
+            document.getElementById("cv-quality").value = "good";
+            anatomyMap.updateZoneQuality("cardiovascular", "good");
+            refreshPreview();
+
+            // Enforce Space Station rule: max 1 packet per second per astronaut
+            const now = Date.now();
+            if (!streamTimer && now - lastBleSendTimestamp >= 1100) {
+              lastBleSendTimestamp = now;
+              await transmitPacket("automated_sensor_stream");
+            }
+          }
+        });
+
+        device.addEventListener("gattserverdisconnected", () => {
+          btnWatch.textContent = "Connect Watch (Live BLE)";
+          btnWatch.classList.remove("border-emerald-400", "bg-emerald-950/60");
+        });
+      } catch (err) {
+        console.error("BLE Watch error:", err);
+        btnWatch.textContent = "Connect Watch (Live BLE)";
+      }
+    });
+  }
+
   // Initial render
   refreshPreview();
 });
