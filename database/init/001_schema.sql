@@ -1,0 +1,5 @@
+-- Database schema (tables). Owner: backend/database lead.
+-- This script runs automatically the FIRST time the database is created.
+-- To run it again after changing it, reset the database:
+--   docker compose down -v
+--   docker compose up --build

@@ -1,0 +1,83 @@
+:root {
+  --bg: #07121a;
+  --panel: #0d1f2b;
+  --line: #1c3a4c;
+  --text: #d8eef5;
+  --muted: #7fa3b3;
+  --accent: #5ad1e6;
+  --ok: #6ee7a0;
+  --bad: #ff7b7b;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+}
+
+.topbar {
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.status-online {
+  color: var(--ok);
+}
+
+.status-offline {
+  color: var(--bad);
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 22rem;
+  height: calc(100vh - 3.4rem);
+}
+
+.scene {
+  min-height: 0;
+}
+
+.panel {
+  padding: 1.5rem;
+  background: var(--panel);
+  border-left: 1px solid var(--line);
+}
+
+@media (max-width: 800px) {
+  .detail {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .panel {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
