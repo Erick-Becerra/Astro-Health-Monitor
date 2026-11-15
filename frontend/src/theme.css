@@ -1,0 +1,61 @@
+/* Astro Health Monitor · tema Tierra. Importar una vez en main.jsx. Colores base: tu paleta (azul noche + rojos). */
+:root{--ink:#060e3d;--deep:#002456;--line:#1b3f7a;--bone:#ece7da;--steel:#8fa2c4;
+--red-deep:#dd0000;--red:#fe3938;--green:#34c38f;--yellow:#f4c542;--orange:#ff8a1f;
+--head:"Chakra Petch",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+html,body{margin:0;min-height:100%;background:var(--ink);color:var(--bone);font-family:var(--head)}
+body{background-image:linear-gradient(rgba(27,63,122,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(27,63,122,.16) 1px,transparent 1px);background-size:32px 32px}
+/* el color de estado viene SIEMPRE de data-level (lo manda el backend) */
+[data-level=green]{--lv:var(--green)}[data-level=yellow]{--lv:var(--yellow)}
+[data-level=orange]{--lv:var(--orange)}[data-level=red]{--lv:var(--red)}[data-level=unknown]{--lv:var(--steel)}
+.earth{display:flex;flex-direction:column;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
+.earth>header{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--deep);padding:10px 16px;font:.78rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.panel,.alerts,.astronaut-list{border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
+.hud-label{font:.7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+button{font:inherit;color:var(--bone);background:transparent;border:1px solid var(--line);border-radius:3px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--steel)}
+.astronaut-list{list-style:none;margin:0;padding:6px;display:grid;gap:6px}
+.astronaut-list button{display:grid;grid-template-columns:12px 1fr auto;gap:2px 10px;align-items:center;width:100%;text-align:left;padding:10px;border:0;border-left:3px solid var(--lv);background:rgba(6,14,61,.55)}
+.astronaut-list button[aria-pressed=true]{background:rgba(6,14,61,.95);box-shadow:inset 0 0 0 1px var(--lv)}
+.astronaut-list .dot{width:10px;height:10px;border-radius:50%}
+.astronaut-list .badge{font:.68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lv);border:1px solid var(--lv);padding:2px 8px;border-radius:2px}
+.astronaut-list .latest{grid-column:2/-1;font:.74rem var(--mono);color:var(--steel)}
+.alerts{padding:8px;display:grid;gap:8px}.alerts:empty{display:none}
+.alerts article{border-left:3px solid var(--red);padding:6px 10px;background:rgba(6,14,61,.6)}
+.alerts small{font:.7rem var(--mono);color:var(--steel)}.alerts p{margin:4px 0}
+.card{border:1px solid var(--lv,var(--line));border-top-width:3px;background:rgba(6,14,61,.7);padding:10px;border-radius:3px}
+.card b{display:block;font:600 1.5rem var(--mono)}
+.card[data-level=red]{box-shadow:0 0 0 1px var(--red-deep)}
+
+/* ===== Página Tierra: clases reales del kit (EarthPage, DashboardView) ===== */
+.earth{display:grid;grid-template-columns:320px 1fr;align-items:start}
+.earth>header{grid-column:1/-1}
+.earth>.astronaut-list,.earth>.alerts,.earth>p{grid-column:1}
+.earth>.dashboard{grid-column:2;grid-row:2/span 3}
+.earth>.thresholds{grid-column:2}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.muted{color:var(--steel)}
+.dashboard{display:grid;grid-template-columns:230px 1fr;gap:16px}
+.crew-status{grid-column:1/-1;display:flex;gap:14px;align-items:center;padding:12px 16px;border:1px solid var(--lv);border-left-width:6px;background:rgba(0,36,86,.8);font-family:var(--mono)}
+.crew-status .label,.system-panel dt,.protocol h3,.physiology h3,.radiation-meter h3,.card .title{font:.7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin:0}
+.crew-status strong{letter-spacing:.12em;text-transform:uppercase;font-size:1.1rem}
+.stale{color:var(--yellow);border:1px solid var(--yellow);padding:2px 8px;font-size:.72rem}
+.system-map{display:grid;gap:6px;align-content:start}
+.system-map button{display:flex;align-items:center;gap:10px;text-align:left;border:0;border-left:3px solid var(--lv);background:rgba(6,14,61,.6);font:.78rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.system-map button[aria-pressed=true]{background:var(--ink);box-shadow:inset 0 0 0 1px var(--lv)}
+.system-panel{border:1px solid var(--line);border-top:3px solid var(--lv);background:rgba(0,36,86,.72);padding:18px;border-radius:4px}
+.system-panel h2{margin:0 0 4px;font-size:1.4rem}
+.system-panel dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:14px 0}.system-panel dd{margin:0}
+.drivers{list-style:none;padding:0;display:grid;gap:6px}
+.drivers li{display:flex;gap:8px;align-items:center;border-left:3px solid var(--lv);padding:6px 10px;background:rgba(6,14,61,.55);font-family:var(--mono)}
+.protocol{border:1px solid var(--lv);padding:12px;margin:14px 0;background:rgba(6,14,61,.6)}
+.cards{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}
+.cards .card{display:flex;flex-direction:column;gap:4px;text-align:left;padding:10px}
+.card .value{font:600 1.3rem var(--mono)}.card .level{color:var(--lv);font:.68rem var(--mono);letter-spacing:.1em}
+.radiation-meter{grid-column:1/-1}.radiation-meter .bar{height:10px;background:var(--ink);border:1px solid var(--line)}.radiation-meter .fill{height:100%}
+.solar-alert{color:var(--red);font-weight:600}
+.data-quality{grid-column:1/-1;list-style:none;display:flex;gap:8px;padding:0;flex-wrap:wrap}
+.data-quality li{border:1px solid var(--yellow);color:var(--yellow);padding:3px 10px;font:.74rem var(--mono)}
+.data-quality li[data-quality=lost]{border-color:var(--red);color:var(--red)}
+.thresholds{border:1px solid var(--line);background:rgba(0,36,86,.72);padding:14px;border-radius:4px}
+.thresholds input,.thresholds select{background:var(--ink);color:var(--bone);border:1px solid var(--line);padding:4px 6px;font-family:var(--mono)}
+@media(max-width:900px){.earth,.dashboard{grid-template-columns:1fr}.earth>*{grid-column:1!important;grid-row:auto!important}}

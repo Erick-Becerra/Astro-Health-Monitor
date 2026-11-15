@@ -1,0 +1,410 @@
+{
+  "astronaut_id": "AST-02",
+  "generated_at": "2026-11-14T19:40:36.486357+00:00",
+  "level": "orange",
+  "status": "attention",
+  "measured_at": "2026-11-14T18:04:00+00:00",
+  "environment": {
+    "cabin_co2_mmhg": 2.0,
+    "crew_state": "resting",
+    "mission_day": 78
+  },
+  "vitals": [
+    {
+      "key": "heart_rate",
+      "label": "Heart rate",
+      "unit": "bpm",
+      "value": 61.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 62.0,
+      "vs_baseline": -1.0,
+      "level": "green"
+    },
+    {
+      "key": "hrv_ms",
+      "label": "Heart rate variability",
+      "unit": "ms",
+      "value": null,
+      "source": null,
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": null
+    },
+    {
+      "key": "body_temperature",
+      "label": "Core body temperature",
+      "unit": "°C",
+      "value": 38.06,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "orange"
+    },
+    {
+      "key": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "value": 125.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 118.0,
+      "vs_baseline": 7.0,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_diastolic",
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "value": 75.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 74.0,
+      "vs_baseline": 1.0,
+      "level": "green"
+    },
+    {
+      "key": "spo2",
+      "label": "Oxygen saturation",
+      "unit": "%",
+      "value": 98.4,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "respiratory_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "value": 15.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep last night",
+      "unit": "h",
+      "value": 6.4,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "consecutive_nights_under_6h",
+      "label": "Consecutive nights under 6 h",
+      "unit": "nights",
+      "value": 0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "value": 290.0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "radiation_rate_msv_day",
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "value": 0.417,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "cabin_co2_mmhg",
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "value": 2.0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    }
+  ],
+  "data_quality": [],
+  "manual_latest": {
+    "glucose": {
+      "value": 165.0,
+      "context": "postprandial",
+      "level": "yellow",
+      "captured_at": "2026-11-14T14:25:00+00:00"
+    },
+    "phq9": {
+      "score": 6,
+      "answers": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "severity": "mild",
+      "item9_alert": false,
+      "level": "yellow",
+      "captured_at": "2026-11-14T12:35:00+00:00"
+    },
+    "gad7": {
+      "score": 5,
+      "answers": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "severity": "mild",
+      "level": "yellow",
+      "captured_at": "2026-11-14T12:36:00+00:00"
+    },
+    "blood_pressure": {
+      "systolic": 128.0,
+      "diastolic": 84.0,
+      "level": "green",
+      "captured_at": "2026-11-14T12:25:00+00:00"
+    }
+  },
+  "radiation": {
+    "agency": "ESA",
+    "career_limit_msv": 1000,
+    "prior_msv": 120.0,
+    "mission_msv": 283.02,
+    "total_msv": 403.02,
+    "percent_of_limit": 40.3,
+    "rate_msv_day": 0.417,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": "2026-11-14T15:54:00+00:00"
+  },
+  "bone_loss_estimate_percent": 2.6,
+  "systems": [
+    {
+      "system": "heart",
+      "label": "Cardiovascular",
+      "hazard": "Altered gravity",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "lungs",
+      "label": "Respiratory",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "brain",
+      "label": "Brain and behavior",
+      "hazard": "Isolation and confinement",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "phq9",
+          "label": "PHQ-9 (depression)",
+          "value": 6,
+          "unit": "points",
+          "level": "yellow"
+        },
+        {
+          "indicator": "gad7",
+          "label": "GAD-7 (anxiety)",
+          "value": 5,
+          "unit": "points",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "metabolism",
+      "label": "Metabolism",
+      "hazard": "Hostile closed environment",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "glucose_mg_dl",
+          "label": "Blood glucose (postprandial)",
+          "value": 165.0,
+          "unit": "mg/dL",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "thermal",
+      "label": "Temperature and immunity",
+      "hazard": "Hostile closed environment",
+      "level": "orange",
+      "drivers": [
+        {
+          "indicator": "body_temperature",
+          "label": "Body temperature",
+          "value": 38.06,
+          "unit": "°C",
+          "level": "orange"
+        }
+      ]
+    },
+    {
+      "system": "radiation",
+      "label": "Radiation exposure",
+      "hazard": "Space radiation",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "bones",
+      "label": "Bones and muscle",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "ared_adherence",
+          "label": "ARED sessions this week",
+          "value": 1,
+          "unit": "of 5",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "eyes",
+      "label": "Eyes (SANS)",
+      "hazard": "Altered gravity",
+      "level": "green",
+      "drivers": []
+    }
+  ],
+  "guides": [
+    {
+      "id": "body_temperature",
+      "title": "Body temperature",
+      "level": "orange",
+      "steps": [
+        "Body temperature is above your personal orange threshold."
+      ]
+    },
+    {
+      "id": "glucose_mg_dl",
+      "title": "Blood glucose (postprandial)",
+      "level": "yellow",
+      "steps": [
+        "Glucose after eating is above normal. Review the meal and measure later."
+      ]
+    },
+    {
+      "id": "phq9",
+      "title": "PHQ-9 (depression)",
+      "level": "yellow",
+      "steps": [
+        "PHQ-9 (depression) score is mild. Talk to the behavioral health team and keep up sleep, exercise and contact with family."
+      ]
+    },
+    {
+      "id": "gad7",
+      "title": "GAD-7 (anxiety)",
+      "level": "yellow",
+      "steps": [
+        "GAD-7 (anxiety) score is mild. Talk to the behavioral health team and keep up sleep, exercise and contact with family."
+      ]
+    },
+    {
+      "id": "ared_adherence",
+      "title": "ARED sessions this week",
+      "level": "yellow",
+      "steps": [
+        "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "indicator": "body_temperature",
+      "label": "Body temperature",
+      "value": 38.06,
+      "unit": "°C",
+      "level": "orange",
+      "status": "attention",
+      "advice": "Body temperature is above your personal orange threshold.",
+      "source": "telemetry"
+    },
+    {
+      "indicator": "glucose_mg_dl",
+      "label": "Blood glucose (postprandial)",
+      "value": 165.0,
+      "unit": "mg/dL",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Glucose after eating is above normal. Review the meal and measure later.",
+      "source": "manual"
+    },
+    {
+      "indicator": "phq9",
+      "label": "PHQ-9 (depression)",
+      "value": 6,
+      "unit": "points",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "PHQ-9 (depression) score is mild. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+      "source": "manual"
+    },
+    {
+      "indicator": "gad7",
+      "label": "GAD-7 (anxiety)",
+      "value": 5,
+      "unit": "points",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "GAD-7 (anxiety) score is mild. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+      "source": "manual"
+    },
+    {
+      "indicator": "ared_adherence",
+      "label": "ARED sessions this week",
+      "value": 1,
+      "unit": "of 5",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "source": "manual"
+    }
+  ]
+}

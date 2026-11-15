@@ -1,6 +1,8 @@
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import AstronautDetail from "./pages/AstronautDetail.jsx";
+import EarthPage from "./earth/EarthPage.jsx";
+import { ACTOR } from "./shared/request.js";
 
 export default function App() {
   return (
@@ -14,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/astronaut/:id" element={<AstronautDetail />} />
+          <Route path="/earth" element={<EarthPage actor={ACTOR} />} />
         </Routes>
       </main>
     </>

@@ -1,0 +1,134 @@
+[
+  {
+    "id": 170,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T17:10:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate 113 bpm",
+    "guidance": "Fast pulse. Rest, hydrate and measure again in 10 minutes.",
+    "sent_to_station_at": "2026-11-14T17:10:00+00:00"
+  },
+  {
+    "id": 168,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T15:50:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure 142 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T15:50:00+00:00"
+  },
+  {
+    "id": 165,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T13:27:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: GAD-7 (anxiety) 16 points",
+    "guidance": "GAD-7 (anxiety) score is severe. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+    "sent_to_station_at": "2026-11-14T13:27:00+00:00"
+  },
+  {
+    "id": 164,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T13:25:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: PHQ-9 item 9 1; PHQ-9 (depression) 12 points",
+    "guidance": "Item 9 (thoughts of self-harm or of being better off dead) was answered above zero. Contact the flight surgeon or behavioral health support right now and do not stay alone. PHQ-9 (depression) score is moderate. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+    "sent_to_station_at": "2026-11-14T13:25:00+00:00"
+  },
+  {
+    "id": 163,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T12:45:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: Blood glucose (fasting) 64 mg/dL",
+    "guidance": "Low glucose. Take 15 g of fast carbohydrates, wait 15 minutes and measure again. Repeat if still below 70 and contact the flight surgeon.",
+    "sent_to_station_at": "2026-11-14T12:45:00+00:00"
+  },
+  {
+    "id": 161,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T14:20:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure 136 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T14:20:00+00:00"
+  },
+  {
+    "id": 160,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T14:05:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart and blood pressure sensor signal lost",
+    "guidance": "No signal from this sensor, so its values are missing. Check the sensor fit and connection; until it is back, measure by hand.",
+    "sent_to_station_at": "2026-11-14T14:05:00+00:00"
+  },
+  {
+    "id": 159,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T12:46:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure 131 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T12:46:00+00:00"
+  },
+  {
+    "id": 158,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T12:32:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure 132 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T12:32:00+00:00"
+  },
+  {
+    "id": 157,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T12:05:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Nights under 6 h in a row 3 nights",
+    "guidance": "Several short nights in a row. Prioritise sleep and reduce workload.",
+    "sent_to_station_at": "2026-11-14T12:05:00+00:00"
+  },
+  {
+    "id": 156,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-13T12:05:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Sleep last night 5.6 h; Nights under 6 h in a row 2 nights; Reaction time (PVT-B) 410 ms",
+    "guidance": "Slightly short sleep. Keep a regular schedule tonight. Two short nights in a row. Protect your sleep tonight. Slightly slow reactions. Take a break and repeat the test later.",
+    "sent_to_station_at": "2026-11-13T12:05:00+00:00"
+  },
+  {
+    "id": 155,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-12T12:05:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Sleep last night 5.4 h; Reaction time (PVT-B) 410 ms",
+    "guidance": "Slightly short sleep. Keep a regular schedule tonight. Slightly slow reactions. Take a break and repeat the test later.",
+    "sent_to_station_at": "2026-11-12T12:05:00+00:00"
+  }
+]

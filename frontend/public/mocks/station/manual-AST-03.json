@@ -1,0 +1,133 @@
+[
+  {
+    "id": 112,
+    "kind": "blood_pressure",
+    "captured_at": "2026-11-14T17:35:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "systolic": 150.0,
+      "diastolic": 96.0
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 111,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-14T16:25:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": "with the blurred vision",
+      "type": "headache"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 110,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-14T16:15:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": null,
+      "type": "blurred_vision"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 109,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-14T13:45:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": null,
+      "type": "headache"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 108,
+    "kind": "gad7",
+    "captured_at": "2026-11-14T13:27:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 107,
+    "kind": "phq9",
+    "captured_at": "2026-11-14T13:25:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 106,
+    "kind": "glucose",
+    "captured_at": "2026-11-14T13:05:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "value": 88.0,
+      "context": "fasting"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 105,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-14T12:47:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": "15 g of fast carbohydrates",
+      "type": "carbs_15g"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 104,
+    "kind": "glucose",
+    "captured_at": "2026-11-14T12:45:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "value": 64.0,
+      "context": "fasting"
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  },
+  {
+    "id": 103,
+    "kind": "blood_pressure",
+    "captured_at": "2026-11-14T12:35:00+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "systolic": 146.0,
+      "diastolic": 94.0
+    },
+    "uplinked_at": "2026-11-14T18:06:41.596327+00:00"
+  }
+]
