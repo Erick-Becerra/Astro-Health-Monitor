@@ -1,8 +1,3 @@
-// Spanish version of the two questionnaires. It only holds the texts: scoring, bands and levels stay in
-// questionnaires.js, so both languages score exactly the same.
-// The wording follows the usual Spanish versions of the PHQ-9 and GAD-7. The treatment sentences and the safety
-// message are DRAFT translations: they must be validated by the clinical team before real use.
-
 export const OPTIONS_ES = ["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días"];
 
 const INTRO = "Durante las últimas 2 semanas, ¿con qué frecuencia le han molestado los siguientes problemas?";

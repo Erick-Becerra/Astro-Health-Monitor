@@ -1,6 +1,5 @@
 import { useSyncExternalStore } from "react";
 
-// The language of the whole platform. It is saved in the browser, so it is remembered the next time.
 export const LANGS = [
   ["es", "Español"],
   ["en", "English"],
@@ -12,7 +11,6 @@ const read = () => {
     const saved = window.localStorage.getItem(KEY);
     if (saved === "es" || saved === "en") return saved;
   } catch {
-    /* storage can be blocked: the default is used */
   }
   return "es";
 };
@@ -29,7 +27,6 @@ export function setLang(next) {
   try {
     window.localStorage.setItem(KEY, next);
   } catch {
-    /* not saved, but it works for this session */
   }
   document.documentElement.lang = next;
   listeners.forEach((listener) => listener());
@@ -42,5 +39,4 @@ const subscribe = (listener) => {
 
 export const useLang = () => useSyncExternalStore(subscribe, getLang);
 
-/** Locale for dates and numbers. */
 export const localeOf = (lang) => (lang === "en" ? "en-GB" : "es-CL");

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import BodyPointCloud, { REGIONS } from "../components/BodyPointCloud.jsx";
 
-// Placeholder screen: shows the 3D body and the region the user clicked.
 export default function AstronautDetail() {
   const { id } = useParams();
   const [selected, setSelected] = useState(null);

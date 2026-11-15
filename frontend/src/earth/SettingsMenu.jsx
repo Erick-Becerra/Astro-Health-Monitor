@@ -2,10 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { LANGS, setLang, useLang } from "../shared/lang.js";
 import { useT } from "../shared/useT.js";
 
-/**
- * The settings button (bottom right of the screen). For now it has one setting, the language of the whole platform.
- * More settings can be added as new rows of the panel.
- */
 export default function SettingsMenu() {
   const t = useT();
   const lang = useLang();

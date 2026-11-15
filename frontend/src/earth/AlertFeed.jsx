@@ -4,13 +4,6 @@ import { localeOf, useLang } from "../shared/lang.js";
 const MAX = 12;
 const GAP = 4;
 
-/**
- * The recent alerts inside a box of any height. It measures the box and decides, by itself:
- *  - how many alerts fit (each one needs at least its date line and two lines of text), and
- *  - how many text lines each one gets, so the alerts share the whole height and the text is cut
- *    ("…") only when it really does not fit.
- * It re-measures whenever the box changes size (window, zoom, number of astronauts in the list).
- */
 export default function AlertFeed({ alerts, fallbackName, empty }) {
   const lang = useLang();
   const box = useRef(null);

@@ -5,12 +5,10 @@ import { describeError } from "../shared/request.js";
 import { useT } from "../shared/useT.js";
 import { symptoms } from "./surveyApi.js";
 
-// Values accepted by the station (POST /api/crew/{id}/symptom-report). `symptom` and `severity` are fixed lists.
 const SYMPTOMS = ["pain", "headache", "nausea", "dizziness", "fatigue", "fever", "breathing_difficulty", "chest_pain", "vision", "mood", "injury", "other"];
 const SEVERITIES = [["mild", "green"], ["moderate", "orange"], ["severe", "red"]];
 const AREAS = ["head", "chest", "abdomen", "back", "arm", "leg", "eyes", "general"];
 
-// Which body areas make sense for each symptom (a headache cannot be in a leg). `null` = any area.
 const AREAS_OF = {
   pain: null,
   injury: null,
@@ -27,16 +25,12 @@ const AREAS_OF = {
 };
 const fits = (symptom, area) => !symptom || !area || !AREAS_OF[symptom] || AREAS_OF[symptom].includes(area);
 
-/**
- * Form to send an alert (symptom report) to the ground. The body is exactly the contract of the station:
- *   { symptom, severity, body_area, description, reported_by }
- */
 export default function SymptomReportDialog({ astronautId, reporter, onClose }) {
   const t = useT();
   const [form, setForm] = useState({ symptom: "", severity: "", body_area: "", description: "", reported_by: reporter ?? "" });
   const [sending, setSending] = useState({ state: "idle", error: null });
   const set = (field) => (value) => setForm((prev) => ({ ...prev, [field]: value }));
-  // Choosing a symptom drops an area that does not fit it, and picks the area itself when only one fits.
+
   const pickSymptom = (symptom) =>
     setForm((prev) => {
       const allowed = AREAS_OF[symptom];

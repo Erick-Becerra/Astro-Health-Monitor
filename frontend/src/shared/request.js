@@ -1,10 +1,3 @@
-// Core of the API clients (Station and Earth). Copy the whole `shared/` folder into your project.
-//
-// Environment (Vite): put these in a `.env` file of the frontend, never in the code.
-//   VITE_STATION_URL=http://172.20.10.2:8001     server of the space station
-//   VITE_EARTH_URL=http://172.20.10.2:8000       server of the Earth base
-//   VITE_USE_MOCKS=true                          read docs/mocks instead of the servers (copy them to public/mocks)
-//   VITE_ACTOR=Dr. Rivera                        who is using the screen: it goes to the change log
 import { connection } from "../connection.js";
 
 const env = import.meta.env ?? {};
@@ -17,13 +10,12 @@ export const ACTOR = env.VITE_ACTOR ?? "frontend";
 export class ApiError extends Error {
   constructor(status, detail, url) {
     super(typeof detail === "string" ? detail : describeDetail(detail));
-    this.status = status; // 0 = no answer (network, firewall, wrong address), 404 = no data yet, 422 = invalid value
+    this.status = status;
     this.detail = detail;
     this.url = url;
   }
 }
 
-// The 422 answers carry a list of {loc, msg}. This turns them into one readable sentence.
 function describeDetail(detail) {
   if (!Array.isArray(detail)) return JSON.stringify(detail);
   return detail.map((d) => `${(d.loc ?? []).slice(1).join(".")}: ${d.msg}`).join("; ");
@@ -32,10 +24,6 @@ function describeDetail(detail) {
 export const describeError = (error) =>
   error instanceof ApiError ? error.message : "No se pudo contactar con el servidor";
 
-/**
- * One call to the API. `mock` is the file of docs/mocks used when VITE_USE_MOCKS is on.
- * Writes (POST, PUT, DELETE) do nothing with mocks and answer {mocked: true}.
- */
 export async function request(base, method, path, { body, mock, actor } = {}) {
   if (USE_MOCKS) {
     if (method !== "GET") return { mocked: true };
@@ -53,10 +41,10 @@ export async function request(base, method, path, { body, mock, actor } = {}) {
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   } catch {
-    connection.failed(); // the floating warning (ConnectionToast) follows what really happens
+    connection.failed();
     throw new ApiError(0, "No answer from the server", url);
   }
-  connection.ok(); // any answer, even an error status, means the server is reachable
+  connection.ok();
   const data = await response.json().catch(() => null);
   if (!response.ok) throw new ApiError(response.status, data?.detail ?? response.statusText, url);
   return data;

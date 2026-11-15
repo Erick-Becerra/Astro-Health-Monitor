@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getJSON } from "../api.js";
 
-// Placeholder page: the real astronaut list will come from the backend.
 export default function Home() {
   const [backend, setBackend] = useState("checking");
 

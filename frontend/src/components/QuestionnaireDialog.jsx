@@ -8,7 +8,6 @@ import { useT } from "../shared/useT.js";
 import Modal from "./Modal.jsx";
 import ResultView from "./ResultView.jsx";
 
-// One question at a time. At the end the result is shown and sent to the station.
 export default function QuestionnaireDialog({ definition: base, astronautId, answeredBy, onClose, onSaved }) {
   const t = useT();
   const lang = useLang();
@@ -20,7 +19,7 @@ export default function QuestionnaireDialog({ definition: base, astronautId, ans
   const [payload, setPayload] = useState(null);
   const [sending, setSending] = useState({ state: "idle", error: null });
 
-  const firstOpen = answers.indexOf(null); // -1 when everything is answered
+  const firstOpen = answers.indexOf(null);
   const reachable = firstOpen === -1 ? count - 1 : firstOpen;
   const last = step === count - 1;
   const chosen = answers[step];
@@ -32,7 +31,6 @@ export default function QuestionnaireDialog({ definition: base, astronautId, ans
       setSending({ state: "saved", error: null });
       onSaved();
     } catch (error) {
-      // The result stays on screen so nothing is lost; the astronaut can retry.
       setSending({ state: "error", error });
       if (error.status === 0) connection.warn();
     }
@@ -41,7 +39,7 @@ export default function QuestionnaireDialog({ definition: base, astronautId, ans
   const finish = (event) => {
     event.preventDefault();
     if (firstOpen !== -1) return;
-    // The data sent is always the English one (base); `language` says what the person saw.
+
     const body = buildPayload({ definition: base, answers, astronautId, answeredBy, language: lang });
     setPayload(body);
     send(body);

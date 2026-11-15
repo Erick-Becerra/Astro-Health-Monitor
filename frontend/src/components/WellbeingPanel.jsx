@@ -4,9 +4,6 @@ import { useT } from "../shared/useT.js";
 
 const hours = (value) => (value >= 1 ? `${Math.floor(value)} h` : `${Math.max(1, Math.round(value * 60))} min`);
 
-// The two questionnaires at a glance: the last result, whether it is time to
-// answer again (every 24 h), and a button on each to answer.
-// `rows` is the list from the station, newest first.
 export default function WellbeingPanel({ rows, now, onAnswer, offline = false }) {
   const t = useT();
   const lang = useLang();

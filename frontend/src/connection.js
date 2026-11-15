@@ -1,12 +1,5 @@
 import { useSyncExternalStore } from "react";
 
-// Whether the backend answers. Every request reports here (see api.js), so the
-// warning follows what really happens, whatever part of the screen asked.
-//  - the first failure shows the warning;
-//  - while it is down, later failures (the polling keeps trying) stay quiet, so
-//    a warning the user closed does not keep coming back;
-//  - touching something that needs the backend shows it again (warn);
-//  - the first answer after a failure clears it by itself.
 let state = { down: false, hidden: false };
 const listeners = new Set();
 
@@ -24,8 +17,6 @@ export const connection = {
   dismiss: () => set({ down: state.down, hidden: true }),
 };
 
-// Wraps an action that needs the backend: with no connection it shows the
-// warning instead of doing anything.
 export const needsBackend =
   (action) =>
   (...args) => {

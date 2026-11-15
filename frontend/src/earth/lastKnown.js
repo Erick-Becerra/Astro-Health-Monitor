@@ -1,28 +1,21 @@
 import { useMemo, useRef } from "react";
 import { worst } from "../lib/levels.js";
 
-// "Keep the last value": when a new answer arrives with a hole (null, a sensor without signal, a missing
-// block), the value that was on screen stays. A hole never replaces a number.
-// The backend still decides every colour: the level always travels with its value.
-
 const hasValue = (v) => v !== null && v !== undefined;
 
 function keepVitals(next = [], prev = []) {
   return next.map((vital) => {
     if (hasValue(vital.value) && !vital.no_signal) return vital;
-    // No value (or the sensor lost its signal): show the last value that arrived, with its own colour.
+
     const before = prev.find((p) => p.key === vital.key);
     if (before && hasValue(before.value)) return before;
-    // Nothing ever arrived: leave it empty. An empty value is not a danger, so it carries no colour.
+
     return { ...vital, value: null, level: null, no_signal: false };
   });
 }
 
-// A sensor that stops answering is NOT shown as an emergency. The backend raises a "signal_*" finding (often red)
-// when a sensor group loses its signal; here those findings are dropped, the level of each system is worked out again
-// from the findings that remain, and the screen keeps showing the last value that arrived.
 const isSignal = (indicator) => typeof indicator === "string" && indicator.startsWith("signal_");
-/** An alert that only says a sensor lost its signal (it is not shown: the last value stays on screen). */
+
 export const isSignalAlert = (alert) => /signal lost|no signal|sin se(ñ|n)al/i.test(alert?.summary ?? "");
 const STATUS = { green: "ok", yellow: "attention", orange: "attention", red: "critical" };
 
@@ -51,7 +44,6 @@ export function neutralizeSignalLoss(d) {
   };
 }
 
-/** Dashboard of one astronaut: vitals, manual captures, radiation and level fall back to the previous answer. */
 export function keepLastDashboard(next, prev) {
   if (!next) return next;
   if (!prev) return neutralizeSignalLoss({ ...next, vitals: keepVitals(next.vitals, []) });
@@ -69,7 +61,6 @@ export function keepLastDashboard(next, prev) {
   });
 }
 
-/** List of astronauts: the `latest` reading of each one keeps its last numbers. */
 export function keepLastAstronauts(next, prev) {
   if (!next || !prev) return next;
   return next.map((a) => {
@@ -85,10 +76,6 @@ export function keepLastAstronauts(next, prev) {
   });
 }
 
-/**
- * Returns `data` with its holes filled from the previous answer of the same `key` (e.g. the astronaut id).
- *   const dashboard = useLastKnown(detail.data, keepLastDashboard, id);
- */
 export function useLastKnown(data, merge, key = "") {
   const last = useRef(new Map());
   return useMemo(() => {
@@ -96,5 +83,5 @@ export function useLastKnown(data, merge, key = "") {
     const merged = merge(data, last.current.get(key));
     last.current.set(key, merged);
     return merged;
-  }, [data, key]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data, key]);
 }

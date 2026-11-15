@@ -4,9 +4,6 @@ import EarthPage from "./earth/EarthPage.jsx";
 import ConnectionToast from "./earth/ConnectionToast.jsx";
 import { ACTOR } from "./shared/request.js";
 
-// The interface is designed for a 1440 x 810 screen. On any other screen everything (text, icons, diagram, spacing)
-// grows or shrinks by the same factor, so it always looks the same and fits without scrolling. The factor is the
-// smaller of width / 1440 and height / 810; the other dimension simply gets more (or less) room.
 const BASE_W = 1440;
 const BASE_H = 810;
 
@@ -37,7 +34,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/earth" element={<EarthPage actor={ACTOR} />} />
-          {/* For now Earth is the only screen: any other address comes here */}
+
           <Route path="*" element={<Navigate to="/earth" replace />} />
         </Routes>
       </main>

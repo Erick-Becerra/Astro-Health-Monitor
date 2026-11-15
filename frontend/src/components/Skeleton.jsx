@@ -1,9 +1,3 @@
-// Symbolic skeleton for the body diagram. It is drawn only while "Bone and muscle" is selected.
-// Same coordinates as the silhouette (centre line x = 0, "eight heads" heights, see lib/bodyOutline.js).
-// The right half is written once and mirrored. Every piece has the class "shape" so it takes the
-// colour of the system (blue base, or yellow / orange / red from the backend).
-
-// A bone shaft: a rounded bar from (x1, y1) to (x2, y2) with radius r.
 const bar = (x1, y1, x2, y2, r) => {
   const dx = x2 - x1;
   const dy = y2 - y1;
@@ -23,13 +17,12 @@ const Oval = ({ x, y, rx, ry, turn = 0 }) => (
   <ellipse cx={x} cy={y} rx={rx} ry={ry} className="shape" transform={`rotate(${turn} ${x} ${y})`} />
 );
 
-// ---- Centre line: skull, spine, sternum, sacrum ----
 function Skull() {
   return (
     <g>
       <Oval x={0} y={76} rx={20} ry={25} />
       <Shape d="M-15 96 C-15 110 -8 120 0 120 C8 120 15 110 15 96" thin />
-      {/* eye sockets and nose are dark holes */}
+
       <circle cx={-8} cy={91} r={4.6} className="hole" />
       <circle cx={8} cy={91} r={4.6} className="hole" />
       <path d="M0 98 L-2.8 107 L2.8 107 Z" className="hole" />
@@ -40,7 +33,7 @@ function Skull() {
 
 function Spine() {
   const rows = [];
-  // cervical (small), thoracic (medium) and lumbar (large) vertebrae
+
   for (let i = 0; i < 7; i++) rows.push({ y: 124 + i * 3.7, w: 7 + i * 0.3, h: 2.8 });
   for (let i = 0; i < 12; i++) rows.push({ y: 150 + i * 8.4, w: 9 + i * 0.2, h: 5.6 });
   for (let i = 0; i < 5; i++) rows.push({ y: 252 + i * 8.6, w: 12.5, h: 6.4 });
@@ -56,11 +49,10 @@ function Spine() {
 const STERNUM = "M-5 148 L5 148 L4 164 L3 206 L0 215 L-3 206 L-4 164 Z";
 const SACRUM = "M-10 296 L10 296 L5 322 L0 334 L-5 322 Z";
 
-// ---- Torso: ribs and clavicle (right half) ----
 function Ribs() {
   const ribs = Array.from({ length: 10 }, (_, i) => {
     const y = 154 + i * 8.6;
-    const w = 30 + 10 * Math.sin((Math.PI * (i + 1.5)) / 11.5); // the ribs widen, then shorten again
+    const w = 30 + 10 * Math.sin((Math.PI * (i + 1.5)) / 11.5);
     return `M3 ${y} C${w * 0.5} ${y - 5} ${w} ${y + 1} ${w + 1} ${y + 15} C${w - 8} ${y + 19} 14 ${y + 17} 5 ${y + 11}`;
   });
   return (
@@ -71,7 +63,6 @@ function Ribs() {
   );
 }
 
-// ---- Arm (right half): humerus, ulna (inner), radius (outer) ----
 function Arm() {
   return (
     <g>
@@ -86,14 +77,13 @@ function Arm() {
   );
 }
 
-// ---- Hand and foot, in the local coordinates of lib/bodyOutline.js (wrist / ankle at 0, 0) ----
 function HandBones() {
   const rays = [
-    "M-8.5 4 L-10.5 38", // little finger
-    "M-4 4 L-3.5 47", // ring
-    "M1 4 L2.5 52", // middle
-    "M6 4 L9 48", // index
-    "M8 5 L22 29", // thumb
+    "M-8.5 4 L-10.5 38",
+    "M-4 4 L-3.5 47",
+    "M1 4 L2.5 52",
+    "M6 4 L9 48",
+    "M8 5 L22 29",
   ];
   return (
     <g>
@@ -115,7 +105,6 @@ function FootBones() {
   );
 }
 
-// ---- Pelvis and leg (right half) ----
 const PELVIS = "M3 294 C16 288 34 289 41 299 C44 310 41 322 34 331 L31 338 C28 346 20 350 12 348 L4 341 L0 338 Z";
 
 function Leg() {
@@ -138,7 +127,6 @@ function Leg() {
   );
 }
 
-// `parts` are the hand and foot transforms of BodyDiagram (the same ones that place the silhouettes).
 export default function Skeleton({ female, parts }) {
   const mirror = (children) => (
     <>

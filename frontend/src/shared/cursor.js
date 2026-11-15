@@ -1,11 +1,3 @@
-// The cursor is a little spaceship. Its engine is OFF on normal ground and turns ON (with a flickering flame)
-// while the cursor is over something that can be clicked.
-//
-// A CSS cursor cannot be animated, so the flame is drawn in a few frames and, only while the pointer is over a
-// clickable element, the frame in the CSS variable --cursor-ship-active is changed every ~100 ms. The browser
-// shows the new frame the next time it refreshes the cursor (when the mouse moves or the element changes).
-// The hot spot (6, 6) is the nose of the ship.
-
 const HOT = "6 6";
 const CLICKABLE =
   "a,button,summary,label,select,[role=button],.organ,.label,.area,.choice,.chip,.severity,.card,.history button,.steps button,input[type=radio],input[type=checkbox]";

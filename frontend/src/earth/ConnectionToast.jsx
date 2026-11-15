@@ -2,10 +2,6 @@ import { EARTH_URL, STATION_URL } from "../shared/request.js";
 import { connection, useConnection } from "../connection.js";
 import { useT } from "../shared/useT.js";
 
-// A floating warning for when the backend cannot be reached. It can be closed;
-// the screen keeps working with the last data. It comes back if the user tries
-// something that needs the backend, and it goes away by itself when the
-// connection returns.
 export default function ConnectionToast() {
   const t = useT();
   const { down, hidden } = useConnection();

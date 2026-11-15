@@ -1,11 +1,5 @@
 import { show } from "../shared/monitor.js";
 
-/**
- * The home screen of Earth: every astronaut, the worst first. The colour is `overall_level`
- * (sensors + manual captures + symptoms + radiation: the same colour the astronaut console shows).
- *
- *   <AstronautList astronauts={data} t={t} selectedId={id} onSelect={setId} />
- */
 export default function AstronautList({ astronauts, t, selectedId, onSelect }) {
   const sorted = [...astronauts].sort(
     (a, b) => t.levelOrder(b.overall_level) - t.levelOrder(a.overall_level) || a.astronaut_id.localeCompare(b.astronaut_id),

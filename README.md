@@ -10,7 +10,8 @@ looks wrong.
 
 1. An **ESP32** simulates an astronaut's vital signs and sends them over Wi-Fi.
 2. The **backend** receives them, analyses them and stores them in the database.
-3. The **frontend** shows every registered astronaut and, for each one, a 3D body with the status of each area.
+3. The **frontend** shows every registered astronaut and, for each one, a body diagram with the status of each system,
+   the vital signs, the alerts, wellbeing questionnaires and symptom reports, in Spanish or English.
 
 ## Tech stack
 
@@ -36,8 +37,12 @@ docker compose up --build
 
 Then open:
 
-- Frontend: http://localhost:5173
+- Frontend: http://localhost:5173/earth
 - API documentation: http://localhost:8000/docs
+
+## Documentation
+
+See [docs/README.md](docs/README.md) and [frontend/README.md](frontend/README.md).
 
 ## Working as a team
 

@@ -1,12 +1,3 @@
-// The two wellbeing questionnaires. Questions, answers, scoring and the proposed
-// treatment for each result live here, in the front. When the astronaut finishes
-// one, the whole result is sent to the station as one JSON (see buildPayload) and
-// read back the same way (see parseResponse).
-//
-// Texts are the ones supplied by the team for the PHQ-9 (depression) and the
-// GAD-7 (anxiety). They are written here in English; lib/questionnaires-es.js has the Spanish version, and
-// localized() gives the one of the language chosen in the settings. What is SENT to the station is always the
-// English text (plus the `language` used), so the data is the same whatever language was on screen.
 import { ES, OPTIONS_ES, SAFETY_MESSAGE_ES } from "./questionnaires-es.js";
 
 export const OPTIONS = [
@@ -29,7 +20,7 @@ export const QUESTIONNAIRES = {
     topic: "depression",
     intro: INTRO,
     max: 27,
-    // Question 9 asks about suicide risk: any answer above zero needs further assessment.
+
     safetyItem: 9,
     questions: [
       "Little interest or pleasure in doing things",
@@ -89,7 +80,7 @@ export const QUESTIONNAIRES = {
       "Becoming easily annoyed or irritable",
       "Feeling afraid as if something awful might happen",
     ],
-    // A score of 8 or more is the usual cut-point for probable generalized anxiety disorder.
+
     cutPoint: {
       score: 8,
       text: "A score of 8 or greater is a reasonable cut-point for probable generalized anxiety disorder: further diagnostic assessment is warranted.",
@@ -120,12 +111,10 @@ export const SAFETY_MESSAGE =
 
 export const REMINDER_HOURS = 24;
 
-/** The options "Not at all"... in a language. */
 export const optionsFor = (lang) => (lang === "es" ? OPTIONS.map((o, i) => ({ ...o, label: OPTIONS_ES[i] })) : OPTIONS);
 
 export const safetyMessageFor = (lang) => (lang === "es" ? SAFETY_MESSAGE_ES : SAFETY_MESSAGE);
 
-/** A questionnaire definition with its texts in a language (the scoring and the levels do not change). */
 export function localized(definition, lang) {
   const es = lang === "es" ? ES[definition.id] : null;
   if (!es) return definition;
@@ -149,16 +138,12 @@ export const total = (answers) => answers.reduce((sum, value) => sum + value, 0)
 export const severityFor = (definition, score) =>
   definition.severities.find((s) => score <= s.upTo) ?? definition.severities.at(-1);
 
-// The proposed treatment for a score (the band's text, plus the cut-point note
-// when the questionnaire has one and the score reaches it).
 export function treatmentFor(definition, score) {
   const band = severityFor(definition, score);
   if (definition.cutPoint && score >= definition.cutPoint.score) return `${band.treatment}. ${definition.cutPoint.text}`;
   return band.treatment;
 }
 
-// The whole result, as the JSON sent to the station. The first seven fields are
-// the ones the station requires; the rest travels along and is stored as sent.
 export function buildPayload({ definition, answers, astronautId, answeredBy, answeredAt = new Date(), language = "en" }) {
   const score = total(answers);
   const severity = severityFor(definition, score);
@@ -172,7 +157,7 @@ export function buildPayload({ definition, answers, astronautId, answeredBy, ans
     score,
     severity: severity.label,
     recommendation: safety ? `${SAFETY_MESSAGE} ${treatment}` : treatment,
-    // Extra detail kept with the result
+
     schema_version: 1,
     version: definition.version,
     language,
@@ -191,10 +176,6 @@ export function buildPayload({ definition, answers, astronautId, answeredBy, ans
   };
 }
 
-// Reads one stored result (a row of GET /questionnaires) into what the screen
-// shows. The `response` field is the JSON the front sent; it may arrive as an
-// object or as text, and older entries may have fewer fields, so every field
-// falls back to something sensible.
 export function parseResponse(row, lang = "en") {
   let response = row.response;
   if (typeof response === "string") {
@@ -220,7 +201,7 @@ export function parseResponse(row, lang = "en") {
     const answer = Number(item.answer);
     return {
       n,
-      // texts come from the definition in the language on screen; what was stored is only the fallback
+
       question: definition?.questions[n - 1] ?? item.question ?? `${n}`,
       answer,
       label: optionsFor(lang)[answer]?.label ?? item.answer_label ?? String(item.answer),
@@ -241,7 +222,7 @@ export function parseResponse(row, lang = "en") {
     max,
     average: response.average ?? (items.length ? Number((score / items.length).toFixed(2)) : null),
     severity: found?.label ?? response.severity ?? row.severity ?? "",
-    // Item 9 of the PHQ-9 above 0 is always Red (critical), whatever the total score is.
+
     level: item9Alert ? "red" : (found?.level ?? null),
     recommendation: definition ? treatmentFor(definition, score) : (response.recommendation ?? ""),
     item9Alert,
@@ -249,7 +230,6 @@ export function parseResponse(row, lang = "en") {
   };
 }
 
-// When the next reminder is due for one questionnaire, from its latest result.
 export function reminder(latest, now = Date.now()) {
   const when = latest ? Date.parse(latest.answered_at ?? latest.uplinked_at) : NaN;
   if (Number.isNaN(when)) return { due: true, hoursLeft: 0 };

@@ -4,16 +4,7 @@ import { FOCUS_REGIONS, regionFlags, regionSystem } from "../lib/bodyFlags.js";
 import { QUESTIONNAIRES } from "../lib/questionnaires.js";
 import { buildCards, show } from "./monitor.js";
 
-/**
- * The monitor screen drawn from a dashboard (station: GET /api/crew/{id}/dashboard,
- * Earth: GET /api/astronauts/{id}/dashboard). It only paints: every colour is the `level` the backend sent.
- * It has no styles on purpose (only the colour of each level): give it yours through the class names and
- * the data-level attributes. Copy it and change it freely; it is a starting point.
- *
- *   <DashboardView dashboard={data} t={t} selectedSystem={sys} onSelectSystem={setSys} stale={isStale(data.measured_at)} />
- */
 export default function DashboardView({ dashboard, t, selectedSystem, onSelectSystem, stale = false, profile, overviewExtra = null }) {
-  // No system chosen = overview: the body shows every colour. A chosen system = focus: only its organs are painted.
   const focus = dashboard.systems.find((s) => s.system === selectedSystem) ?? null;
   const focusRegions = focus ? FOCUS_REGIONS[focus.system] ?? [] : [];
   const all = useMemo(() => regionFlags(dashboard.systems).flags, [dashboard.systems]);
@@ -21,11 +12,11 @@ export default function DashboardView({ dashboard, t, selectedSystem, onSelectSy
     () => {
       if (!focus) return all;
       const own = Object.fromEntries(Object.entries(all).filter(([region]) => focusRegions.includes(region)));
-      // The thermal view takes its warmth from the level of the system (green = calm colours).
+
       if (focus.system === "thermal" && focus.level && focus.level !== "green") own.thermal = focus.level;
       return own;
     },
-    [all, focus], // eslint-disable-line react-hooks/exhaustive-deps
+    [all, focus],
   );
   const vitals = useMemo(() => {
     const value = (key) => dashboard.vitals.find((v) => v.key === key)?.value ?? null;
@@ -38,7 +29,7 @@ export default function DashboardView({ dashboard, t, selectedSystem, onSelectSy
   }, [dashboard.vitals]);
   const pickRegion = (region) => {
     const system = region && regionSystem(region);
-    if (!system) return onSelectSystem?.(null); // empty background: back to the overview
+    if (!system) return onSelectSystem?.(null);
     if (dashboard.systems.some((s) => s.system === system)) onSelectSystem?.(system === focus?.system ? null : system);
     return undefined;
   };
@@ -72,7 +63,6 @@ export default function DashboardView({ dashboard, t, selectedSystem, onSelectSy
         </nav>
       </aside>
 
-      {/* Overview: the summary cards and the radiation dose. With a system chosen: the panel of that system. */}
       {focus ? (
         <SystemPanel system={focus} dashboard={dashboard} t={t} />
       ) : (
@@ -109,12 +99,11 @@ export default function DashboardView({ dashboard, t, selectedSystem, onSelectSy
   );
 }
 
-/** What each card shows as its main value. */
 function cardValue(card, t) {
   const v = card.values;
   switch (card.id) {
     case "sleep": return `${show(v.hours, 1)} h`;
-    case "mood": // each score with its scale: PHQ-9 is out of 27, GAD-7 out of 21
+    case "mood":
       return (
         <>
           P:{show(v.phq9)}<small className="scale">/{QUESTIONNAIRES.phq9.max}</small> | G:{show(v.gad7)}<small className="scale">/{QUESTIONNAIRES.gad7.max}</small>
@@ -129,17 +118,13 @@ function cardValue(card, t) {
   }
 }
 
-// Free height the general advice may take: below this the section stays closed, above it opens by itself.
 const MIN_ROOM = 150;
 
 function SystemPanel({ system, dashboard, t }) {
-  // The advice sentences of the backend are in English for now; the protocol of the level is in Spanish.
   const advice = dashboard.guides.filter((g) => system.drivers.some((d) => d.indicator === g.id));
   const general = t.system(system.system, "general");
   const tips = Array.isArray(general) ? general : [];
 
-  // The general advice is a drop-down that opens by itself when the panel has empty room (and closes when it does not).
-  // A click on its title takes control: it stays as the person left it until another system is chosen.
   const panel = useRef(null);
   const top = useRef(null);
   const [room, setRoom] = useState(0);
@@ -158,7 +143,7 @@ function SystemPanel({ system, dashboard, t }) {
     observer.observe(top.current);
     return () => observer.disconnect();
   }, [system.system, system.drivers.length, advice.length]);
-  const needed = 40 + tips.length * 36; // title + one row per tip
+  const needed = 40 + tips.length * 36;
   const open = manual ?? room >= Math.max(MIN_ROOM, needed);
 
   return (

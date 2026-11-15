@@ -7,8 +7,6 @@ import Modal from "./Modal.jsx";
 import ResultView from "./ResultView.jsx";
 import ScoreRing from "./ScoreRing.jsx";
 
-// Everything this astronaut answered before, newest first. The station sends
-// each result as the JSON the front stored; it is unpacked here.
 export default function HistoryDialog({ rows, error, onClose }) {
   const t = useT();
   const lang = useLang();

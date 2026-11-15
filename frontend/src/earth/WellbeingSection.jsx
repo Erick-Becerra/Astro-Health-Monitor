@@ -8,19 +8,15 @@ import { usePolling } from "../shared/hooks.js";
 import { useT } from "../shared/useT.js";
 import { surveys } from "./surveyApi.js";
 
-/**
- * The two wellbeing questionnaires (PHQ-9 depression, GAD-7 anxiety) of one astronaut: last score, 24 h reminder,
- * a button to answer and the list of past answers. Same components and logic as the astronaut console.
- */
 export default function WellbeingSection({ astronautId, answeredBy }) {
   const t = useT();
-  const [dialog, setDialog] = useState(null); // { type: "form", questionnaire } or { type: "history" }
+  const [dialog, setDialog] = useState(null);
   const [now, setNow] = useState(Date.now);
   const rows = usePolling(() => surveys.list(astronautId, { limit: 50 }), { seconds: 30, deps: [astronautId] });
 
   useEffect(() => setDialog(null), [astronautId]);
   useEffect(() => {
-    const timer = setInterval(() => setNow(Date.now()), 60000); // keeps the 24 h reminder current
+    const timer = setInterval(() => setNow(Date.now()), 60000);
     return () => clearInterval(timer);
   }, []);
 

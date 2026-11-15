@@ -1,9 +1,5 @@
-// Pure helpers over the dashboard (the answer of GET /api/crew/{id}/dashboard on the station and of
-// GET /api/astronauts/{id}/dashboard on Earth: they have the same shape). No React, easy to test.
-
 export const LEVEL_ORDER = ["green", "yellow", "orange", "red"];
 
-/** The worst of several levels. null when none of them has a level (no data). */
 export function worstLevel(levels) {
   let worst = null;
   for (const level of levels) {
@@ -13,13 +9,11 @@ export function worstLevel(levels) {
   return worst;
 }
 
-/** True when `isoTime` is older than `maxSeconds` (or missing): show "no recent data". */
 export function isStale(isoTime, maxSeconds = 15, now = Date.now()) {
   if (!isoTime) return true;
   return (now - new Date(isoTime).getTime()) / 1000 > maxSeconds;
 }
 
-/** A number to show: "—" when there is no value (a sensor without signal has value null). */
 export function show(value, decimals = 0) {
   return value === null || value === undefined ? "—" : Number(value).toFixed(decimals);
 }
@@ -27,11 +21,6 @@ export function show(value, decimals = 0) {
 export const vitalOf = (dashboard, key) => dashboard.vitals.find((v) => v.key === key) ?? null;
 export const systemOf = (dashboard, key) => dashboard.systems.find((s) => s.system === key) ?? null;
 
-/**
- * The seven cards of the integral log, in this order: sleep, mood and stress, heart rate, blood pressure,
- * temperature, radiation, glucose. Each card: { id, system, level, values, ... }.
- * `level` is null when there is no data yet. The colour always comes from the backend.
- */
 export function buildCards(d) {
   const v = (key) => vitalOf(d, key);
   const manual = d.manual_latest ?? {};

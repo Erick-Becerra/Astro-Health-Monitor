@@ -4,7 +4,6 @@ import { localeOf, useLang } from "../shared/lang.js";
 import { useT } from "../shared/useT.js";
 import ScoreRing from "./ScoreRing.jsx";
 
-// A bar split into the severity bands, with a marker where the score falls.
 function ScaleBar({ definition, score, label }) {
   if (!definition) return null;
   const slots = definition.max + 1;
@@ -23,8 +22,6 @@ function ScaleBar({ definition, score, label }) {
   );
 }
 
-// One result: score, severity, advice and every answer. `result` comes from
-// parseResponse, so it looks the same for a new result and for an old one.
 export default function ResultView({ result }) {
   const t = useT();
   const lang = useLang();
@@ -32,7 +29,7 @@ export default function ResultView({ result }) {
     iso
       ? new Date(iso).toLocaleString(localeOf(lang), { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })
       : "–";
-  // The safety message is already shown in its own card.
+
   const advice = (result.recommendation ?? "").replace(SAFETY_MESSAGE, "").replace(SAFETY_MESSAGE_ES, "").trim();
   const base = QUESTIONNAIRES[result.questionnaire];
   const definition = base ? localized(base, lang) : null;

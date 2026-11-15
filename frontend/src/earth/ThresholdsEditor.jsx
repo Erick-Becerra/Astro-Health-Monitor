@@ -4,15 +4,6 @@ import { describeError } from "../shared/request.js";
 const LEVELS = ["yellow", "orange", "red"];
 const norm = (o) => (o ? LEVELS.map((l) => o[l] ?? "").join("|") : "");
 
-/**
- * Editor of the personal thresholds of one astronaut. The data is GET /api/astronauts/{id}/thresholds:
- *   { version, personal: {indicator: {yellow, orange, red}}, adjustable: {indicator: {label, unit, default: {...}}} }
- * A value at or above each number gets that colour. The default is shown as a hint; leaving the three boxes of an
- * indicator empty means "use the default". Only what changed is sent (the backend refuses unordered values with a
- * message, and that message is shown).
- *
- *   <ThresholdsEditor data={thresholds} t={t} onSave={(patch) => earth.putThresholds(id, patch, actor).then(reload)} />
- */
 export default function ThresholdsEditor({ data, t, onSave }) {
   const [message, setMessage] = useState(null);
 
@@ -26,7 +17,7 @@ export default function ThresholdsEditor({ data, t, onSave }) {
         const raw = form.get(`${key}.${level}`);
         if (raw !== null && raw !== "") levels[level] = Number(raw);
       }
-      const after = Object.keys(levels).length ? levels : null; // null = back to the default
+      const after = Object.keys(levels).length ? levels : null;
       if (norm(data.personal[key]) !== norm(after)) patch[key] = after;
     }
     if (!Object.keys(patch).length) return setMessage("Sin cambios");
@@ -34,7 +25,7 @@ export default function ThresholdsEditor({ data, t, onSave }) {
       await onSave(patch);
       setMessage("Guardado. Llegará a la estación después de la latencia del enlace.");
     } catch (error) {
-      setMessage(describeError(error)); // for example "yellow < orange < red is required"
+      setMessage(describeError(error));
     }
     return undefined;
   };

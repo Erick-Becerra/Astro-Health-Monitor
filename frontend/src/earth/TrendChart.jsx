@@ -1,13 +1,6 @@
 import { CartesianGrid, Line, LineChart, ReferenceArea, XAxis, YAxis } from "recharts";
 import { levelBands, lostRanges, toChartData } from "./chartData.js";
 
-/**
- * Trend of one or two variables with the semaphore as background and the periods without signal marked.
- *   readings = earth.readings(id, { since, limit: 5000 })       (without bucketSeconds if you want the lost periods)
- *   history  = earth.levelHistory(id)
- *   <TrendChart readings={readings} history={history} keys={["heart_rate"]} t={t} width={640} height={240} />
- * For long ranges ask the readings with bucketSeconds (the lost periods then show as gaps in the line).
- */
 export default function TrendChart({ readings, history = [], keys, t, group = "cardiovascular", width = 640, height = 240 }) {
   const data = toChartData(readings, keys);
   const first = data[0]?.time;

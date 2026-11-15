@@ -14,27 +14,18 @@ import { useNewAlerts } from "./useNewAlerts.js";
 import { worst } from "../lib/levels.js";
 import { keepLastAstronauts, keepLastDashboard, isSignalAlert, neutralizeSignalLoss, useLastKnown } from "./lastKnown.js";
 
-
-/**
- * The Earth monitoring app (App 1): the list of astronauts every 3 s, the alerts every 3 s, and, for the chosen
- * astronaut, the consolidated view every 3 s. Earth sees the data AFTER the link latency: it is normal that
- * it lags a little behind the astronaut console.
- *
- *   <EarthPage actor="Dr. Rivera" />
- */
 export default function EarthPage({ actor }) {
   const t = useT();
   const [id, setId] = useState(null);
   const [system, setSystem] = useState(null);
   const [historyOpen, setHistoryOpen] = useState(false);
   const list = usePolling(() => earth.astronauts(), { seconds: 3 });
-  // Only the alerts of the astronaut on screen (all of them while none is chosen).
+
   const alerts = useNewAlerts({ astronautId: id ?? undefined });
   const detail = usePolling(() => earth.dashboard(id), { seconds: 3, enabled: !!id, deps: [id] });
-  // A failed or empty answer never wipes the screen: the last value shown stays (see lastKnown.js).
+
   const known = useLastKnown(list.data, keepLastAstronauts, "list") ?? [];
-  // The colour of each astronaut in the list is the one of the server, except when it only comes from a sensor that lost
-  // its signal: then it is worked out again from the dashboards (read every 10 s) without that finding.
+
   const ids = known.map((a) => a.astronaut_id).join(",");
   const everyone = usePolling(() => Promise.all(ids.split(",").map((one) => earth.dashboard(one).catch(() => null))), {
     seconds: 10, enabled: ids !== "", deps: [ids],
@@ -61,7 +52,6 @@ export default function EarthPage({ actor }) {
           )}
         </section>
 
-        {/* History of events (not the current advice): the latest alert, and a button for the whole list */}
         <section className="alerts" aria-label={t.ui("alertHistory")}>
           <h2 className="hud-label">{t.ui("latestAlert")}</h2>
           <AlertFeed alerts={alerts.alerts.filter((a) => !isSignalAlert(a))} fallbackName={profile?.name} empty={t.ui("noAlerts")} />
@@ -87,7 +77,6 @@ export default function EarthPage({ actor }) {
           profile={profile} overviewExtra={<WellbeingSection astronautId={id} answeredBy={profile?.name} />} stale={isStale(dashboard.measured_at, 60)} />
       )}
 
-      {/* Always visible, in every tab: send an alert and the settings */}
       <div className="corner">
         <SendAlertButton astronautId={id} reporter={profile?.name} />
         <SettingsMenu />

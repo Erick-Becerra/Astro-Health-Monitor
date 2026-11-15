@@ -1,5 +1,3 @@
-// A static ring showing score / max in the colour of the result's level.
-// Plain SVG, nothing animated, so it costs almost nothing to draw.
 export default function ScoreRing({ score, max, level, size = 56, showMax = false }) {
   const stroke = Math.max(4, size / 11);
   const radius = (size - stroke) / 2;
