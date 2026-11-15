@@ -39,7 +39,8 @@ services:
   frontend:
     build: ./frontend
     environment:
-      VITE_API_URL: http://localhost:8000
+      VITE_STATION_URL: ${VITE_STATION_URL:-http://localhost:8001}
+      VITE_ACTOR: ${VITE_ACTOR:-Console operator}
     ports:
       - "5173:5173"
     volumes:

@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import AstronautDetail from "./pages/AstronautDetail.jsx";
+import ConnectionToast from "./components/ConnectionToast.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 export default function App() {
   return (
@@ -12,10 +12,11 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/astronaut/:id" element={<AstronautDetail />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/astronaut/:id" element={<Dashboard />} />
         </Routes>
       </main>
+      <ConnectionToast />
     </>
   );
 }
