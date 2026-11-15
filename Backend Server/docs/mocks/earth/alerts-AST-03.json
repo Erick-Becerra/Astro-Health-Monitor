@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1372,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:54:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Resting HR outside usual range (59 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T14:54:00+00:00"
+  },
+  {
+    "id": 1367,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:15:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Sustained resting tachycardia (113 bpm). Notify the medical officer.",
+    "guidance": "Alert the medical team. Procedure: 1. Have the crew member sit/restrained at rest. 2. Take BP, temperature and SpO₂. 3. Ask about chest pain, dizziness, palpitations. 4. Rule out fever, dehydration and anxiety. 5. Notify the crew medical officer and Mission Control. 6. Repeat every 10 min.",
+    "sent_to_station_at": "2026-11-15T14:15:00+00:00"
+  },
+  {
+    "id": 1366,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:13:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Resting HR outside usual range (105 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T14:13:00+00:00"
+  },
+  {
+    "id": 1357,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T13:02:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Resting HR outside usual range (59 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T13:02:00+00:00"
+  },
+  {
+    "id": 1351,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T12:30:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Double Sensor Forehead: Degraded signal on Double Sensor Forehead. The value may not be accurate.",
+    "guidance": "Use the value with caution and re-seat the sensor. Procedure: 1. Re-seat the sensor. 2. In microgravity, optical wrist sensors can vary: prefer a chest ECG or calibrated cuff. 3. Repeat the measurement.",
+    "sent_to_station_at": "2026-11-15T12:30:00+00:00"
+  },
+  {
+    "id": 1350,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T12:20:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Diastolic pressure: Blood pressure outside optimal range (169/80 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T12:20:00+00:00"
+  },
+  {
+    "id": 1348,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T12:00:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Diastolic pressure: Blood pressure outside optimal range (165/80 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T12:00:00+00:00"
+  },
+  {
+    "id": 1347,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:40:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure: Blood pressure at risk (150/96 mmHg). Notify the medical team. Diastolic pressure: Blood pressure at risk (150/96 mmHg). Notify the medical team.",
+    "guidance": "Alert the medical team; evaluate SANS and orthostatic intolerance. Procedure: 1. Confirm with a second measurement. 2. Ask about headache, blurred vision (SANS), dizziness on standing. 3. Measure HR, SpO₂ and temperature. 4. High: rest and avoid exertion. Low: lie down / raise legs and rehydrate. 5. Notify the physician. 6. Repeat every 15 min. Alert the medical team; evaluate SANS and orthostatic intolerance. Procedure: 1. Confirm with a second measurement. 2. Ask about headache, blurred vision (SANS), dizziness on standing. 3. Measure HR, SpO₂ and temperature. 4. High: rest and avoid exertion. Low: lie down / raise legs and rehydrate. 5. Notify the physician. 6. Repeat every 15 min.",
+    "sent_to_station_at": "2026-11-15T14:40:00+00:00"
+  },
+  {
+    "id": 1346,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T10:32:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: GAD-7 (anxiety): CRITICAL ALERT: GAD-7 16/21 (severe anxiety). Medical and psychological intervention required.",
+    "guidance": "Immediate medical and psychological intervention; evaluate fitness for critical tasks. Procedure: 1. Notify the medical officer and Mission Control immediately. 2. Assess for panic symptoms (rapid heartbeat, shortness of breath, fear); measure HR, BP and SpO₂ to rule out physical causes. 3. Specialist evaluation and treatment plan (psychotherapy and/or medication per the physician). 4. Evaluate fitness for EVA and other critical tasks; restrict if needed. 5. Continuous crew support; repeat the GAD-7 weekly and review the PHQ-9.",
+    "sent_to_station_at": "2026-11-15T10:32:00+00:00"
+  },
+  {
+    "id": 1345,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T10:30:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: PHQ-9 item 9: CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+    "guidance": "Immediate suicide-risk evaluation by a trained professional. Procedure: 1. Do not leave the crew member alone; a crew member stays with them. 2. Immediately notify the medical officer and Mission Control (behavioral health). 3. A trained professional performs a suicide-risk assessment (in person or by remote link) as soon as possible. 4. Secure access to anything on board that could be used for self-harm (medications, tools). 5. Remove from critical tasks and EVA until cleared. 6. Follow-up check-ins and a written safety plan defined by the specialist.",
+    "sent_to_station_at": "2026-11-15T10:30:00+00:00"
+  },
+  {
+    "id": 1344,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T09:50:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: Blood glucose (fasting): Low glucose. Take 15 g of fast carbohydrates, wait 15 minutes and measure again. Repeat if still below 70 and contact the flight surgeon.",
+    "guidance": "Low glucose. Take 15 g of fast carbohydrates, wait 15 minutes and measure again. Repeat if still below 70 and contact the flight surgeon. Procedure: ",
+    "sent_to_station_at": "2026-11-15T09:50:00+00:00"
+  },
+  {
+    "id": 1343,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T09:40:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure: Blood pressure at risk (146/94 mmHg). Notify the medical team. Diastolic pressure: Blood pressure at risk (146/94 mmHg). Notify the medical team.",
+    "guidance": "Alert the medical team; evaluate SANS and orthostatic intolerance. Procedure: 1. Confirm with a second measurement. 2. Ask about headache, blurred vision (SANS), dizziness on standing. 3. Measure HR, SpO₂ and temperature. 4. High: rest and avoid exertion. Low: lie down / raise legs and rehydrate. 5. Notify the physician. 6. Repeat every 15 min. Alert the medical team; evaluate SANS and orthostatic intolerance. Procedure: 1. Confirm with a second measurement. 2. Ask about headache, blurred vision (SANS), dizziness on standing. 3. Measure HR, SpO₂ and temperature. 4. High: rest and avoid exertion. Low: lie down / raise legs and rehydrate. 5. Notify the physician. 6. Repeat every 15 min.",
+    "sent_to_station_at": "2026-11-15T09:40:00+00:00"
+  },
+  {
+    "id": 1342,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T07:12:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: GAD-7 (anxiety): CRITICAL ALERT: GAD-7 16/21 (severe anxiety). Medical and psychological intervention required.",
+    "guidance": "Immediate medical and psychological intervention; evaluate fitness for critical tasks. Procedure: 1. Notify the medical officer and Mission Control immediately. 2. Assess for panic symptoms (rapid heartbeat, shortness of breath, fear); measure HR, BP and SpO₂ to rule out physical causes. 3. Specialist evaluation and treatment plan (psychotherapy and/or medication per the physician). 4. Evaluate fitness for EVA and other critical tasks; restrict if needed. 5. Continuous crew support; repeat the GAD-7 weekly and review the PHQ-9.",
+    "sent_to_station_at": "2026-11-15T07:12:00+00:00"
+  },
+  {
+    "id": 1341,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T07:10:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: PHQ-9 item 9: CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+    "guidance": "Immediate suicide-risk evaluation by a trained professional. Procedure: 1. Do not leave the crew member alone; a crew member stays with them. 2. Immediately notify the medical officer and Mission Control (behavioral health). 3. A trained professional performs a suicide-risk assessment (in person or by remote link) as soon as possible. 4. Secure access to anything on board that could be used for self-harm (medications, tools). 5. Remove from critical tasks and EVA until cleared. 6. Follow-up check-ins and a written safety plan defined by the specialist.",
+    "sent_to_station_at": "2026-11-15T07:10:00+00:00"
+  },
+  {
+    "id": 1340,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T11:53:00+00:00",
+    "severity": "critical",
+    "summary": "AST-03: Respiratory rate: CRITICAL ALERT: Respiratory rate 30 rpm. Activate emergency protocol.",
+    "guidance": "Respiratory emergency. Procedure: 1. Assess the airway. 2. Supplemental oxygen. 3. Measure SpO₂. 4. Contact Mission Control. 5. Prepare medical emergency.",
+    "sent_to_station_at": "2026-11-15T11:53:00+00:00"
+  }
+]

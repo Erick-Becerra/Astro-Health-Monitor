@@ -1,0 +1,217 @@
+{
+  "_note": "English texts for everything the API sends as a key. The long clinical texts (description, physiology, protocols) are DRAFTS to be validated by the clinical team.",
+
+  "levelNames": {"green": "Normal", "yellow": "Caution", "orange": "Moderate risk", "red": "Critical", "unknown": "No data"},
+
+  "levels": {
+    "green": {"label": "Green", "badge": "GREEN // NORMAL", "color": "#2FBF71", "order": 0},
+    "yellow": {"label": "Yellow", "badge": "YELLOW // WATCH", "color": "#F2C94C", "order": 1},
+    "orange": {"label": "Orange", "badge": "ORANGE // ATTENTION", "color": "#F2994A", "order": 2},
+    "red": {"label": "Red", "badge": "RED // EMERGENCY", "color": "#EB5757", "order": 3},
+    "unknown": {"label": "No data", "badge": "NO DATA", "color": "#6B7280", "order": -1}
+  },
+  "banners": {
+    "green": "CREW MEMBER NORMAL",
+    "yellow": "CREW MEMBER UNDER WATCH",
+    "orange": "PRIORITY ATTENTION",
+    "red": "RED // EMERGENCY",
+    "unknown": "NO CREW MEMBER DATA"
+  },
+  "status": {"ok": "Normal", "attention": "Attention", "critical": "Critical", "unknown": "No data"},
+
+  "crewStates": {
+    "resting": "Resting",
+    "sleeping": "Sleeping",
+    "working": "Working",
+    "exercising": "Exercising",
+    "post_exercise_recovery": "Post-exercise recovery",
+    "eva": "Spacewalk (EVA)"
+  },
+
+  "systems": {
+    "heart": {
+      "label": "Cardiovascular",
+      "description": "Heart and blood pressure: weightlessness redistributes fluids and strains the cardiovascular system.",
+      "hardware": "Bio-Monitor shirt (ECG) + oscillometric sphygmomanometer",
+      "physiology": "In microgravity blood shifts toward the upper body and the heart works under a different load. Heart rate, blood pressure and heart rate variability are tracked against the pre-flight baseline."
+    },
+    "lungs": {
+      "label": "Respiratory",
+      "description": "Oxygenation, breathing and cabin air quality.",
+      "hardware": "Pulse oximeter + cabin CO₂ sensor",
+      "physiology": "In a closed environment CO₂ builds up easily. An alert is raised from 2.3 mmHg and 3.0 mmHg is the limit; headaches usually appear before reaching it."
+    },
+    "brain": {
+      "label": "Central nervous system / Brain",
+      "description": "Sleep, cognitive performance and behavioral health (PHQ-9 and GAD-7 questionnaires).",
+      "hardware": "Actiwatch actigraph + PVT-B test + digital psychometric questionnaires",
+      "physiology": "Short sleep impairs reflexes (PVT-B test) and increases stress. Isolation and confinement also weigh on mood, so the questionnaires are repeated and PHQ-9 Item 9 is watched."
+    },
+    "metabolism": {
+      "label": "Endocrine / Metabolism",
+      "description": "Blood glucose and metabolism.",
+      "hardware": "Capillary glucometer",
+      "physiology": "Stress, the flight diet and exercise change how glucose is handled. The measurement is read in context: fasting or after eating."
+    },
+    "thermal": {
+      "label": "Thermoregulation / Immunity",
+      "description": "Core body temperature.",
+      "hardware": "Dual forehead sensor",
+      "physiology": "Without natural convection the body dissipates heat poorly. A sustained rise in temperature may indicate infection or thermal fatigue, and it must be judged according to activity."
+    },
+    "radiation": {
+      "label": "Whole body / Radiation",
+      "description": "Radiation dose received and career budget.",
+      "hardware": "Active RAD / Liulin dosimeter",
+      "physiology": "Outside Earth's protection the dose accumulates. The daily rate, the percentage of the agency's career limit and solar particle events are tracked."
+    },
+    "bones": {
+      "label": "Bone and muscle",
+      "description": "Bone density and adherence to resistive exercise.",
+      "hardware": "DXA densitometry (on Earth) + ARED device",
+      "physiology": "Without mechanical load bone is lost continuously. Resistive exercise (ARED) is the main countermeasure."
+    },
+    "eyes": {
+      "label": "Eyes (SANS)",
+      "description": "Head and vision symptoms associated with spaceflight neuro-ocular syndrome.",
+      "hardware": "Ocular tomography (OCT, on Earth) + crew reports",
+      "physiology": "The shift of fluids toward the head can alter the eye. Reports of headache or blurred vision are followed closely."
+    }
+  },
+
+  "hazards": {
+    "Altered gravity": "Altered gravity",
+    "Hostile closed environment": "Hostile closed environment",
+    "Isolation and confinement": "Isolation and confinement",
+    "Space radiation": "Space radiation",
+    "Distance from Earth": "Distance from Earth"
+  },
+
+  "indicators": {
+    "heart_rate": {"label": "Heart rate", "unit": "bpm"},
+    "hrv_ms": {"label": "Heart rate variability (HRV)", "unit": "ms"},
+    "body_temperature": {"label": "Core temperature", "unit": "°C"},
+    "blood_pressure_systolic": {"label": "Systolic pressure", "unit": "mmHg"},
+    "blood_pressure_diastolic": {"label": "Diastolic pressure", "unit": "mmHg"},
+    "spo2": {"label": "Oxygen saturation", "unit": "%"},
+    "respiratory_rate": {"label": "Respiratory rate", "unit": "rpm"},
+    "sleep_hours": {"label": "Last night's sleep", "unit": "h"},
+    "consecutive_nights_under_6h": {"label": "Consecutive nights under 6 h", "unit": "nights"},
+    "pvt_b_ms": {"label": "Reaction time (PVT-B)", "unit": "ms"},
+    "radiation_rate_msv_day": {"label": "Radiation rate", "unit": "mSv/day"},
+    "cabin_co2_mmhg": {"label": "Cabin CO₂", "unit": "mmHg"},
+    "spe_active": {"label": "Solar particle event", "unit": "mSv"},
+    "radiation_budget": {"label": "Career radiation budget", "unit": "%"},
+    "glucose_mg_dl": {"label": "Glucose", "unit": "mg/dL"},
+    "phq9": {"label": "PHQ-9 (depression)", "unit": "pts"},
+    "phq9_item9": {"label": "PHQ-9 Item 9", "unit": ""},
+    "gad7": {"label": "GAD-7 (anxiety)", "unit": "pts"},
+    "sans": {"label": "Head and vision symptoms", "unit": "reports"},
+    "ared_adherence": {"label": "Resistive exercise sessions (ARED)", "unit": "sessions"},
+    "bone": {"label": "Bone density (DXA)", "unit": "T-score"},
+    "signal_cardiovascular": {"label": "Heart and pressure sensor has no signal", "unit": ""},
+    "signal_respiratory": {"label": "Respiratory sensor has no signal", "unit": ""},
+    "signal_thermoregulation": {"label": "Temperature sensor has no signal", "unit": ""},
+    "signal_daily_assessment": {"label": "Sleep and reaction test has no signal", "unit": ""},
+    "signal_radiation_dosimetry": {"label": "Dosimeter has no signal", "unit": ""}
+  },
+
+  "sensorGroups": {
+    "cardiovascular": "Heart and pressure sensor (Bio-Monitor ECG)",
+    "respiratory": "Respiratory sensor (pulse oximeter)",
+    "thermoregulation": "Temperature sensor (dual forehead sensor)",
+    "daily_assessment": "Sleep and reaction test (Actiwatch / PVT-B)",
+    "radiation_dosimetry": "Radiation dosimeter (RAD / Liulin)"
+  },
+  "signalQuality": {"good": "Good", "degraded": "Degraded", "lost": "No signal"},
+  "sources": {"telemetry": "Sensor", "manual": "Manual entry", "computed": "Computed", "profile": "Record"},
+
+  "manualKinds": {
+    "blood_pressure": "Blood pressure",
+    "glucose": "Glucose",
+    "phq9": "PHQ-9",
+    "gad7": "GAD-7",
+    "countermeasure": "Log"
+  },
+  "questionnaireSeverity": {
+    "minimal": "Minimal",
+    "mild": "Mild",
+    "moderate": "Moderate",
+    "moderately severe": "Moderately severe",
+    "severe": "Severe"
+  },
+  "countermeasures": {
+    "carbs_15g": "15 g of fast carbohydrates",
+    "ared_session": "Resistive exercise session (ARED)",
+    "radiation_shelter": "Shielded shelter",
+    "headache": "Headache",
+    "blurred_vision": "Blurred vision",
+    "other": "Other"
+  },
+  "glucoseContext": {"fasting": "Fasting", "postprandial": "After eating"},
+  "severities": {"info": "Information", "attention": "Attention", "critical": "Critical"},
+  "messageKinds": {"guidance": "Guidance", "note": "Medical note", "prescription": "Prescription"},
+  "gender": {"female": "Female", "male": "Male", "other": "Other"},
+  "agencies": {"NASA": "NASA", "CSA": "CSA", "ESA": "ESA", "Roscosmos": "Roscosmos", "other": "Other"},
+
+  "cards": {
+    "sleep": "Sleep",
+    "mood": "Mood / Stress",
+    "heart_rate": "Heart rate",
+    "blood_pressure": "Blood pressure",
+    "temperature": "Temperature",
+    "radiation": "Radiation",
+    "glucose": "Glucose"
+  },
+
+  "protocols": {
+    "green": "No action required. Continue with the mission routine.",
+    "yellow": "Watch the indicator and repeat the measurement as recommended.",
+    "orange": "Priority attention: follow the recommendation, reduce the workload and notify the flight surgeon.",
+    "red": "Emergency: apply the immediate action and contact the flight surgeon now."
+  },
+
+  "scenarios": {
+    "nominal": "Nominal",
+    "solarStorm": "Solar storm / particle event",
+    "sleepDeficit": "Accumulated sleep deficit",
+    "co2Rise": "Cabin CO₂ rise",
+    "heartSensorLost": "Heart sensor has no signal",
+    "tachycardiaAtRest": "Tachycardia at rest",
+    "exercise": "Exercise session (normal)",
+    "hypertension": "High blood pressure",
+    "fever": "Fever",
+    "lowGlucose": "Low glucose",
+    "itemNine": "Item 9 alert (PHQ-9)"
+  },
+
+  "ui": {
+    "liveTelemetry": "LIVE TELEMETRY ACTIVE",
+    "offlineMode": "OFFLINE MODE ACTIVE (medical autonomy)",
+    "earthLatency": "Latency to Earth",
+    "noSignal": "NO SIGNAL",
+    "staleData": "NO RECENT DATA",
+    "restoreNominal": "Restore nominal values",
+    "hazard": "Associated NASA hazard",
+    "hardware": "Space measurement hardware",
+    "recommendedAction": "Recommended action",
+    "physiology": "Space physiology",
+    "scenario": "Scenario",
+    "crewStatus": "Crew member status",
+    "radiationBudget": "Radiation budget",
+    "solarEventAlert": "SOLAR EVENT ALERT",
+    "item9Alert": "Item 9 alert (PHQ-9): thoughts of self-harm",
+    "nightsInARow": "Consecutive nights",
+    "of": "of",
+    "loading": "Loading…",
+    "connectionLost": "No connection to the server. Showing the last data.",
+    "noDrivers": "No findings in this system",
+    "newAlerts": "new alerts",
+    "personalThreshold": "Personal threshold",
+    "defaultThreshold": "Default",
+    "restoreDefault": "Back to the default value",
+    "save": "Save",
+    "deliveryPending": "Pending delivery to the station",
+    "deliveredAt": "Delivered"
+  }
+}

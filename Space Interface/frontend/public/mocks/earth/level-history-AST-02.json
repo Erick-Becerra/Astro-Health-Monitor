@@ -1,0 +1,98 @@
+[
+  {
+    "at": "2026-11-14T17:46:00+00:00",
+    "level": "orange",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "orange",
+        "value": 38.29,
+        "indicator": "body_temperature"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-14T17:45:00+00:00",
+    "level": "red",
+    "status": "critical",
+    "reasons": [
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "red",
+        "value": 38.44,
+        "indicator": "body_temperature"
+      },
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 131.0,
+        "indicator": "blood_pressure_systolic"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-14T17:33:00+00:00",
+    "level": "orange",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "orange",
+        "value": 38.53,
+        "indicator": "body_temperature"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-14T17:27:00+00:00",
+    "level": "yellow",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "yellow",
+        "value": 38.17,
+        "indicator": "body_temperature"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-14T15:55:00+00:00",
+    "level": "green",
+    "status": "ok",
+    "reasons": []
+  },
+  {
+    "at": "2026-11-14T15:25:00+00:00",
+    "level": "red",
+    "status": "critical",
+    "reasons": [
+      {
+        "unit": "mSv/day",
+        "label": "Radiation rate",
+        "level": "red",
+        "value": 8.0,
+        "indicator": "radiation_rate_msv_day"
+      },
+      {
+        "unit": "mSv",
+        "label": "Solar particle event",
+        "level": "orange",
+        "value": 8.3,
+        "indicator": "spe_active"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-12T12:05:00+00:00",
+    "level": "green",
+    "status": "ok",
+    "reasons": []
+  }
+]

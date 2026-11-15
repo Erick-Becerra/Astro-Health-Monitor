@@ -41,10 +41,13 @@ To avoid conflicts, each folder has a main owner. Talk to the owner before makin
 
 | Folder | Area |
 |---|---|
-| `frontend/` | Web interface (general screen and per-astronaut screen) |
-| `backend/` and `database/` | API, analysis and database |
-| `firmware/` | ESP32 simulator |
-| `docs/` | Research, indicators, procedures and data format |
+| `Space Interface/` | Interface with the body diagram, vital signs, alerts, questionnaires and symptom reports |
+| `Earth Interface/` | Ground-control monitoring app (list of astronauts, telemetry log, symptoms, records, reports) |
+| `Backend Server/` | Earth base and space station APIs, analysis and database |
+| `Data Simulator/` | Sensor telemetry simulator and the ESP32 firmware |
+
+Each folder is a separate project that runs on its own machine. Keep changes inside the folder you own, and write
+down in the root `README.md` any change to the addresses, ports or messages that connect them.
 
 ## If you get a conflict
 

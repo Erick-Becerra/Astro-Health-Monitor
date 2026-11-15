@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1373,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T15:07:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Systolic pressure: Blood pressure outside optimal range (120/75 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T15:07:00+00:00"
+  },
+  {
+    "id": 1372,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:54:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Resting HR outside usual range (59 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T14:54:00+00:00"
+  },
+  {
+    "id": 1371,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T14:50:00+00:00",
+    "severity": "critical",
+    "summary": "AST-02: Body temperature: CRITICAL ALERT: Temperature 38.44 °C. Risk of heat stroke. Activate emergency protocol.",
+    "guidance": "Heat / fever emergency. Procedure: 1. Active cooling (cold cloths, ventilation). 2. Hydrate if conscious. 3. Monitor consciousness, HR and BP. 4. Contact Mission Control. 5. Prepare medical emergency.",
+    "sent_to_station_at": "2026-11-15T14:50:00+00:00"
+  },
+  {
+    "id": 1370,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T14:38:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Body temperature: High temperature after activity (38.53 °C). Reduce intensity and hydrate.",
+    "guidance": "Reduce intensity and cool down. Procedure: 1. Lower intensity. 2. Hydrate. 3. Direct ventilation. 4. Measure again at 15 min.",
+    "sent_to_station_at": "2026-11-15T14:38:00+00:00"
+  },
+  {
+    "id": 1369,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T14:29:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Systolic pressure: Blood pressure at risk (140/82 mmHg). Notify the medical team.",
+    "guidance": "Alert the medical team; evaluate SANS and orthostatic intolerance. Procedure: 1. Confirm with a second measurement. 2. Ask about headache, blurred vision (SANS), dizziness on standing. 3. Measure HR, SpO₂ and temperature. 4. High: rest and avoid exertion. Low: lie down / raise legs and rehydrate. 5. Notify the physician. 6. Repeat every 15 min.",
+    "sent_to_station_at": "2026-11-15T14:29:00+00:00"
+  },
+  {
+    "id": 1368,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T14:27:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Diastolic pressure: Blood pressure outside optimal range (135/80 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T14:27:00+00:00"
+  },
+  {
+    "id": 1367,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:15:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Sustained resting tachycardia (113 bpm). Notify the medical officer.",
+    "guidance": "Alert the medical team. Procedure: 1. Have the crew member sit/restrained at rest. 2. Take BP, temperature and SpO₂. 3. Ask about chest pain, dizziness, palpitations. 4. Rule out fever, dehydration and anxiety. 5. Notify the crew medical officer and Mission Control. 6. Repeat every 10 min.",
+    "sent_to_station_at": "2026-11-15T14:15:00+00:00"
+  },
+  {
+    "id": 1366,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-15T14:13:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate: Resting HR outside usual range (105 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T14:13:00+00:00"
+  },
+  {
+    "id": 1365,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T14:01:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Diastolic pressure: Blood pressure outside optimal range (127/80 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T14:01:00+00:00"
+  },
+  {
+    "id": 1364,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:48:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Diastolic pressure: Blood pressure outside optimal range (125/80 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T13:48:00+00:00"
+  },
+  {
+    "id": 1363,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:34:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Respiratory rate: Respiratory rate slightly altered (21 rpm). Check cabin CO₂ and stress level.",
+    "guidance": "Check CO₂, stress and recent exertion. Procedure: 1. Confirm rest. 2. Check CO₂. 3. Ask for slow breathing and repeat.",
+    "sent_to_station_at": "2026-11-15T13:34:00+00:00"
+  },
+  {
+    "id": 1362,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:31:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Systolic pressure: Blood pressure outside optimal range (125/78 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T13:31:00+00:00"
+  },
+  {
+    "id": 1361,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:29:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Heart rate: Resting HR outside usual range (59 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T13:29:00+00:00"
+  },
+  {
+    "id": 1360,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:13:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Heart rate: Resting HR outside usual range (59 bpm). Check hydration, rest and exercise load.",
+    "guidance": "Review hydration, sleep, stress and aerobic exercise compliance. Procedure: 1. Confirm the crew member is truly at rest (5 min). 2. Check hydration and caffeine intake. 3. Cross-check with sleep hours and stress. 4. Repeat the measurement in 15 min.",
+    "sent_to_station_at": "2026-11-15T13:13:00+00:00"
+  },
+  {
+    "id": 1359,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-15T13:09:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Systolic pressure: Blood pressure outside optimal range (121/72 mmHg). Check hydration and exercise load.",
+    "guidance": "Review hydration, exercise (ARED) and fluid shift toward the head. Procedure: 1. Repeat at rest after 5 min, arm at heart level. 2. Check hydration and sodium. 3. Review exercise load. 4. Repeat in 1–2 h.",
+    "sent_to_station_at": "2026-11-15T13:09:00+00:00"
+  }
+]

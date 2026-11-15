@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "personal": {
+    "body_temperature": {
+      "red": 38.3,
+      "orange": 37.8,
+      "yellow": 37.3
+    }
+  },
+  "adjustable": {
+    "heart_rate": {
+      "label": "Heart rate",
+      "unit": "bpm",
+      "default": {
+        "yellow": 101,
+        "orange": 111,
+        "red": 131
+      }
+    },
+    "body_temperature": {
+      "label": "Body temperature",
+      "unit": "°C",
+      "default": {
+        "yellow": 37.3,
+        "orange": 38.0,
+        "red": 39.0
+      }
+    },
+    "blood_pressure_systolic": {
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "default": {
+        "yellow": 120,
+        "orange": 140,
+        "red": 180
+      }
+    },
+    "blood_pressure_diastolic": {
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "default": {
+        "yellow": 80,
+        "orange": 90,
+        "red": 120
+      }
+    },
+    "respiratory_rate": {
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "default": {
+        "yellow": 21,
+        "orange": 25,
+        "red": 30
+      }
+    },
+    "cabin_co2_mmhg": {
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "default": {
+        "yellow": 2.3,
+        "orange": 3.0,
+        "red": 5.3
+      }
+    },
+    "radiation_rate_msv_day": {
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "default": {
+        "yellow": 0.5,
+        "orange": 1.0,
+        "red": 2.0
+      }
+    }
+  }
+}

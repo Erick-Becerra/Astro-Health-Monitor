@@ -1,0 +1,38 @@
+[
+  {
+    "id": 638,
+    "received_at": "2026-11-15T15:11:58.056282+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "critical",
+    "kind": "guidance",
+    "body": "CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+    "acknowledged": false
+  },
+  {
+    "id": 637,
+    "received_at": "2026-11-15T15:11:57.969342+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "critical",
+    "kind": "guidance",
+    "body": "CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+    "acknowledged": false
+  },
+  {
+    "id": 635,
+    "received_at": "2026-11-15T15:11:47.834463+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "info",
+    "kind": "note",
+    "body": "Sleep has been under 6 h for three nights. We will review the schedule at the next call.",
+    "acknowledged": false
+  },
+  {
+    "id": 634,
+    "received_at": "2026-11-15T15:11:47.824384+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "info",
+    "kind": "prescription",
+    "body": "Light exposure for 15 minutes after waking and no screens in the last hour before sleep.",
+    "acknowledged": false
+  }
+]

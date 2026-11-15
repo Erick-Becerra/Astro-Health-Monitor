@@ -1,0 +1,616 @@
+:root {
+  /* Core Base Palette */
+  --bg-deep: #050E3C;
+  --bg-navy: #002455;
+  --red-deep: #DC0000;
+  --red-bright: #FF3838;
+
+  /* Expanded Aerospace Telemetry Accents */
+  --cyan-hud: #00E5FF;
+  --cyan-dim: rgba(0, 229, 255, 0.14);
+  --green-bio: #00E676;
+  --green-dim: rgba(0, 230, 118, 0.16);
+  --amber-warn: #FFB300;
+  --amber-dim: rgba(255, 179, 0, 0.18);
+  --violet-rad: #B388FF;
+
+  /* Surfaces & Typography */
+  --surface-card: rgba(5, 14, 60, 0.78);
+  --border-navy: rgba(148, 180, 235, 0.22);
+  --text-main: #F8FAFC;
+  --text-dim: #A5B8D8;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(circle at 15% 18%, rgba(0, 36, 85, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 85%, rgba(220, 0, 0, 0.14) 0%, transparent 50%);
+  color: var(--text-main);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HUD HEADER */
+.hud-header {
+  background: linear-gradient(90deg, var(--bg-navy) 0%, #031942 100%);
+  border-bottom: 2px solid var(--cyan-hud);
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.emblem-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cyan-hud);
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.status-dot.live {
+  background: var(--green-bio);
+  box-shadow: 0 0 12px var(--green-bio);
+  animation: pulseDot 1.2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.65; }
+}
+
+.kicker {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--cyan-hud);
+}
+
+.hud-brand h1 {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.api-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.hud-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.66rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.hud-field-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+input, select {
+  background: var(--bg-deep);
+  color: var(--text-main);
+  border: 1px solid var(--border-navy);
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--cyan-hud);
+}
+
+input:disabled, select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.endpoint-box input {
+  width: 255px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+.num-xs {
+  width: 68px;
+  font-family: var(--font-mono);
+}
+
+/* BUTTONS */
+.btn {
+  border-radius: 5px;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--cyan-hud);
+  color: var(--bg-deep);
+  border: 1px solid var(--cyan-hud);
+}
+
+.btn-primary:hover {
+  background: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.btn-primary.streaming {
+  background: var(--red-deep);
+  color: #ffffff;
+  border-color: var(--red-bright);
+  box-shadow: 0 0 12px rgba(255, 56, 56, 0.6);
+}
+
+.btn-outline {
+  background: var(--bg-deep);
+  color: var(--text-main);
+  border: 1px solid var(--border-navy);
+}
+
+.btn-outline:hover {
+  border-color: var(--cyan-hud);
+  color: var(--cyan-hud);
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.74rem;
+}
+
+/* MISSION CONTEXT BAR */
+.mission-bar {
+  background: rgba(0, 36, 85, 0.55);
+  border-bottom: 1px solid var(--border-navy);
+  padding: 9px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.presets-cluster, .env-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-label {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.chip {
+  background: var(--bg-deep);
+  color: var(--text-dim);
+  border: 1px solid var(--border-navy);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--cyan-hud);
+  color: var(--cyan-hud);
+}
+
+.chip.active {
+  background: var(--cyan-dim);
+  border-color: var(--cyan-hud);
+  color: var(--cyan-hud);
+  font-weight: 600;
+}
+
+/* Semantic color accents per scenario preset */
+.chip[data-preset="normal"].active {
+  background: var(--green-dim);
+  border-color: var(--green-bio);
+  color: var(--green-bio);
+}
+
+.chip[data-preset="attention"].active {
+  background: var(--amber-dim);
+  border-color: var(--amber-warn);
+  color: var(--amber-warn);
+}
+
+.chip[data-preset="critical_eva"].active,
+.chip[data-preset="sensor_lost"].active {
+  background: var(--red-deep);
+  border-color: var(--red-bright);
+  color: #ffffff;
+}
+
+/* WORKSPACE GRID */
+.hud-workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 370px 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+@media (max-width: 920px) {
+  .hud-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hud-panel {
+  background: var(--bg-navy);
+  border: 1px solid var(--border-navy);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.section-title h2 {
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
+.schema-tag {
+  background: var(--bg-deep);
+  border: 1px solid var(--cyan-hud);
+  color: var(--cyan-hud);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ANATOMY SVG STAGE */
+.silhouette-stage {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-navy);
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#anatomy-svg {
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+}
+
+.body-silhouette {
+  fill: rgba(0, 36, 85, 0.7);
+  stroke: rgba(165, 184, 216, 0.5);
+  stroke-width: 1.7;
+  pointer-events: none;
+}
+
+.organ-zone {
+  cursor: pointer;
+}
+
+/* Radiation Shield in Cosmic Violet */
+.radiation-aura {
+  fill: rgba(179, 136, 255, 0.03);
+  stroke: rgba(179, 136, 255, 0.38);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.2;
+  transition: all 0.2s;
+}
+
+.organ-zone.active .radiation-aura,
+.organ-zone:hover .radiation-aura {
+  fill: rgba(179, 136, 255, 0.12);
+  stroke: var(--violet-rad);
+}
+
+/* Default Organ State: Telemetry Cyan */
+.organ-shape {
+  fill: rgba(0, 229, 255, 0.2);
+  stroke: var(--cyan-hud);
+  stroke-width: 1.6;
+  transition: all 0.2s;
+}
+
+/* Selected / Hovered Organ: Vibrant Coral Red */
+.organ-zone:hover .organ-shape,
+.organ-zone.active .organ-shape {
+  fill: rgba(255, 56, 56, 0.52);
+  stroke: var(--red-bright);
+  stroke-width: 2.1;
+}
+
+/* Degraded Signal State: Solar Amber */
+.organ-zone.degraded .organ-shape {
+  fill: rgba(255, 179, 0, 0.32);
+  stroke: var(--amber-warn);
+  stroke-dasharray: 4 2;
+}
+
+/* Lost Signal State: Deep Crimson */
+.organ-zone.lost .organ-shape {
+  fill: rgba(220, 0, 0, 0.22);
+  stroke: var(--red-deep);
+  stroke-dasharray: 3 3;
+}
+
+.callout-line {
+  stroke: rgba(165, 184, 216, 0.45);
+  stroke-width: 1;
+}
+
+.callout-text, .svg-header-tag {
+  fill: var(--text-dim);
+  font-size: 9.5px;
+  font-family: var(--font-mono);
+}
+
+.organ-zone.active .callout-text {
+  fill: var(--cyan-hud);
+  font-weight: 700;
+}
+
+.system-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.sys-tab {
+  flex: 1 1 auto;
+  background: var(--bg-deep);
+  color: var(--text-dim);
+  border: 1px solid var(--border-navy);
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.sys-tab.active {
+  background: var(--cyan-dim);
+  border-color: var(--cyan-hud);
+  color: var(--cyan-hud);
+  font-weight: 700;
+}
+
+/* ECG WIDGET */
+.ecg-widget {
+  margin-top: 12px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-navy);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ecg-header {
+  padding: 5px 10px;
+  background: rgba(0, 36, 85, 0.65);
+  border-bottom: 1px solid var(--border-navy);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.ecg-readout {
+  color: var(--green-bio);
+  font-weight: 700;
+}
+
+#ecg-canvas {
+  display: block;
+  width: 100%;
+  height: 64px;
+}
+
+/* RIGHT COLUMN CONTROLS */
+.control-view {
+  display: none;
+}
+
+.control-view.active {
+  display: block;
+}
+
+.sensor-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-navy);
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.84rem;
+}
+
+.slider-header input[type="number"] {
+  width: 86px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--cyan-hud);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--cyan-hud);
+  cursor: pointer;
+}
+
+/* Critical Radiation Sliders accented in Bright Red */
+#rad-rate-slider,
+#spe-dose-slider {
+  accent-color: var(--red-bright);
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.69rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  margin-top: 5px;
+}
+
+.quality-box, .check-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.check-pill {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-navy);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.danger-pill input:checked + span {
+  color: var(--red-bright);
+  font-weight: 700;
+}
+
+.card-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid-2 label {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.grid-2 input, .grid-2 select {
+  width: 100%;
+}
+
+.mt-10 { margin-top: 10px; }
+.mt-12 { margin-top: 12px; }
+.mb-12 { margin-bottom: 12px; }
+
+/* JSON TERMINAL */
+.json-terminal {
+  margin-top: auto;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-navy);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.terminal-bar {
+  background: rgba(5, 14, 60, 0.95);
+  border-bottom: 1px solid var(--border-navy);
+  padding: 7px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--cyan-hud);
+}
+
+.http-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.http-badge.idle { background: var(--bg-navy); color: var(--text-dim); }
+.http-badge.ok { background: var(--green-dim); border: 1px solid var(--green-bio); color: var(--green-bio); }
+.http-badge.err { background: var(--red-deep); color: #ffffff; }
+
+#json-preview {
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  line-height: 1.45;
+  color: #E2E8F0;
+  max-height: 245px;
+  overflow-y: auto;
+}

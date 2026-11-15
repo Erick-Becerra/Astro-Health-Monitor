@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "personal": {
+    "body_temperature": {
+      "red": 38.3,
+      "orange": 37.8,
+      "yellow": 37.3
+    }
+  },
+  "adjustable": {
+    "heart_rate": {
+      "label": "Heart rate",
+      "unit": "bpm",
+      "default": {
+        "red": 130,
+        "yellow": 110
+      }
+    },
+    "body_temperature": {
+      "label": "Body temperature",
+      "unit": "°C",
+      "default": {
+        "red": 38.5,
+        "yellow": 37.6
+      }
+    },
+    "blood_pressure_systolic": {
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "default": {
+        "red": 160,
+        "yellow": 130
+      }
+    },
+    "blood_pressure_diastolic": {
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "default": {
+        "red": 100,
+        "yellow": 85
+      }
+    },
+    "respiratory_rate": {
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "default": {
+        "red": 30,
+        "orange": 24,
+        "yellow": 20
+      }
+    },
+    "consecutive_nights_under_6h": {
+      "label": "Nights under 6 h in a row",
+      "unit": "nights",
+      "default": {
+        "red": 5,
+        "orange": 3,
+        "yellow": 2
+      }
+    },
+    "pvt_b_ms": {
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "default": {
+        "red": 600,
+        "orange": 450,
+        "yellow": 350
+      }
+    },
+    "radiation_rate_msv_day": {
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "default": {
+        "red": 5,
+        "orange": 1.0,
+        "yellow": 0.5
+      }
+    },
+    "cabin_co2_mmhg": {
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "default": {
+        "red": 3.0,
+        "orange": 2.7,
+        "yellow": 2.3
+      }
+    }
+  }
+}

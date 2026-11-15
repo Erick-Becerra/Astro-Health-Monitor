@@ -1,0 +1,191 @@
+[
+  {
+    "id": 8747,
+    "at": "2026-11-15T15:12:00.901115+00:00",
+    "origin": "station",
+    "astronaut_id": null,
+    "variable": "link_up",
+    "old_value": false,
+    "new_value": true,
+    "actor": "seed_apps_demo",
+    "app": "simulator-app",
+    "note": null
+  },
+  {
+    "id": 8405,
+    "at": "2026-11-15T15:11:48.454517+00:00",
+    "origin": "station",
+    "astronaut_id": null,
+    "variable": "link_up",
+    "old_value": true,
+    "new_value": false,
+    "actor": "seed_apps_demo",
+    "app": "simulator-app",
+    "note": null
+  },
+  {
+    "id": 8404,
+    "at": "2026-11-15T15:11:44.397920+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-02",
+    "variable": "note",
+    "old_value": null,
+    "new_value": {
+      "body": "Optic disc follow-up: report any change in vision straight away.",
+      "severity": "info"
+    },
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "sent to the station"
+  },
+  {
+    "id": 8403,
+    "at": "2026-11-15T15:11:44.380497+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "note",
+    "old_value": null,
+    "new_value": {
+      "body": "Sleep has been under 6 h for three nights. We will review the schedule at the next call.",
+      "severity": "info"
+    },
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "sent to the station"
+  },
+  {
+    "id": 8402,
+    "at": "2026-11-15T15:11:44.362459+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "prescription",
+    "old_value": null,
+    "new_value": {
+      "body": "Light exposure for 15 minutes after waking and no screens in the last hour before sleep.",
+      "severity": "info"
+    },
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "sent to the station"
+  },
+  {
+    "id": 8401,
+    "at": "2026-11-15T15:11:44.341355+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "notes",
+    "old_value": null,
+    "new_value": "Reduced load while sleep recovers",
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "exercise goals"
+  },
+  {
+    "id": 8400,
+    "at": "2026-11-15T15:11:44.341355+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "ared_minutes_per_session",
+    "old_value": null,
+    "new_value": 40,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "exercise goals"
+  },
+  {
+    "id": 8399,
+    "at": "2026-11-15T15:11:44.341355+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "ared_sessions_per_week",
+    "old_value": null,
+    "new_value": 3,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "exercise goals"
+  },
+  {
+    "id": 8398,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "prior_radiation_msv",
+    "old_value": null,
+    "new_value": 40.0,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8397,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "oct_notes",
+    "old_value": null,
+    "new_value": "Normal (demo data)",
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8396,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "dxa_t_score",
+    "old_value": null,
+    "new_value": -1.4,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8395,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "baseline_bp_diastolic",
+    "old_value": null,
+    "new_value": 70.0,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8394,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "baseline_bp_systolic",
+    "old_value": null,
+    "new_value": 110.0,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8393,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "baseline_hr",
+    "old_value": null,
+    "new_value": 60.0,
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  },
+  {
+    "id": 8392,
+    "at": "2026-11-15T15:11:44.316353+00:00",
+    "origin": "earth",
+    "astronaut_id": "AST-03",
+    "variable": "agency",
+    "old_value": null,
+    "new_value": "CSA",
+    "actor": "Dr. Rivera (demo)",
+    "app": "earth-app",
+    "note": "profile"
+  }
+]

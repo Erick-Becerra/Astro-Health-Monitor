@@ -1,0 +1,407 @@
+{
+  "astronaut_id": "AST-01",
+  "generated_at": "2026-11-15T15:12:10.018939+00:00",
+  "level": "yellow",
+  "level_name": "Caution",
+  "status": "attention",
+  "measured_at": "2026-11-15T15:09:00+00:00",
+  "link": {
+    "link_up": true,
+    "latency_seconds": 2.6,
+    "level": "green",
+    "level_name": "Normal",
+    "criteria": "≤ 3 s",
+    "action": "Near real-time consultation.",
+    "message": "Communication with Earth normal (2.6 s).",
+    "procedure": [
+      "No changes."
+    ]
+  },
+  "environment": {
+    "cabin_co2_mmhg": 2.02,
+    "crew_state": "resting",
+    "mission_day": 78
+  },
+  "vitals": [
+    {
+      "key": "heart_rate",
+      "label": "Heart rate",
+      "unit": "bpm",
+      "value": 57.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 58.0,
+      "vs_baseline": -1.0,
+      "level": "yellow"
+    },
+    {
+      "key": "hrv_ms",
+      "label": "Heart rate variability",
+      "unit": "ms",
+      "value": null,
+      "source": null,
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": null
+    },
+    {
+      "key": "body_temperature",
+      "label": "Core body temperature",
+      "unit": "°C",
+      "value": 36.61,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "value": 108.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 112.0,
+      "vs_baseline": -4.0,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_diastolic",
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "value": 70.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 70.0,
+      "vs_baseline": 0.0,
+      "level": "green"
+    },
+    {
+      "key": "spo2",
+      "label": "Oxygen saturation",
+      "unit": "%",
+      "value": 98.4,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "respiratory_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "value": 14.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep last night",
+      "unit": "h",
+      "value": 7.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "consecutive_nights_under_6h",
+      "label": "Consecutive nights under 6 h",
+      "unit": "nights",
+      "value": 0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "value": 262.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "radiation_rate_msv_day",
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "value": 0.418,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "cabin_co2_mmhg",
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "value": 2.02,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    }
+  ],
+  "data_quality": [],
+  "manual_latest": {
+    "glucose": {
+      "value": 132.0,
+      "context": "postprandial",
+      "level": "green",
+      "captured_at": "2026-11-15T11:20:00+00:00"
+    },
+    "phq9": {
+      "score": 2,
+      "answers": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal",
+      "item9_alert": false,
+      "level": "green",
+      "captured_at": "2026-11-15T09:25:00+00:00"
+    },
+    "gad7": {
+      "score": 3,
+      "answers": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "severity": "minimal",
+      "level": "green",
+      "captured_at": "2026-11-15T09:26:00+00:00"
+    },
+    "blood_pressure": {
+      "systolic": 121.0,
+      "diastolic": 78.0,
+      "level": "yellow",
+      "captured_at": "2026-11-15T12:30:00+00:00"
+    }
+  },
+  "radiation": {
+    "agency": "NASA",
+    "career_limit_msv": 600,
+    "prior_msv": 85.0,
+    "mission_msv": 32.87,
+    "total_msv": 117.87,
+    "percent_of_limit": 19.64,
+    "rate_msv_day": 0.418,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": null
+  },
+  "bone_loss_estimate_percent": 2.6,
+  "systems": [
+    {
+      "system": "heart",
+      "label": "Cardiovascular",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "heart_rate",
+          "label": "Heart rate",
+          "value": 57.0,
+          "unit": "bpm",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "lungs",
+      "label": "Respiratory",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "brain",
+      "label": "Brain and behavior",
+      "hazard": "Isolation and confinement",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "metabolism",
+      "label": "Metabolism",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "thermal",
+      "label": "Temperature and immunity",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "radiation",
+      "label": "Radiation exposure",
+      "hazard": "Space radiation",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "bones",
+      "label": "Bones and muscle",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "ared_adherence",
+          "label": "ARED sessions this week",
+          "value": 1,
+          "unit": "of 5",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "eyes",
+      "label": "Eyes (SANS)",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "sans",
+          "label": "Head and vision symptoms (7 days)",
+          "value": 1,
+          "unit": "reports",
+          "level": "yellow"
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "id": "heart_rate",
+      "title": "Heart rate",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Resting HR outside usual range (57 bpm). Check hydration, rest and exercise load.",
+      "action": "Review hydration, sleep, stress and aerobic exercise compliance.",
+      "steps": [
+        "Confirm the crew member is truly at rest (5 min).",
+        "Check hydration and caffeine intake.",
+        "Cross-check with sleep hours and stress.",
+        "Repeat the measurement in 15 min."
+      ]
+    },
+    {
+      "id": "sans",
+      "title": "Head and vision symptoms (7 days)",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "action": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "steps": [
+        "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS)."
+      ]
+    },
+    {
+      "id": "ared_adherence",
+      "title": "ARED sessions this week",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "action": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "steps": [
+        "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "indicator": "heart_rate",
+      "label": "Heart rate",
+      "value": 57.0,
+      "unit": "bpm",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "Resting HR 50 – 59 bpm or 101 – 110 bpm",
+      "action": "Review hydration, sleep, stress and aerobic exercise compliance.",
+      "advice": "Review hydration, sleep, stress and aerobic exercise compliance.",
+      "message": "Resting HR outside usual range (57 bpm). Check hydration, rest and exercise load.",
+      "procedure": [
+        "Confirm the crew member is truly at rest (5 min).",
+        "Check hydration and caffeine intake.",
+        "Cross-check with sleep hours and stress.",
+        "Repeat the measurement in 15 min."
+      ],
+      "context": "hr_rest",
+      "source": "telemetry"
+    },
+    {
+      "indicator": "sans",
+      "label": "Head and vision symptoms (7 days)",
+      "value": 1,
+      "unit": "reports",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "",
+      "action": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "advice": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "message": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "procedure": [],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "ared_adherence",
+      "label": "ARED sessions this week",
+      "value": 1,
+      "unit": "of 5",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "",
+      "action": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "advice": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "message": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "procedure": [],
+      "context": null,
+      "source": "manual"
+    }
+  ]
+}

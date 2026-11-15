@@ -1,0 +1,188 @@
+[
+  {
+    "id": 673,
+    "kind": "blood_pressure",
+    "captured_at": "2026-11-15T14:40:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "systolic": 150.0,
+      "diastolic": 96.0
+    },
+    "level": "orange"
+  },
+  {
+    "id": 672,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-15T13:30:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": "with the blurred vision",
+      "type": "headache"
+    },
+    "level": null
+  },
+  {
+    "id": 671,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-15T13:20:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": null,
+      "type": "blurred_vision"
+    },
+    "level": null
+  },
+  {
+    "id": 662,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-15T10:50:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": null,
+      "type": "headache"
+    },
+    "level": null
+  },
+  {
+    "id": 661,
+    "kind": "gad7",
+    "captured_at": "2026-11-15T10:32:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "level": "red"
+  },
+  {
+    "id": 660,
+    "kind": "phq9",
+    "captured_at": "2026-11-15T10:30:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "level": "red"
+  },
+  {
+    "id": 659,
+    "kind": "glucose",
+    "captured_at": "2026-11-15T10:10:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "value": 88.0,
+      "context": "fasting"
+    },
+    "level": "green"
+  },
+  {
+    "id": 658,
+    "kind": "countermeasure",
+    "captured_at": "2026-11-15T09:52:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "note": "15 g of fast carbohydrates",
+      "type": "carbs_15g"
+    },
+    "level": null
+  },
+  {
+    "id": 657,
+    "kind": "glucose",
+    "captured_at": "2026-11-15T09:50:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "value": 64.0,
+      "context": "fasting"
+    },
+    "level": "red"
+  },
+  {
+    "id": 654,
+    "kind": "blood_pressure",
+    "captured_at": "2026-11-15T09:40:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "crew (demo)",
+    "payload": {
+      "systolic": 146.0,
+      "diastolic": 94.0
+    },
+    "level": "orange"
+  },
+  {
+    "id": 647,
+    "kind": "gad7",
+    "captured_at": "2026-11-15T07:12:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "Sofía Navarro",
+    "payload": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "level": "red"
+  },
+  {
+    "id": 642,
+    "kind": "phq9",
+    "captured_at": "2026-11-15T07:10:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "actor": "Sofía Navarro",
+    "payload": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "level": "red"
+  }
+]

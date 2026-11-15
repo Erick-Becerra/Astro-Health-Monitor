@@ -1,0 +1,167 @@
+[
+  {
+    "id": 212,
+    "astronaut_id": "AST-92",
+    "name": null,
+    "gender": null,
+    "created_at": "2026-11-14T19:40:01.282562+00:00",
+    "severity": "critical",
+    "summary": "AST-92: PHQ-9 item 9 2; PHQ-9 (depression) 2 points",
+    "guidance": "Item 9 (thoughts of self-harm or of being better off dead) was answered above zero. Contact the flight surgeon or behavioral health support right now and do not stay alone. PHQ-9 (depression) score is minimal. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+    "sent_to_station_at": "2026-11-14T19:40:01.282562+00:00"
+  },
+  {
+    "id": 211,
+    "astronaut_id": "AST-92",
+    "name": null,
+    "gender": null,
+    "created_at": "2026-11-14T19:40:01.282562+00:00",
+    "severity": "critical",
+    "summary": "AST-92: Blood glucose (fasting) 62 mg/dL",
+    "guidance": "Low glucose. Take 15 g of fast carbohydrates, wait 15 minutes and measure again. Repeat if still below 70 and contact the flight surgeon.",
+    "sent_to_station_at": "2026-11-14T19:40:01.282562+00:00"
+  },
+  {
+    "id": 210,
+    "astronaut_id": "AST-92",
+    "name": null,
+    "gender": null,
+    "created_at": "2026-11-14T19:39:53.164857+00:00",
+    "severity": "attention",
+    "summary": "AST-92: Heart and blood pressure sensor signal lost",
+    "guidance": "No signal from this sensor, so its values are missing. Check the sensor fit and connection; until it is back, measure by hand.",
+    "sent_to_station_at": "2026-11-14T19:39:56.608080+00:00"
+  },
+  {
+    "id": 209,
+    "astronaut_id": "AST-92",
+    "name": null,
+    "gender": null,
+    "created_at": "2026-11-14T19:39:51.136343+00:00",
+    "severity": "critical",
+    "summary": "AST-92: Heart rate 149 bpm",
+    "guidance": "Very fast pulse. Stop activity, rest and contact the flight surgeon now.",
+    "sent_to_station_at": "2026-11-14T19:39:51.588359+00:00"
+  },
+  {
+    "id": 206,
+    "astronaut_id": "A002",
+    "name": "Valentina Soto",
+    "gender": "female",
+    "created_at": "2026-11-14T19:18:58.219130+00:00",
+    "severity": "attention",
+    "summary": "A002: Systolic pressure 131 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T19:19:00.130732+00:00"
+  },
+  {
+    "id": 190,
+    "astronaut_id": "A002",
+    "name": "Valentina Soto",
+    "gender": "female",
+    "created_at": "2026-11-14T18:36:53.525806+00:00",
+    "severity": "attention",
+    "summary": "A002: Systolic pressure 130 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T18:36:53.935510+00:00"
+  },
+  {
+    "id": 189,
+    "astronaut_id": "A002",
+    "name": "Valentina Soto",
+    "gender": "female",
+    "created_at": "2026-11-14T18:19:50.505634+00:00",
+    "severity": "attention",
+    "summary": "A002: Systolic pressure 130 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T18:19:53.278720+00:00"
+  },
+  {
+    "id": 173,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-14T17:45:00+00:00",
+    "severity": "critical",
+    "summary": "AST-02: Body temperature 38.44 °C",
+    "guidance": "High fever. Rest, hydrate and contact the flight surgeon now.",
+    "sent_to_station_at": "2026-11-14T17:45:00+00:00"
+  },
+  {
+    "id": 172,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-14T17:33:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Body temperature 38.53 °C",
+    "guidance": "Body temperature is above your personal orange threshold.",
+    "sent_to_station_at": "2026-11-14T17:33:00+00:00"
+  },
+  {
+    "id": 171,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-14T17:27:00+00:00",
+    "severity": "attention",
+    "summary": "AST-02: Body temperature 38.17 °C",
+    "guidance": "Raised temperature. Rest, hydrate and measure again in 30 minutes.",
+    "sent_to_station_at": "2026-11-14T17:27:00+00:00"
+  },
+  {
+    "id": 170,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T17:10:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Heart rate 113 bpm",
+    "guidance": "Fast pulse. Rest, hydrate and measure again in 10 minutes.",
+    "sent_to_station_at": "2026-11-14T17:10:00+00:00"
+  },
+  {
+    "id": 169,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-14T15:54:00+00:00",
+    "severity": "critical",
+    "summary": "AST-02: Solar particle event 250 mSv",
+    "guidance": "Solar particle event: go to the shielded shelter now and stay until Earth or the dosimeter says it is over.",
+    "sent_to_station_at": "2026-11-14T15:54:00+00:00"
+  },
+  {
+    "id": 168,
+    "astronaut_id": "AST-03",
+    "name": "Sofía Navarro",
+    "gender": "female",
+    "created_at": "2026-11-14T15:50:00+00:00",
+    "severity": "attention",
+    "summary": "AST-03: Systolic pressure 142 mmHg",
+    "guidance": "Raised blood pressure. Rest, reduce salt intake and measure again in 15 minutes.",
+    "sent_to_station_at": "2026-11-14T15:50:00+00:00"
+  },
+  {
+    "id": 167,
+    "astronaut_id": "AST-02",
+    "name": "Tomás Herrera",
+    "gender": "male",
+    "created_at": "2026-11-14T15:25:00+00:00",
+    "severity": "critical",
+    "summary": "AST-02: Radiation rate 8 mSv/day; Solar particle event 8.3 mSv",
+    "guidance": "Very high radiation rate. Go to the shielded shelter and follow the radiation protocol. Solar particle event: go to the shielded shelter now and stay until Earth or the dosimeter says it is over.",
+    "sent_to_station_at": "2026-11-14T15:25:00+00:00"
+  },
+  {
+    "id": 166,
+    "astronaut_id": "AST-01",
+    "name": "Lucía Fernández",
+    "gender": "female",
+    "created_at": "2026-11-14T15:06:00+00:00",
+    "severity": "attention",
+    "summary": "AST-01: Cabin CO2 2.71 mmHg",
+    "guidance": "Cabin CO2 is close to the limit. Ventilate, reduce exertion and check the scrubbers.",
+    "sent_to_station_at": "2026-11-14T15:06:00+00:00"
+  }
+]

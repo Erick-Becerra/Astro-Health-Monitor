@@ -1,0 +1,41 @@
+/* Printable health report. On screen it looks like an A4 sheet; "Save as PDF" prints this same page. */
+body:has(.report-page){background:#e9ecf4;background-image:none}
+body:has(.report-page) .topbar{display:none}
+.report-page{padding:18px 0 40px;color:#060e3d;font-family:var(--head)}
+.report-toolbar{width:710px;margin:0 auto 14px;display:flex;gap:14px;align-items:center;font:.8rem var(--mono);color:#1b3f7a}
+.report-toolbar button{background:#060e3d;color:#ece7da;border:0;padding:8px 16px;font-weight:600}
+.report{width:710px;margin:0 auto;background:#fff;box-shadow:0 2px 18px rgba(6,14,61,.18);box-sizing:border-box}
+.report-head{background:#060e3d;color:#ece7da;padding:22px 28px;border-bottom:5px solid #fe3938;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.report-head h1{margin:0 0 2px;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#8fa2c4;font-family:var(--mono);font-weight:400}
+.report-head h2{margin:0;font-size:1.9rem}
+.report-head p{margin:6px 0 0;font:.82rem var(--mono);color:#ece7da}
+.report-head .demo{display:inline-block;margin-top:8px;padding:1px 8px;border:1px solid #fe3938;color:#fe3938;font:.72rem var(--mono)}
+.report-body{padding:6px 28px 24px}
+.report-note{margin:14px 0 0;padding:8px 12px;border-left:4px solid #fe3938;background:#f4f1ea;font-size:.85rem}
+.report-section{margin-top:22px;break-inside:avoid;page-break-inside:avoid}
+.sym-section{break-inside:auto;page-break-inside:auto}
+.report-section h3{margin:0 0 8px;padding-left:10px;border-left:4px solid #002456;font-size:1.1rem;color:#002456}
+.report-section .nodata{margin:0;color:#4a5578;font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 0}
+.stats div{border:1px solid #c9d2ea;padding:4px 8px;font:.78rem var(--mono);background:#f6f8fd}
+.stats dt{color:#4a5578;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.stats dd{margin:0;font-weight:600;color:#060e3d}
+.stats-key{grid-column:1/-1;font:.74rem var(--mono);color:#1b3f7a;margin-top:4px}
+.flat{margin:8px 0 0;font-size:.82rem;color:#4a5578}
+.report-foot{margin:26px 28px 0;padding-top:8px;border-top:1px solid #c9d2ea;font:.72rem var(--mono);color:#4a5578;padding-bottom:18px}
+.sym-summary{margin:0 0 8px;font-size:.9rem}
+.sev{display:inline-block;margin-right:6px;padding:1px 8px;border:1px solid currentColor;border-radius:2px;font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.sev-severe{color:#dd0000}.sev-moderate{color:#b85c00}.sev-mild{color:#8a6d00}
+.sym-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.sym-table th{text-align:left;padding:4px 8px;background:#060e3d;color:#ece7da;font:.7rem var(--mono);text-transform:uppercase;letter-spacing:.08em;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sym-table td{padding:5px 8px;border-bottom:1px solid #c9d2ea;vertical-align:top}
+.sym-detail td{background:#f6f8fd;border-bottom:1px solid #c9d2ea}
+.sym-detail p{margin:2px 0;white-space:pre-wrap}.sym-vitals{font:.74rem var(--mono);color:#4a5578}
+.sym-table tr{break-inside:avoid;page-break-inside:avoid}
+@page{size:A4;margin:12mm}
+@media print{
+  .no-print{display:none!important}
+  body:has(.report-page){background:#fff}
+  .report-page{padding:0}
+  .report{box-shadow:none;width:100%}
+}

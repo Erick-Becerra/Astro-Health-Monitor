@@ -1,0 +1,29 @@
+[
+  {
+    "id": 84,
+    "received_at": "2026-11-14T18:06:40.641974+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "critical",
+    "kind": "guidance",
+    "body": "Item 9 (thoughts of self-harm or of being better off dead) was answered above zero. Contact the flight surgeon or behavioral health support right now and do not stay alone.",
+    "acknowledged": false
+  },
+  {
+    "id": 82,
+    "received_at": "2026-11-14T18:06:33.674881+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "info",
+    "kind": "note",
+    "body": "Sleep has been under 6 h for three nights. We will review the schedule at the next call.",
+    "acknowledged": false
+  },
+  {
+    "id": 81,
+    "received_at": "2026-11-14T18:06:33.664277+00:00",
+    "astronaut_id": "AST-03",
+    "severity": "info",
+    "kind": "prescription",
+    "body": "Light exposure for 15 minutes after waking and no screens in the last hour before sleep.",
+    "acknowledged": false
+  }
+]

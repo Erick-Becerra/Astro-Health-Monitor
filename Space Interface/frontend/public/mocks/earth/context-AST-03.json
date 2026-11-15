@@ -1,0 +1,193 @@
+{
+  "cabin_co2": {
+    "latest": {
+      "timestamp": "2026-11-14T18:04:00+00:00",
+      "value": 2.06
+    },
+    "series": [
+      {
+        "timestamp": "2026-11-14T17:45:00+00:00",
+        "value": 2.04
+      },
+      {
+        "timestamp": "2026-11-14T17:46:00+00:00",
+        "value": 2.03
+      },
+      {
+        "timestamp": "2026-11-14T17:47:00+00:00",
+        "value": 2.01
+      },
+      {
+        "timestamp": "2026-11-14T17:48:00+00:00",
+        "value": 2.0
+      },
+      {
+        "timestamp": "2026-11-14T17:49:00+00:00",
+        "value": 2.04
+      },
+      {
+        "timestamp": "2026-11-14T17:50:00+00:00",
+        "value": 2.03
+      },
+      {
+        "timestamp": "2026-11-14T17:51:00+00:00",
+        "value": 1.99
+      },
+      {
+        "timestamp": "2026-11-14T17:52:00+00:00",
+        "value": 1.98
+      },
+      {
+        "timestamp": "2026-11-14T17:53:00+00:00",
+        "value": 2.01
+      },
+      {
+        "timestamp": "2026-11-14T17:54:00+00:00",
+        "value": 2.01
+      },
+      {
+        "timestamp": "2026-11-14T17:55:00+00:00",
+        "value": 2.02
+      },
+      {
+        "timestamp": "2026-11-14T17:56:00+00:00",
+        "value": 2.02
+      },
+      {
+        "timestamp": "2026-11-14T17:57:00+00:00",
+        "value": 2.01
+      },
+      {
+        "timestamp": "2026-11-14T17:58:00+00:00",
+        "value": 2.0
+      },
+      {
+        "timestamp": "2026-11-14T17:59:00+00:00",
+        "value": 1.97
+      },
+      {
+        "timestamp": "2026-11-14T18:00:00+00:00",
+        "value": 2.0
+      },
+      {
+        "timestamp": "2026-11-14T18:01:00+00:00",
+        "value": 2.01
+      },
+      {
+        "timestamp": "2026-11-14T18:02:00+00:00",
+        "value": 2.06
+      },
+      {
+        "timestamp": "2026-11-14T18:03:00+00:00",
+        "value": 2.04
+      },
+      {
+        "timestamp": "2026-11-14T18:04:00+00:00",
+        "value": 2.06
+      }
+    ],
+    "alert_from_mmhg": 2.3,
+    "limit_mmhg": 3.0
+  },
+  "level_history": [
+    {
+      "at": "2026-11-14T12:05:00+00:00",
+      "level": "orange",
+      "status": "attention",
+      "reasons": [
+        {
+          "unit": "h",
+          "label": "Sleep last night",
+          "level": "yellow",
+          "value": 5.1,
+          "indicator": "sleep_hours"
+        },
+        {
+          "unit": "nights",
+          "label": "Nights under 6 h in a row",
+          "level": "orange",
+          "value": 3,
+          "indicator": "consecutive_nights_under_6h"
+        },
+        {
+          "unit": "ms",
+          "label": "Reaction time (PVT-B)",
+          "level": "yellow",
+          "value": 410.0,
+          "indicator": "pvt_b_ms"
+        }
+      ]
+    },
+    {
+      "at": "2026-11-12T12:05:00+00:00",
+      "level": "yellow",
+      "status": "attention",
+      "reasons": [
+        {
+          "unit": "h",
+          "label": "Sleep last night",
+          "level": "yellow",
+          "value": 5.4,
+          "indicator": "sleep_hours"
+        },
+        {
+          "unit": "ms",
+          "label": "Reaction time (PVT-B)",
+          "level": "yellow",
+          "value": 410.0,
+          "indicator": "pvt_b_ms"
+        }
+      ]
+    }
+  ],
+  "protocol_log": [
+    {
+      "id": 111,
+      "kind": "countermeasure",
+      "captured_at": "2026-11-14T16:25:00+00:00",
+      "received_at": "2026-11-14T18:06:40.752216+00:00",
+      "actor": "crew (demo)",
+      "payload": {
+        "note": "with the blurred vision",
+        "type": "headache"
+      },
+      "level": null
+    },
+    {
+      "id": 110,
+      "kind": "countermeasure",
+      "captured_at": "2026-11-14T16:15:00+00:00",
+      "received_at": "2026-11-14T18:06:40.752216+00:00",
+      "actor": "crew (demo)",
+      "payload": {
+        "note": null,
+        "type": "blurred_vision"
+      },
+      "level": null
+    },
+    {
+      "id": 101,
+      "kind": "countermeasure",
+      "captured_at": "2026-11-14T13:45:00+00:00",
+      "received_at": "2026-11-14T18:06:40.752216+00:00",
+      "actor": "crew (demo)",
+      "payload": {
+        "note": null,
+        "type": "headache"
+      },
+      "level": null
+    },
+    {
+      "id": 97,
+      "kind": "countermeasure",
+      "captured_at": "2026-11-14T12:47:00+00:00",
+      "received_at": "2026-11-14T18:06:40.752216+00:00",
+      "actor": "crew (demo)",
+      "payload": {
+        "note": "15 g of fast carbohydrates",
+        "type": "carbs_15g"
+      },
+      "level": null
+    }
+  ]
+}

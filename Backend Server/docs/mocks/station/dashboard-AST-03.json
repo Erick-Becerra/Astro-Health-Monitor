@@ -1,0 +1,664 @@
+{
+  "astronaut_id": "AST-03",
+  "generated_at": "2026-11-15T15:12:10.289218+00:00",
+  "level": "red",
+  "level_name": "Critical",
+  "status": "critical",
+  "measured_at": "2026-11-15T15:09:00+00:00",
+  "link": {
+    "link_up": true,
+    "latency_seconds": 2.6,
+    "level": "green",
+    "level_name": "Normal",
+    "criteria": "≤ 3 s",
+    "action": "Near real-time consultation.",
+    "message": "Communication with Earth normal (2.6 s).",
+    "procedure": [
+      "No changes."
+    ]
+  },
+  "environment": {
+    "cabin_co2_mmhg": 2.06,
+    "crew_state": "resting",
+    "mission_day": 78
+  },
+  "vitals": [
+    {
+      "key": "heart_rate",
+      "label": "Heart rate",
+      "unit": "bpm",
+      "value": 65.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 60.0,
+      "vs_baseline": 5.0,
+      "level": "green"
+    },
+    {
+      "key": "hrv_ms",
+      "label": "Heart rate variability",
+      "unit": "ms",
+      "value": null,
+      "source": null,
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": null
+    },
+    {
+      "key": "body_temperature",
+      "label": "Core body temperature",
+      "unit": "°C",
+      "value": 36.77,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "value": 129.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 110.0,
+      "vs_baseline": 19.0,
+      "level": "yellow"
+    },
+    {
+      "key": "blood_pressure_diastolic",
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "value": 72.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 70.0,
+      "vs_baseline": 2.0,
+      "level": "green"
+    },
+    {
+      "key": "spo2",
+      "label": "Oxygen saturation",
+      "unit": "%",
+      "value": 97.3,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "respiratory_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "value": 16.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep last night",
+      "unit": "h",
+      "value": 5.1,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "orange"
+    },
+    {
+      "key": "consecutive_nights_under_6h",
+      "label": "Consecutive nights under 6 h",
+      "unit": "nights",
+      "value": 3,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "value": 410.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "orange"
+    },
+    {
+      "key": "radiation_rate_msv_day",
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "value": 0.416,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "cabin_co2_mmhg",
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "value": 2.06,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    }
+  ],
+  "data_quality": [],
+  "manual_latest": {
+    "glucose": {
+      "value": 88.0,
+      "context": "fasting",
+      "level": "green",
+      "captured_at": "2026-11-15T10:10:00+00:00"
+    },
+    "phq9": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true,
+      "level": "red",
+      "captured_at": "2026-11-15T10:30:00+00:00"
+    },
+    "gad7": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe",
+      "level": "red",
+      "captured_at": "2026-11-15T10:32:00+00:00"
+    },
+    "blood_pressure": {
+      "systolic": 150.0,
+      "diastolic": 96.0,
+      "level": "orange",
+      "captured_at": "2026-11-15T14:40:00+00:00"
+    }
+  },
+  "radiation": {
+    "agency": "CSA",
+    "career_limit_msv": 1000,
+    "prior_msv": 40.0,
+    "mission_msv": 41.3,
+    "total_msv": 81.31,
+    "percent_of_limit": 8.13,
+    "rate_msv_day": 0.416,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": null
+  },
+  "bone_loss_estimate_percent": 2.6,
+  "systems": [
+    {
+      "system": "heart",
+      "label": "Cardiovascular",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "blood_pressure_systolic",
+          "label": "Systolic pressure",
+          "value": 129.0,
+          "unit": "mmHg",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "lungs",
+      "label": "Respiratory",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "brain",
+      "label": "Brain and behavior",
+      "hazard": "Isolation and confinement",
+      "level": "red",
+      "drivers": [
+        {
+          "indicator": "sleep_hours",
+          "label": "Sleep last night",
+          "value": 5.1,
+          "unit": "h",
+          "level": "orange"
+        },
+        {
+          "indicator": "pvt_b_ms",
+          "label": "Reaction time (PVT-B)",
+          "value": 410.0,
+          "unit": "ms",
+          "level": "orange"
+        },
+        {
+          "indicator": "phq9_item9",
+          "label": "PHQ-9 item 9",
+          "value": 1,
+          "unit": "",
+          "level": "red"
+        },
+        {
+          "indicator": "phq9",
+          "label": "PHQ-9 (depression)",
+          "value": 12,
+          "unit": "points",
+          "level": "orange"
+        },
+        {
+          "indicator": "gad7",
+          "label": "GAD-7 (anxiety)",
+          "value": 16,
+          "unit": "points",
+          "level": "red"
+        }
+      ]
+    },
+    {
+      "system": "metabolism",
+      "label": "Metabolism",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "thermal",
+      "label": "Temperature and immunity",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "radiation",
+      "label": "Radiation exposure",
+      "hazard": "Space radiation",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "bones",
+      "label": "Bones and muscle",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "ared_adherence",
+          "label": "ARED sessions this week",
+          "value": 0,
+          "unit": "of 3",
+          "level": "yellow"
+        },
+        {
+          "indicator": "bone",
+          "label": "Bone density (DXA T-score)",
+          "value": -1.4,
+          "unit": "",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "eyes",
+      "label": "Eyes (SANS)",
+      "hazard": "Altered gravity",
+      "level": "orange",
+      "drivers": [
+        {
+          "indicator": "sans",
+          "label": "Head and vision symptoms (7 days)",
+          "value": 3,
+          "unit": "reports",
+          "level": "orange"
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "id": "phq9_item9",
+      "title": "PHQ-9 item 9",
+      "level": "red",
+      "level_name": "Critical",
+      "message": "CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+      "action": "Immediate suicide-risk evaluation by a trained professional.",
+      "steps": [
+        "Do not leave the crew member alone; a crew member stays with them.",
+        "Immediately notify the medical officer and Mission Control (behavioral health).",
+        "A trained professional performs a suicide-risk assessment (in person or by remote link) as soon as possible.",
+        "Secure access to anything on board that could be used for self-harm (medications, tools).",
+        "Remove from critical tasks and EVA until cleared.",
+        "Follow-up check-ins and a written safety plan defined by the specialist."
+      ]
+    },
+    {
+      "id": "gad7",
+      "title": "GAD-7 (anxiety)",
+      "level": "red",
+      "level_name": "Critical",
+      "message": "CRITICAL ALERT: GAD-7 16/21 (severe anxiety). Medical and psychological intervention required.",
+      "action": "Immediate medical and psychological intervention; evaluate fitness for critical tasks.",
+      "steps": [
+        "Notify the medical officer and Mission Control immediately.",
+        "Assess for panic symptoms (rapid heartbeat, shortness of breath, fear); measure HR, BP and SpO₂ to rule out physical causes.",
+        "Specialist evaluation and treatment plan (psychotherapy and/or medication per the physician).",
+        "Evaluate fitness for EVA and other critical tasks; restrict if needed.",
+        "Continuous crew support; repeat the GAD-7 weekly and review the PHQ-9."
+      ]
+    },
+    {
+      "id": "sleep_hours",
+      "title": "Sleep last night",
+      "level": "orange",
+      "level_name": "Moderate risk",
+      "message": "Accumulated sleep deficit (3 nights < 6 h). Risk of errors and higher stress.",
+      "action": "Adjust workload and watch performance.",
+      "steps": [
+        "Reduce critical tasks for 24 h.",
+        "Protect an extra rest block.",
+        "Run the PVT test.",
+        "Review stress / mood.",
+        "Inform the physician."
+      ]
+    },
+    {
+      "id": "pvt_b_ms",
+      "title": "Reaction time (PVT-B)",
+      "level": "orange",
+      "level_name": "Moderate risk",
+      "message": "Clearly slow reaction (410 ms). Limit critical tasks.",
+      "action": "Limit critical tasks.",
+      "steps": [
+        "Postpone risky tasks.",
+        "Take a break or rest.",
+        "Repeat after resting.",
+        "Inform the physician."
+      ]
+    },
+    {
+      "id": "phq9",
+      "title": "PHQ-9 (depression)",
+      "level": "orange",
+      "level_name": "Moderate risk",
+      "message": "Moderate mood symptoms (PHQ-9: 12/27). A private evaluation with a mental health specialist is recommended and your tasks may be adjusted.",
+      "action": "Priority attention: private evaluation with a mental health specialist and adjustment of tasks and rest time.",
+      "steps": [
+        "Notify the crew medical officer (private).",
+        "Schedule a private consultation with behavioral health (via Mission Control if no specialist is on board).",
+        "Build a treatment plan: counseling, follow-up and, if the physician considers it, medication.",
+        "Adjust tasks and protect rest time.",
+        "Check sleep, GAD-7 and the PVT test.",
+        "Repeat the PHQ-9 every week."
+      ]
+    },
+    {
+      "id": "sans",
+      "title": "Head and vision symptoms (7 days)",
+      "level": "orange",
+      "level_name": "Moderate risk",
+      "message": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "action": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "steps": [
+        "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS)."
+      ]
+    },
+    {
+      "id": "blood_pressure_systolic",
+      "title": "Systolic pressure",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Blood pressure outside optimal range (129/72 mmHg). Check hydration and exercise load.",
+      "action": "Review hydration, exercise (ARED) and fluid shift toward the head.",
+      "steps": [
+        "Repeat at rest after 5 min, arm at heart level.",
+        "Check hydration and sodium.",
+        "Review exercise load.",
+        "Repeat in 1–2 h."
+      ]
+    },
+    {
+      "id": "ared_adherence",
+      "title": "ARED sessions this week",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "action": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "steps": [
+        "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle."
+      ]
+    },
+    {
+      "id": "bone",
+      "title": "Bone density (DXA T-score)",
+      "level": "yellow",
+      "level_name": "Caution",
+      "message": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "action": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "steps": [
+        "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "indicator": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "value": 129.0,
+      "unit": "mmHg",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "Systolic 120 – 139 or diastolic 80 – 89; or low: systolic 90 – 99 or diastolic 60 – 64",
+      "action": "Review hydration, exercise (ARED) and fluid shift toward the head.",
+      "advice": "Review hydration, exercise (ARED) and fluid shift toward the head.",
+      "message": "Blood pressure outside optimal range (129/72 mmHg). Check hydration and exercise load.",
+      "procedure": [
+        "Repeat at rest after 5 min, arm at heart level.",
+        "Check hydration and sodium.",
+        "Review exercise load.",
+        "Repeat in 1–2 h."
+      ],
+      "context": null,
+      "source": "telemetry"
+    },
+    {
+      "indicator": "sleep_hours",
+      "label": "Sleep last night",
+      "value": 5.1,
+      "unit": "h",
+      "level": "orange",
+      "status": "attention",
+      "level_name": "Moderate risk",
+      "criteria": "< 6 h for 2 consecutive nights",
+      "action": "Adjust workload and watch performance.",
+      "advice": "Adjust workload and watch performance.",
+      "message": "Accumulated sleep deficit (3 nights < 6 h). Risk of errors and higher stress.",
+      "procedure": [
+        "Reduce critical tasks for 24 h.",
+        "Protect an extra rest block.",
+        "Run the PVT test.",
+        "Review stress / mood.",
+        "Inform the physician."
+      ],
+      "context": null,
+      "source": "telemetry"
+    },
+    {
+      "indicator": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "value": 410.0,
+      "unit": "ms",
+      "level": "orange",
+      "status": "attention",
+      "level_name": "Moderate risk",
+      "criteria": "+25 % to +50 % over baseline",
+      "action": "Limit critical tasks.",
+      "advice": "Limit critical tasks.",
+      "message": "Clearly slow reaction (410 ms). Limit critical tasks.",
+      "procedure": [
+        "Postpone risky tasks.",
+        "Take a break or rest.",
+        "Repeat after resting.",
+        "Inform the physician."
+      ],
+      "context": null,
+      "source": "telemetry"
+    },
+    {
+      "indicator": "phq9_item9",
+      "label": "PHQ-9 item 9",
+      "value": 1,
+      "unit": "",
+      "level": "red",
+      "status": "critical",
+      "level_name": "Critical",
+      "criteria": "PHQ-9 item 9 ≥ 1 (thoughts of being better off dead or of self-harm), any total",
+      "action": "Immediate suicide-risk evaluation by a trained professional.",
+      "advice": "Immediate suicide-risk evaluation by a trained professional.",
+      "message": "CRITICAL ALERT: your answer to question 9 needs immediate attention. The medical and behavioral health team has been notified and will contact you now. You are not alone.",
+      "procedure": [
+        "Do not leave the crew member alone; a crew member stays with them.",
+        "Immediately notify the medical officer and Mission Control (behavioral health).",
+        "A trained professional performs a suicide-risk assessment (in person or by remote link) as soon as possible.",
+        "Secure access to anything on board that could be used for self-harm (medications, tools).",
+        "Remove from critical tasks and EVA until cleared.",
+        "Follow-up check-ins and a written safety plan defined by the specialist."
+      ],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "phq9",
+      "label": "PHQ-9 (depression)",
+      "value": 12,
+      "unit": "points",
+      "level": "orange",
+      "status": "attention",
+      "level_name": "Moderate risk",
+      "criteria": "PHQ-9 total 10 – 14 and item 9 = 0 (moderate symptoms)",
+      "action": "Priority attention: private evaluation with a mental health specialist and adjustment of tasks and rest time.",
+      "advice": "Priority attention: private evaluation with a mental health specialist and adjustment of tasks and rest time.",
+      "message": "Moderate mood symptoms (PHQ-9: 12/27). A private evaluation with a mental health specialist is recommended and your tasks may be adjusted.",
+      "procedure": [
+        "Notify the crew medical officer (private).",
+        "Schedule a private consultation with behavioral health (via Mission Control if no specialist is on board).",
+        "Build a treatment plan: counseling, follow-up and, if the physician considers it, medication.",
+        "Adjust tasks and protect rest time.",
+        "Check sleep, GAD-7 and the PVT test.",
+        "Repeat the PHQ-9 every week."
+      ],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "gad7",
+      "label": "GAD-7 (anxiety)",
+      "value": 16,
+      "unit": "points",
+      "level": "red",
+      "status": "critical",
+      "level_name": "Critical",
+      "criteria": "GAD-7 total 15 – 21 (severe anxiety)",
+      "action": "Immediate medical and psychological intervention; evaluate fitness for critical tasks.",
+      "advice": "Immediate medical and psychological intervention; evaluate fitness for critical tasks.",
+      "message": "CRITICAL ALERT: GAD-7 16/21 (severe anxiety). Medical and psychological intervention required.",
+      "procedure": [
+        "Notify the medical officer and Mission Control immediately.",
+        "Assess for panic symptoms (rapid heartbeat, shortness of breath, fear); measure HR, BP and SpO₂ to rule out physical causes.",
+        "Specialist evaluation and treatment plan (psychotherapy and/or medication per the physician).",
+        "Evaluate fitness for EVA and other critical tasks; restrict if needed.",
+        "Continuous crew support; repeat the GAD-7 weekly and review the PHQ-9."
+      ],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "sans",
+      "label": "Head and vision symptoms (7 days)",
+      "value": 3,
+      "unit": "reports",
+      "level": "orange",
+      "status": "attention",
+      "level_name": "Moderate risk",
+      "criteria": "",
+      "action": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "advice": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "message": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "procedure": [],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "ared_adherence",
+      "label": "ARED sessions this week",
+      "value": 0,
+      "unit": "of 3",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "",
+      "action": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "advice": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "message": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "procedure": [],
+      "context": null,
+      "source": "manual"
+    },
+    {
+      "indicator": "bone",
+      "label": "Bone density (DXA T-score)",
+      "value": -1.4,
+      "unit": "",
+      "level": "yellow",
+      "status": "attention",
+      "level_name": "Caution",
+      "criteria": "",
+      "action": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "advice": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "message": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "procedure": [],
+      "context": null,
+      "source": "profile"
+    }
+  ]
+}

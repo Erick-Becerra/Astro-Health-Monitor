@@ -1,0 +1,245 @@
+[
+  {
+    "id": 3139,
+    "at": "2026-11-14T19:39:59+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "heart_rate",
+    "old_value": 62.0,
+    "new_value": 149.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685199331-6 automated_sensor_stream"
+  },
+  {
+    "id": 3138,
+    "at": "2026-11-14T19:39:58.995679+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "glucose",
+    "old_value": {
+      "value": 62.0,
+      "context": "fasting"
+    },
+    "new_value": {
+      "value": 90.0,
+      "context": "fasting"
+    },
+    "actor": "kit-dom-test",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 3137,
+    "at": "2026-11-14T19:39:58.988647+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "gad7",
+    "old_value": null,
+    "new_value": {
+      "score": 0,
+      "answers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal"
+    },
+    "actor": "kit-dom-test",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 3136,
+    "at": "2026-11-14T19:39:58.981642+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "phq9",
+    "old_value": {
+      "score": 2,
+      "answers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "severity": "minimal",
+      "item9_alert": true
+    },
+    "new_value": {
+      "score": 0,
+      "answers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal",
+      "item9_alert": false
+    },
+    "actor": "kit-dom-test",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 3135,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "spe_event_dose_msv",
+    "old_value": 250.0,
+    "new_value": 0.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198950-5 manual_override"
+  },
+  {
+    "id": 3134,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "spe_active",
+    "old_value": true,
+    "new_value": false,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198950-5 manual_override"
+  },
+  {
+    "id": 3133,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "radiation_rate_msv_day",
+    "old_value": 8.0,
+    "new_value": 0.42,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198950-5 manual_override"
+  },
+  {
+    "id": 3132,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "spe_event_dose_msv",
+    "old_value": 0.0,
+    "new_value": 250.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198773-4 automated_sensor_stream"
+  },
+  {
+    "id": 3131,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "spe_active",
+    "old_value": false,
+    "new_value": true,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198773-4 automated_sensor_stream"
+  },
+  {
+    "id": 3130,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "radiation_rate_msv_day",
+    "old_value": 0.42,
+    "new_value": 8.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198773-4 automated_sensor_stream"
+  },
+  {
+    "id": 3129,
+    "at": "2026-11-14T19:39:58+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "heart_rate",
+    "old_value": 160.0,
+    "new_value": 62.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685198773-4 automated_sensor_stream"
+  },
+  {
+    "id": 3128,
+    "at": "2026-11-14T19:39:57+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "blood_pressure_diastolic",
+    "old_value": null,
+    "new_value": 74.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685197864-3 manual_override"
+  },
+  {
+    "id": 3127,
+    "at": "2026-11-14T19:39:57+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "blood_pressure_systolic",
+    "old_value": null,
+    "new_value": 116.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685197864-3 manual_override"
+  },
+  {
+    "id": 3126,
+    "at": "2026-11-14T19:39:57+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "heart_rate",
+    "old_value": null,
+    "new_value": 160.0,
+    "actor": "kit-dom-test",
+    "app": "simulator-app",
+    "note": "packet SIM-AST-92-1794685197864-3 manual_override"
+  },
+  {
+    "id": 3125,
+    "at": "2026-11-14T19:39:56.956003+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-92",
+    "variable": "phq9",
+    "old_value": null,
+    "new_value": {
+      "score": 2,
+      "answers": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "severity": "minimal",
+      "item9_alert": true
+    },
+    "actor": "kit-dom-test",
+    "app": "space-app",
+    "note": "manual capture"
+  }
+]

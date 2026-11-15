@@ -1,0 +1,404 @@
+[
+  {
+    "id": 7545,
+    "at": "2026-11-15T15:12:00.901115+00:00",
+    "origin": "station",
+    "astronaut_id": null,
+    "variable": "link_up",
+    "old_value": false,
+    "new_value": true,
+    "actor": "seed_apps_demo",
+    "app": "simulator-app",
+    "note": null
+  },
+  {
+    "id": 7544,
+    "at": "2026-11-15T07:12:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "gad7",
+    "old_value": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "new_value": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "actor": "Sofía Navarro",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7543,
+    "at": "2026-11-15T07:10:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "phq9",
+    "old_value": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "new_value": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "actor": "Sofía Navarro",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7542,
+    "at": "2026-11-15T07:12:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-02",
+    "variable": "gad7",
+    "old_value": {
+      "score": 5,
+      "answers": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "severity": "mild"
+    },
+    "new_value": {
+      "score": 5,
+      "answers": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "severity": "mild"
+    },
+    "actor": "Tomás Herrera",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7541,
+    "at": "2026-11-15T07:10:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-02",
+    "variable": "phq9",
+    "old_value": {
+      "score": 6,
+      "answers": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "severity": "mild",
+      "item9_alert": false
+    },
+    "new_value": {
+      "score": 6,
+      "answers": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "severity": "mild",
+      "item9_alert": false
+    },
+    "actor": "Tomás Herrera",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7540,
+    "at": "2026-11-15T07:12:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-01",
+    "variable": "gad7",
+    "old_value": {
+      "score": 3,
+      "answers": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "severity": "minimal"
+    },
+    "new_value": {
+      "score": 3,
+      "answers": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "severity": "minimal"
+    },
+    "actor": "Lucía Fernández",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7539,
+    "at": "2026-11-15T07:10:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-01",
+    "variable": "phq9",
+    "old_value": {
+      "score": 2,
+      "answers": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal",
+      "item9_alert": false
+    },
+    "new_value": {
+      "score": 2,
+      "answers": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal",
+      "item9_alert": false
+    },
+    "actor": "Lucía Fernández",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7538,
+    "at": "2026-11-15T14:40:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "blood_pressure",
+    "old_value": {
+      "systolic": 146.0,
+      "diastolic": 94.0
+    },
+    "new_value": {
+      "systolic": 150.0,
+      "diastolic": 96.0
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7537,
+    "at": "2026-11-15T13:30:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "countermeasure",
+    "old_value": {
+      "note": null,
+      "type": "blurred_vision"
+    },
+    "new_value": {
+      "note": "with the blurred vision",
+      "type": "headache"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7536,
+    "at": "2026-11-15T13:20:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "countermeasure",
+    "old_value": {
+      "note": null,
+      "type": "headache"
+    },
+    "new_value": {
+      "note": null,
+      "type": "blurred_vision"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7535,
+    "at": "2026-11-15T10:50:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "countermeasure",
+    "old_value": {
+      "note": "15 g of fast carbohydrates",
+      "type": "carbs_15g"
+    },
+    "new_value": {
+      "note": null,
+      "type": "headache"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7534,
+    "at": "2026-11-15T10:32:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "gad7",
+    "old_value": null,
+    "new_value": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7533,
+    "at": "2026-11-15T10:30:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "phq9",
+    "old_value": null,
+    "new_value": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7532,
+    "at": "2026-11-15T10:10:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "glucose",
+    "old_value": {
+      "value": 64.0,
+      "context": "fasting"
+    },
+    "new_value": {
+      "value": 88.0,
+      "context": "fasting"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  },
+  {
+    "id": 7531,
+    "at": "2026-11-15T09:52:00+00:00",
+    "origin": "station",
+    "astronaut_id": "AST-03",
+    "variable": "countermeasure",
+    "old_value": null,
+    "new_value": {
+      "note": "15 g of fast carbohydrates",
+      "type": "carbs_15g"
+    },
+    "actor": "crew (demo)",
+    "app": "space-app",
+    "note": "manual capture"
+  }
+]

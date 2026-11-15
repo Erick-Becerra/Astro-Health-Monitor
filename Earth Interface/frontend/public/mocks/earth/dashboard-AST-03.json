@@ -1,0 +1,509 @@
+{
+  "astronaut_id": "AST-03",
+  "generated_at": "2026-11-14T19:40:36.254598+00:00",
+  "level": "red",
+  "status": "critical",
+  "measured_at": "2026-11-14T18:04:00+00:00",
+  "environment": {
+    "cabin_co2_mmhg": 2.06,
+    "crew_state": "resting",
+    "mission_day": 78
+  },
+  "vitals": [
+    {
+      "key": "heart_rate",
+      "label": "Heart rate",
+      "unit": "bpm",
+      "value": 65.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 60.0,
+      "vs_baseline": 5.0,
+      "level": "green"
+    },
+    {
+      "key": "hrv_ms",
+      "label": "Heart rate variability",
+      "unit": "ms",
+      "value": null,
+      "source": null,
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": null
+    },
+    {
+      "key": "body_temperature",
+      "label": "Core body temperature",
+      "unit": "°C",
+      "value": 36.77,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "value": 129.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 110.0,
+      "vs_baseline": 19.0,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_diastolic",
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "value": 72.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 70.0,
+      "vs_baseline": 2.0,
+      "level": "green"
+    },
+    {
+      "key": "spo2",
+      "label": "Oxygen saturation",
+      "unit": "%",
+      "value": 97.3,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "respiratory_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "value": 16.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep last night",
+      "unit": "h",
+      "value": 5.1,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "yellow"
+    },
+    {
+      "key": "consecutive_nights_under_6h",
+      "label": "Consecutive nights under 6 h",
+      "unit": "nights",
+      "value": 3,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "orange"
+    },
+    {
+      "key": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "value": 410.0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "yellow"
+    },
+    {
+      "key": "radiation_rate_msv_day",
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "value": 0.416,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "cabin_co2_mmhg",
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "value": 2.06,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    }
+  ],
+  "data_quality": [],
+  "manual_latest": {
+    "glucose": {
+      "value": 88.0,
+      "context": "fasting",
+      "level": "green",
+      "captured_at": "2026-11-14T13:05:00+00:00"
+    },
+    "phq9": {
+      "score": 12,
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "severity": "moderate",
+      "item9_alert": true,
+      "level": "red",
+      "captured_at": "2026-11-14T13:25:00+00:00"
+    },
+    "gad7": {
+      "score": 16,
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "severity": "severe",
+      "level": "red",
+      "captured_at": "2026-11-14T13:27:00+00:00"
+    },
+    "blood_pressure": {
+      "systolic": 150.0,
+      "diastolic": 96.0,
+      "level": "yellow",
+      "captured_at": "2026-11-14T17:35:00+00:00"
+    }
+  },
+  "radiation": {
+    "agency": "CSA",
+    "career_limit_msv": 1000,
+    "prior_msv": 40.0,
+    "mission_msv": 41.3,
+    "total_msv": 81.31,
+    "percent_of_limit": 8.13,
+    "rate_msv_day": 0.416,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": null
+  },
+  "bone_loss_estimate_percent": 2.6,
+  "systems": [
+    {
+      "system": "heart",
+      "label": "Cardiovascular",
+      "hazard": "Altered gravity",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "lungs",
+      "label": "Respiratory",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "brain",
+      "label": "Brain and behavior",
+      "hazard": "Isolation and confinement",
+      "level": "red",
+      "drivers": [
+        {
+          "indicator": "sleep_hours",
+          "label": "Sleep last night",
+          "value": 5.1,
+          "unit": "h",
+          "level": "yellow"
+        },
+        {
+          "indicator": "consecutive_nights_under_6h",
+          "label": "Nights under 6 h in a row",
+          "value": 3,
+          "unit": "nights",
+          "level": "orange"
+        },
+        {
+          "indicator": "pvt_b_ms",
+          "label": "Reaction time (PVT-B)",
+          "value": 410.0,
+          "unit": "ms",
+          "level": "yellow"
+        },
+        {
+          "indicator": "phq9_item9",
+          "label": "PHQ-9 item 9",
+          "value": 1,
+          "unit": "",
+          "level": "red"
+        },
+        {
+          "indicator": "phq9",
+          "label": "PHQ-9 (depression)",
+          "value": 12,
+          "unit": "points",
+          "level": "red"
+        },
+        {
+          "indicator": "gad7",
+          "label": "GAD-7 (anxiety)",
+          "value": 16,
+          "unit": "points",
+          "level": "red"
+        }
+      ]
+    },
+    {
+      "system": "metabolism",
+      "label": "Metabolism",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "thermal",
+      "label": "Temperature and immunity",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "radiation",
+      "label": "Radiation exposure",
+      "hazard": "Space radiation",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "bones",
+      "label": "Bones and muscle",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "ared_adherence",
+          "label": "ARED sessions this week",
+          "value": 0,
+          "unit": "of 3",
+          "level": "yellow"
+        },
+        {
+          "indicator": "bone",
+          "label": "Bone density (DXA T-score)",
+          "value": -1.4,
+          "unit": "",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "eyes",
+      "label": "Eyes (SANS)",
+      "hazard": "Altered gravity",
+      "level": "orange",
+      "drivers": [
+        {
+          "indicator": "sans",
+          "label": "Head and vision symptoms (7 days)",
+          "value": 3,
+          "unit": "reports",
+          "level": "orange"
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "id": "phq9_item9",
+      "title": "PHQ-9 item 9",
+      "level": "red",
+      "steps": [
+        "Item 9 (thoughts of self-harm or of being better off dead) was answered above zero. Contact the flight surgeon or behavioral health support right now and do not stay alone."
+      ]
+    },
+    {
+      "id": "phq9",
+      "title": "PHQ-9 (depression)",
+      "level": "red",
+      "steps": [
+        "PHQ-9 (depression) score is moderate. Talk to the behavioral health team and keep up sleep, exercise and contact with family."
+      ]
+    },
+    {
+      "id": "gad7",
+      "title": "GAD-7 (anxiety)",
+      "level": "red",
+      "steps": [
+        "GAD-7 (anxiety) score is severe. Talk to the behavioral health team and keep up sleep, exercise and contact with family."
+      ]
+    },
+    {
+      "id": "consecutive_nights_under_6h",
+      "title": "Nights under 6 h in a row",
+      "level": "orange",
+      "steps": [
+        "Several short nights in a row. Prioritise sleep and reduce workload."
+      ]
+    },
+    {
+      "id": "sans",
+      "title": "Head and vision symptoms (7 days)",
+      "level": "orange",
+      "steps": [
+        "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS)."
+      ]
+    },
+    {
+      "id": "sleep_hours",
+      "title": "Sleep last night",
+      "level": "yellow",
+      "steps": [
+        "Slightly short sleep. Keep a regular schedule tonight."
+      ]
+    },
+    {
+      "id": "pvt_b_ms",
+      "title": "Reaction time (PVT-B)",
+      "level": "yellow",
+      "steps": [
+        "Slightly slow reactions. Take a break and repeat the test later."
+      ]
+    },
+    {
+      "id": "ared_adherence",
+      "title": "ARED sessions this week",
+      "level": "yellow",
+      "steps": [
+        "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle."
+      ]
+    },
+    {
+      "id": "bone",
+      "title": "Bone density (DXA T-score)",
+      "level": "yellow",
+      "steps": [
+        "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "indicator": "sleep_hours",
+      "label": "Sleep last night",
+      "value": 5.1,
+      "unit": "h",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Slightly short sleep. Keep a regular schedule tonight.",
+      "source": "telemetry"
+    },
+    {
+      "indicator": "consecutive_nights_under_6h",
+      "label": "Nights under 6 h in a row",
+      "value": 3,
+      "unit": "nights",
+      "level": "orange",
+      "status": "attention",
+      "advice": "Several short nights in a row. Prioritise sleep and reduce workload.",
+      "source": "telemetry"
+    },
+    {
+      "indicator": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "value": 410.0,
+      "unit": "ms",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Slightly slow reactions. Take a break and repeat the test later.",
+      "source": "telemetry"
+    },
+    {
+      "indicator": "phq9_item9",
+      "label": "PHQ-9 item 9",
+      "value": 1,
+      "unit": "",
+      "level": "red",
+      "status": "critical",
+      "advice": "Item 9 (thoughts of self-harm or of being better off dead) was answered above zero. Contact the flight surgeon or behavioral health support right now and do not stay alone.",
+      "source": "manual"
+    },
+    {
+      "indicator": "phq9",
+      "label": "PHQ-9 (depression)",
+      "value": 12,
+      "unit": "points",
+      "level": "red",
+      "status": "critical",
+      "advice": "PHQ-9 (depression) score is moderate. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+      "source": "manual"
+    },
+    {
+      "indicator": "gad7",
+      "label": "GAD-7 (anxiety)",
+      "value": 16,
+      "unit": "points",
+      "level": "red",
+      "status": "critical",
+      "advice": "GAD-7 (anxiety) score is severe. Talk to the behavioral health team and keep up sleep, exercise and contact with family.",
+      "source": "manual"
+    },
+    {
+      "indicator": "sans",
+      "label": "Head and vision symptoms (7 days)",
+      "value": 3,
+      "unit": "reports",
+      "level": "orange",
+      "status": "attention",
+      "advice": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "source": "manual"
+    },
+    {
+      "indicator": "ared_adherence",
+      "label": "ARED sessions this week",
+      "value": 0,
+      "unit": "of 3",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "source": "manual"
+    },
+    {
+      "indicator": "bone",
+      "label": "Bone density (DXA T-score)",
+      "value": -1.4,
+      "unit": "",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Bone density is below the pre-flight reference. Keep up resistive exercise and calcium and vitamin D intake.",
+      "source": "profile"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+// Client of the EARTH BASE server (port 8000). For the Earth monitoring app (App 1).
+// It never calls the station: what the station sends reaches Earth by itself, after the link latency.
+import { request, EARTH_URL, qs, ApiError, ACTOR, USE_MOCKS } from "../shared/request.js";
+
+const get = (path, mock) => request(EARTH_URL, "GET", path, { mock });
+const send = (method, path, body, actor) => request(EARTH_URL, method, path, { body, actor });
+
+// Uploads a file as multipart form data (the browser sets the content type itself).
+async function upload(path, file, actor, note) {
+  if (USE_MOCKS) return { mocked: true };
+  const form = new FormData();
+  form.append("file", file);
+  if (note) form.append("note", note);
+  let response;
+  try {
+    response = await fetch(EARTH_URL + path, { method: "POST", headers: { "X-Actor": actor ?? ACTOR }, body: form });
+  } catch {
+    throw new ApiError(0, "No answer from the server", path);
+  }
+  const data = await response.json().catch(() => null);
+  if (!response.ok) throw new ApiError(response.status, data?.detail ?? response.statusText, path);
+  return data;
+}
+
+export const earth = {
+  // ---- reads ----
+  /** Everyone: name, gender, latest reading and three colours. Use `overall_level` for the home screen. Poll every 3 s. */
+  astronauts: () => get("/api/astronauts", "earth/astronauts.json"),
+  /** One astronaut: latest reading with findings, profile, personal thresholds, goals, radiation. */
+  astronaut: (id) => get(`/api/astronauts/${id}`, `earth/astronaut-${id}.json`),
+  /** The consolidated view (8 systems, vitals, radiation, data quality): the same as the astronaut console shows. */
+  dashboard: (id) => get(`/api/astronauts/${id}/dashboard`, `earth/dashboard-${id}.json`),
+  /**
+   * History for charts, oldest first. since / until are ISO times. bucketSeconds averages the readings
+   * (use it for ranges over an hour: 300 = one point per 5 min). Each bucket keeps the worst level.
+   */
+  readings: (id, { since, until, bucketSeconds, limit = 100 } = {}) =>
+    get(`/api/astronauts/${id}/readings${qs({ since, until, bucket_seconds: bucketSeconds, limit })}`, `earth/readings-chart-${id}.json`),
+  /** Alerts, newest first. `id` always grows: see useNewAlerts. */
+  alerts: ({ astronautId, limit = 50 } = {}) => get(`/api/alerts${qs({ astronaut_id: astronautId, limit })}`, astronautId ? `earth/alerts-${astronautId}.json` : "earth/alerts.json"),
+  /** Blood pressure, glucose, PHQ-9 / GAD-7 (with item9_alert) and the log, newest first. */
+  manual: (id, { kind, limit = 50 } = {}) => get(`/api/astronauts/${id}/manual${qs({ kind, limit })}`, `earth/manual-${id}.json`),
+  /** To audit an alert: cabin CO2 series, semaphore history, protocol log. */
+  context: (id, { series = 100 } = {}) => get(`/api/astronauts/${id}/context${qs({ series })}`, `earth/context-${id}.json`),
+  levelHistory: (id, { limit = 100 } = {}) => get(`/api/astronauts/${id}/level-history${qs({ limit })}`, `earth/level-history-${id}.json`),
+  radiation: (id) => get(`/api/astronauts/${id}/radiation`, `earth/radiation-${id}.json`),
+  /** Personal thresholds AND the defaults ("adjustable"), so the form can show both. */
+  thresholds: (id) => get(`/api/astronauts/${id}/thresholds`, `earth/thresholds-${id}.json`),
+  exerciseGoals: (id) => get(`/api/astronauts/${id}/exercise-goals`, `earth/exercise-goals-${id}.json`),
+  /** Who changed what and when. Earth shows its own changes and the station's. */
+  changes: (params = {}) => get(`/api/changes${qs({ limit: 100, ...params })}`, "earth/changes.json"),
+  /** What Earth has sent to the station and whether it arrived (delivered_at). */
+  outbox: ({ pendingOnly = false, astronautId, limit = 50 } = {}) =>
+    get(`/api/outbox${qs({ pending_only: pendingOnly ? "true" : "", astronaut_id: astronautId, limit })}`, "earth/outbox.json"),
+  /** State of the link with the station. */
+  link: () => get("/api/station", "earth/station-link.json"),
+  variables: () => get("/api/variables", "variables.json"),
+
+  // ---- writes: they travel to the station after the link latency. `actor` = who is editing (change log) ----
+  /** Any of: name, gender, birth_date, weight_kg, agency, baseline_hr, baseline_bp_systolic, baseline_bp_diastolic,
+   *  dxa_t_score, oct_notes, prior_radiation_msv. What you leave out does not change. */
+  putProfile: (id, patch, actor) => send("PUT", `/api/astronauts/${id}`, patch, actor),
+  /** { body_temperature: { yellow: 37.3, orange: 37.8, red: 38.3 }, heart_rate: null }  (null = back to the default) */
+  putThresholds: (id, patch, actor) => send("PUT", `/api/astronauts/${id}/thresholds`, patch, actor),
+  putExerciseGoals: (id, patch, actor) => send("PUT", `/api/astronauts/${id}/exercise-goals`, patch, actor),
+  /** kind: note | prescription. severity: info | attention | critical. */
+  addNote: (id, { body, kind = "note", severity = "info" }, actor) => send("POST", `/api/astronauts/${id}/notes`, { body, kind, severity }, actor),
+  sendMessage: (id, { body, severity = "info" }, actor) => send("POST", `/api/astronauts/${id}/messages`, { body, severity }, actor),
+
+  // ---- astronaut record (CSV), Earth only. Every upload is a NEW VERSION; the first of the list is the current one ----
+  /** Versions, newest first, without contents: id, filename, columns, row_count, uploaded_by, uploaded_at ([] if none). */
+  records: (id) => get(`/api/astronauts/${id}/records`, `earth/records-${id}.json`),
+  /** The CSV as a table: { columns, rows, total }. fileId = a number or "latest". */
+  recordRows: (id, fileId = "latest", { offset = 0, limit = 100 } = {}) =>
+    get(`/api/astronauts/${id}/records/${fileId}/rows${qs({ offset, limit })}`, `earth/record-rows-${id}.json`),
+  /** Link to the file exactly as uploaded. */
+  recordUrl: (id, fileId = "latest") => `${EARTH_URL}/api/astronauts/${id}/records/${fileId}/download`,
+  /** CSV only, up to 2 MB. `file` is a File or Blob. Answers 413 (too big) or 422 (not a CSV, empty, binary). */
+  uploadRecord: (id, file, actor, note) => upload(`/api/astronauts/${id}/records`, file, actor, note),
+
+  // ---- symptom reports sent by the crew from the station (each one also raises an alert) ----
+  /** One astronaut, newest first. Filters: severity (mild|moderate|severe), symptom, since, until, limit. */
+  symptomReports: (id, { severity, symptom, since, until, limit = 100 } = {}) =>
+    get(`/api/astronauts/${id}/symptom-reports${qs({ severity, symptom, since, until, limit })}`, `earth/symptom-reports-${id}.json`),
+  /** Everyone's reports (same filters plus astronautId). */
+  allSymptomReports: ({ astronautId, severity, symptom, since, until, limit = 100 } = {}) =>
+    get(`/api/symptom-reports${qs({ astronaut_id: astronautId, severity, symptom, since, until, limit })}`, "earth/symptom-reports.json"),
+};

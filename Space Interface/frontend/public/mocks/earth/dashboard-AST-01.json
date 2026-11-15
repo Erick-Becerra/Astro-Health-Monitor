@@ -1,0 +1,333 @@
+{
+  "astronaut_id": "AST-01",
+  "generated_at": "2026-11-14T19:40:36.232797+00:00",
+  "level": "yellow",
+  "status": "attention",
+  "measured_at": "2026-11-14T18:04:00+00:00",
+  "environment": {
+    "cabin_co2_mmhg": 2.02,
+    "crew_state": "resting",
+    "mission_day": 78
+  },
+  "vitals": [
+    {
+      "key": "heart_rate",
+      "label": "Heart rate",
+      "unit": "bpm",
+      "value": 57.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 58.0,
+      "vs_baseline": -1.0,
+      "level": "green"
+    },
+    {
+      "key": "hrv_ms",
+      "label": "Heart rate variability",
+      "unit": "ms",
+      "value": null,
+      "source": null,
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": null
+    },
+    {
+      "key": "body_temperature",
+      "label": "Core body temperature",
+      "unit": "°C",
+      "value": 36.61,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_systolic",
+      "label": "Systolic pressure",
+      "unit": "mmHg",
+      "value": 108.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 112.0,
+      "vs_baseline": -4.0,
+      "level": "green"
+    },
+    {
+      "key": "blood_pressure_diastolic",
+      "label": "Diastolic pressure",
+      "unit": "mmHg",
+      "value": 70.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": 70.0,
+      "vs_baseline": 0.0,
+      "level": "green"
+    },
+    {
+      "key": "spo2",
+      "label": "Oxygen saturation",
+      "unit": "%",
+      "value": 98.4,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "respiratory_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "value": 14.0,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep last night",
+      "unit": "h",
+      "value": 7.0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "consecutive_nights_under_6h",
+      "label": "Consecutive nights under 6 h",
+      "unit": "nights",
+      "value": 0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "pvt_b_ms",
+      "label": "Reaction time (PVT-B)",
+      "unit": "ms",
+      "value": 262.0,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "radiation_rate_msv_day",
+      "label": "Radiation rate",
+      "unit": "mSv/day",
+      "value": 0.418,
+      "source": "telemetry",
+      "signal_quality": "good",
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    },
+    {
+      "key": "cabin_co2_mmhg",
+      "label": "Cabin CO2",
+      "unit": "mmHg",
+      "value": 2.02,
+      "source": "telemetry",
+      "signal_quality": null,
+      "no_signal": false,
+      "baseline": null,
+      "vs_baseline": null,
+      "level": "green"
+    }
+  ],
+  "data_quality": [],
+  "manual_latest": {
+    "glucose": {
+      "value": 132.0,
+      "context": "postprandial",
+      "level": "green",
+      "captured_at": "2026-11-14T14:15:00+00:00"
+    },
+    "phq9": {
+      "score": 2,
+      "answers": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "severity": "minimal",
+      "item9_alert": false,
+      "level": "green",
+      "captured_at": "2026-11-14T12:20:00+00:00"
+    },
+    "gad7": {
+      "score": 3,
+      "answers": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "severity": "minimal",
+      "level": "green",
+      "captured_at": "2026-11-14T12:21:00+00:00"
+    },
+    "blood_pressure": {
+      "systolic": 121.0,
+      "diastolic": 78.0,
+      "level": "green",
+      "captured_at": "2026-11-14T15:25:00+00:00"
+    }
+  },
+  "radiation": {
+    "agency": "NASA",
+    "career_limit_msv": 600,
+    "prior_msv": 85.0,
+    "mission_msv": 32.87,
+    "total_msv": 117.87,
+    "percent_of_limit": 19.64,
+    "rate_msv_day": 0.418,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": null
+  },
+  "bone_loss_estimate_percent": 2.6,
+  "systems": [
+    {
+      "system": "heart",
+      "label": "Cardiovascular",
+      "hazard": "Altered gravity",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "lungs",
+      "label": "Respiratory",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "brain",
+      "label": "Brain and behavior",
+      "hazard": "Isolation and confinement",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "metabolism",
+      "label": "Metabolism",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "thermal",
+      "label": "Temperature and immunity",
+      "hazard": "Hostile closed environment",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "radiation",
+      "label": "Radiation exposure",
+      "hazard": "Space radiation",
+      "level": "green",
+      "drivers": []
+    },
+    {
+      "system": "bones",
+      "label": "Bones and muscle",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "ared_adherence",
+          "label": "ARED sessions this week",
+          "value": 1,
+          "unit": "of 5",
+          "level": "yellow"
+        }
+      ]
+    },
+    {
+      "system": "eyes",
+      "label": "Eyes (SANS)",
+      "hazard": "Altered gravity",
+      "level": "yellow",
+      "drivers": [
+        {
+          "indicator": "sans",
+          "label": "Head and vision symptoms (7 days)",
+          "value": 1,
+          "unit": "reports",
+          "level": "yellow"
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "id": "sans",
+      "title": "Head and vision symptoms (7 days)",
+      "level": "yellow",
+      "steps": [
+        "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS)."
+      ]
+    },
+    {
+      "id": "ared_adherence",
+      "title": "ARED sessions this week",
+      "level": "yellow",
+      "steps": [
+        "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "indicator": "sans",
+      "label": "Head and vision symptoms (7 days)",
+      "value": 1,
+      "unit": "reports",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Report headaches or blurred vision to the flight surgeon. They can be linked to fluid shift in the head (SANS).",
+      "source": "manual"
+    },
+    {
+      "indicator": "ared_adherence",
+      "label": "ARED sessions this week",
+      "value": 1,
+      "unit": "of 5",
+      "level": "yellow",
+      "status": "attention",
+      "advice": "Resistive exercise is behind the weekly goal. Plan the next ARED session to protect bone and muscle.",
+      "source": "manual"
+    }
+  ]
+}

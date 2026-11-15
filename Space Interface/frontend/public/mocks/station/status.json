@@ -1,0 +1,23 @@
+{
+  "link_up": true,
+  "link_delay_seconds": 2.6,
+  "mission_day": 78,
+  "readings_waiting_for_uplink": 3,
+  "waiting_for_uplink": {
+    "readings": 3,
+    "manual_captures": 0,
+    "change_log": 0
+  },
+  "last_uplink": "2026-11-14T19:40:35.904515+00:00",
+  "last_error": null,
+  "crew": [
+    "A001",
+    "A002",
+    "A003",
+    "AST-01",
+    "AST-02",
+    "AST-03",
+    "AST-92"
+  ],
+  "scenarios_running": []
+}

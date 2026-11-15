@@ -1,0 +1,22 @@
+# Secrets and local settings
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ESP32 / PlatformIO build output
+firmware/.pio/
+firmware/build/

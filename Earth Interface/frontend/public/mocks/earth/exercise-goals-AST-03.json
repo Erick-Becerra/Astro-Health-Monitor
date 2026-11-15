@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "goals": {
+    "notes": "Reduced load while sleep recovers",
+    "ared_sessions_per_week": 3,
+    "ared_minutes_per_session": 40
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "generated_at": "2026-11-14T19:40:36+00:00",
+  "note": "Real responses of the demo data. Times are those of the demo history.",
+  "files": {
+    "earth/astronauts.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts"
+    },
+    "earth/astronaut-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03"
+    },
+    "earth/astronaut-AST-02.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-02"
+    },
+    "earth/dashboard-AST-01.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-01/dashboard"
+    },
+    "earth/dashboard-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/dashboard"
+    },
+    "earth/readings-latest-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/readings?limit=5"
+    },
+    "earth/readings-chart-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/readings?bucket_seconds=1800&limit=100"
+    },
+    "earth/alerts.json": {
+      "server": "Earth",
+      "request": "GET /api/alerts?limit=15"
+    },
+    "earth/alerts-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/alerts?astronaut_id=AST-03&limit=15"
+    },
+    "earth/manual-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/manual?limit=20"
+    },
+    "earth/context-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/context?series=20"
+    },
+    "earth/level-history-AST-02.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-02/level-history?limit=20"
+    },
+    "earth/radiation-AST-02.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-02/radiation"
+    },
+    "earth/thresholds-AST-02.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-02/thresholds"
+    },
+    "earth/exercise-goals-AST-03.json": {
+      "server": "Earth",
+      "request": "GET /api/astronauts/AST-03/exercise-goals"
+    },
+    "earth/changes.json": {
+      "server": "Earth",
+      "request": "GET /api/changes?limit=15"
+    },
+    "earth/outbox.json": {
+      "server": "Earth",
+      "request": "GET /api/outbox?limit=5"
+    },
+    "earth/station-link.json": {
+      "server": "Earth",
+      "request": "GET /api/station"
+    },
+    "variables.json": {
+      "server": "Earth",
+      "request": "GET /api/variables"
+    },
+    "station/dashboard-AST-01.json": {
+      "server": "Station",
+      "request": "GET /api/crew/AST-01/dashboard"
+    },
+    "station/dashboard-AST-02.json": {
+      "server": "Station",
+      "request": "GET /api/crew/AST-02/dashboard"
+    },
+    "station/dashboard-AST-03.json": {
+      "server": "Station",
+      "request": "GET /api/crew/AST-03/dashboard"
+    },
+    "station/manual-AST-03.json": {
+      "server": "Station",
+      "request": "GET /api/crew/AST-03/manual?limit=20"
+    },
+    "station/config-AST-02.json": {
+      "server": "Station",
+      "request": "GET /api/crew/AST-02/config"
+    },
+    "station/messages-AST-03.json": {
+      "server": "Station",
+      "request": "GET /api/messages?astronaut_id=AST-03"
+    },
+    "station/status.json": {
+      "server": "Station",
+      "request": "GET /api/status"
+    },
+    "station/mission.json": {
+      "server": "Station",
+      "request": "GET /api/sim/mission"
+    },
+    "station/changes.json": {
+      "server": "Station",
+      "request": "GET /api/changes?limit=15"
+    },
+    "simulator/packet-normal.json": {
+      "server": "Station",
+      "request": "POST /api/sim/packet (body)"
+    },
+    "simulator/packet-sensor-lost.json": {
+      "server": "Station",
+      "request": "POST /api/sim/packet (body)"
+    },
+    "simulator/packet-daily-assessment.json": {
+      "server": "Station",
+      "request": "POST /api/sim/packet (body)"
+    },
+    "simulator/packet-solar-event.json": {
+      "server": "Station",
+      "request": "POST /api/sim/packet (body)"
+    }
+  }
+}

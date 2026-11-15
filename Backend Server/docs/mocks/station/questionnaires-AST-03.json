@@ -1,0 +1,130 @@
+[
+  {
+    "id": 124,
+    "astronaut_id": "AST-03",
+    "questionnaire": "gad7",
+    "answered_by": "Sofía Navarro",
+    "score": 16,
+    "severity": "Severe",
+    "answered_at": "2026-11-15T07:12:00+00:00",
+    "uplinked_at": "2026-11-15T15:11:59.402690+00:00",
+    "response": {
+      "questionnaire": "gad7",
+      "version": "GAD-7",
+      "language": "en-US",
+      "answered_by": "Sofía Navarro",
+      "answered_at": "2026-11-15T07:12:00Z",
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 3
+        },
+        {
+          "n": 2,
+          "answer": 2
+        },
+        {
+          "n": 3,
+          "answer": 2
+        },
+        {
+          "n": 4,
+          "answer": 3
+        },
+        {
+          "n": 5,
+          "answer": 2
+        },
+        {
+          "n": 6,
+          "answer": 2
+        },
+        {
+          "n": 7,
+          "answer": 2
+        }
+      ],
+      "score": 16,
+      "severity": "Severe",
+      "recommendation": "Priority assessment with the behavioral health team."
+    }
+  },
+  {
+    "id": 123,
+    "astronaut_id": "AST-03",
+    "questionnaire": "phq9",
+    "answered_by": "Sofía Navarro",
+    "score": 12,
+    "severity": "Moderate",
+    "answered_at": "2026-11-15T07:10:00+00:00",
+    "uplinked_at": "2026-11-15T15:11:59.402690+00:00",
+    "response": {
+      "questionnaire": "phq9",
+      "version": "PHQ-9",
+      "language": "en-US",
+      "answered_by": "Sofía Navarro",
+      "answered_at": "2026-11-15T07:10:00Z",
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 2
+        },
+        {
+          "n": 2,
+          "answer": 2
+        },
+        {
+          "n": 3,
+          "answer": 1
+        },
+        {
+          "n": 4,
+          "answer": 2
+        },
+        {
+          "n": 5,
+          "answer": 1
+        },
+        {
+          "n": 6,
+          "answer": 2
+        },
+        {
+          "n": 7,
+          "answer": 1
+        },
+        {
+          "n": 8,
+          "answer": 0
+        },
+        {
+          "n": 9,
+          "answer": 1
+        }
+      ],
+      "score": 12,
+      "severity": "Moderate",
+      "recommendation": "Follow-up plan with the behavioral health team. Question 9 is greater than 0: assess the risk now."
+    }
+  }
+]

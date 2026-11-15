@@ -1,0 +1,36 @@
+{
+  "link_up": true,
+  "link_delay_seconds": 2.6,
+  "mission_day": 78,
+  "readings_waiting_for_uplink": 3,
+  "waiting_for_uplink": {
+    "readings": 3,
+    "manual_captures": 0,
+    "questionnaire_responses": 0,
+    "change_log": 0
+  },
+  "uplink_mode": "db",
+  "last_uplink": "2026-11-15T15:12:08.193701+00:00",
+  "last_error": null,
+  "crew": [
+    "A001",
+    "A002",
+    "A003",
+    "AST-01",
+    "AST-02",
+    "AST-03"
+  ],
+  "scenarios_running": [],
+  "communication": {
+    "link_up": true,
+    "latency_seconds": 2.6,
+    "level": "green",
+    "level_name": "Normal",
+    "criteria": "≤ 3 s",
+    "action": "Near real-time consultation.",
+    "message": "Communication with Earth normal (2.6 s).",
+    "procedure": [
+      "No changes."
+    ]
+  }
+}
