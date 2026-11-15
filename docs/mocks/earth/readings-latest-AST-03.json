@@ -1,0 +1,217 @@
+[
+  {
+    "timestamp": "2026-11-15T15:05:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 63.0,
+    "hrv_ms": null,
+    "body_temperature": 36.81,
+    "blood_pressure_systolic": 131.0,
+    "blood_pressure_diastolic": 68.0,
+    "sleep_hours": 5.1,
+    "consecutive_nights_under_6h": 3,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 410.0,
+    "spo2": 97.9,
+    "respiratory_rate": 16.0,
+    "radiation_rate_msv_day": 0.427,
+    "radiation_dose_msv": 41.303,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.0,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-03-0355",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T12:55:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange"
+  },
+  {
+    "timestamp": "2026-11-15T15:06:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 60.0,
+    "hrv_ms": null,
+    "body_temperature": 36.81,
+    "blood_pressure_systolic": 131.0,
+    "blood_pressure_diastolic": 69.0,
+    "sleep_hours": 5.1,
+    "consecutive_nights_under_6h": 3,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 410.0,
+    "spo2": 96.8,
+    "respiratory_rate": 16.0,
+    "radiation_rate_msv_day": 0.423,
+    "radiation_dose_msv": 41.304,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.01,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-03-0356",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T12:55:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange"
+  },
+  {
+    "timestamp": "2026-11-15T15:07:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 61.0,
+    "hrv_ms": null,
+    "body_temperature": 36.79,
+    "blood_pressure_systolic": 129.0,
+    "blood_pressure_diastolic": 69.0,
+    "sleep_hours": 5.1,
+    "consecutive_nights_under_6h": 3,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 410.0,
+    "spo2": 97.6,
+    "respiratory_rate": 17.0,
+    "radiation_rate_msv_day": 0.434,
+    "radiation_dose_msv": 41.304,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.06,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-03-0357",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T12:55:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange"
+  },
+  {
+    "timestamp": "2026-11-15T15:08:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 61.0,
+    "hrv_ms": null,
+    "body_temperature": 36.76,
+    "blood_pressure_systolic": 128.0,
+    "blood_pressure_diastolic": 72.0,
+    "sleep_hours": 5.1,
+    "consecutive_nights_under_6h": 3,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 410.0,
+    "spo2": 97.4,
+    "respiratory_rate": 16.0,
+    "radiation_rate_msv_day": 0.434,
+    "radiation_dose_msv": 41.304,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.04,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-03-0358",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T12:55:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange"
+  },
+  {
+    "timestamp": "2026-11-15T15:09:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 65.0,
+    "hrv_ms": null,
+    "body_temperature": 36.77,
+    "blood_pressure_systolic": 129.0,
+    "blood_pressure_diastolic": 72.0,
+    "sleep_hours": 5.1,
+    "consecutive_nights_under_6h": 3,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 410.0,
+    "spo2": 97.3,
+    "respiratory_rate": 16.0,
+    "radiation_rate_msv_day": 0.416,
+    "radiation_dose_msv": 41.305,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.06,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-03-0359",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T12:55:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange"
+  }
+]

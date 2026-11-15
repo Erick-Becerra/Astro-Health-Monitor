@@ -1,0 +1,386 @@
+[
+  {
+    "id": 131,
+    "astronaut_id": "AST-01",
+    "questionnaire": "gad7",
+    "answered_by": "Lucía Fernández",
+    "score": 3,
+    "severity": "Minimal",
+    "answered_at": "2026-11-15T07:12:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "gad7",
+      "version": "GAD-7",
+      "language": "en-US",
+      "answered_by": "Lucía Fernández",
+      "answered_at": "2026-11-15T07:12:00Z",
+      "answers": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 1
+        },
+        {
+          "n": 2,
+          "answer": 0
+        },
+        {
+          "n": 3,
+          "answer": 1
+        },
+        {
+          "n": 4,
+          "answer": 0
+        },
+        {
+          "n": 5,
+          "answer": 0
+        },
+        {
+          "n": 6,
+          "answer": 1
+        },
+        {
+          "n": 7,
+          "answer": 0
+        }
+      ],
+      "score": 3,
+      "severity": "Minimal",
+      "recommendation": "No action. Repeat at the next check-up."
+    }
+  },
+  {
+    "id": 132,
+    "astronaut_id": "AST-02",
+    "questionnaire": "gad7",
+    "answered_by": "Tomás Herrera",
+    "score": 5,
+    "severity": "Mild",
+    "answered_at": "2026-11-15T07:12:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "gad7",
+      "version": "GAD-7",
+      "language": "en-US",
+      "answered_by": "Tomás Herrera",
+      "answered_at": "2026-11-15T07:12:00Z",
+      "answers": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 1
+        },
+        {
+          "n": 2,
+          "answer": 1
+        },
+        {
+          "n": 3,
+          "answer": 0
+        },
+        {
+          "n": 4,
+          "answer": 1
+        },
+        {
+          "n": 5,
+          "answer": 1
+        },
+        {
+          "n": 6,
+          "answer": 0
+        },
+        {
+          "n": 7,
+          "answer": 1
+        }
+      ],
+      "score": 5,
+      "severity": "Mild",
+      "recommendation": "Monitor; repeat the questionnaire at the next check-up."
+    }
+  },
+  {
+    "id": 133,
+    "astronaut_id": "AST-03",
+    "questionnaire": "gad7",
+    "answered_by": "Sofía Navarro",
+    "score": 16,
+    "severity": "Severe",
+    "answered_at": "2026-11-15T07:12:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "gad7",
+      "version": "GAD-7",
+      "language": "en-US",
+      "answered_by": "Sofía Navarro",
+      "answered_at": "2026-11-15T07:12:00Z",
+      "answers": [
+        3,
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 3
+        },
+        {
+          "n": 2,
+          "answer": 2
+        },
+        {
+          "n": 3,
+          "answer": 2
+        },
+        {
+          "n": 4,
+          "answer": 3
+        },
+        {
+          "n": 5,
+          "answer": 2
+        },
+        {
+          "n": 6,
+          "answer": 2
+        },
+        {
+          "n": 7,
+          "answer": 2
+        }
+      ],
+      "score": 16,
+      "severity": "Severe",
+      "recommendation": "Priority assessment with the behavioral health team."
+    }
+  },
+  {
+    "id": 130,
+    "astronaut_id": "AST-03",
+    "questionnaire": "phq9",
+    "answered_by": "Sofía Navarro",
+    "score": 12,
+    "severity": "Moderate",
+    "answered_at": "2026-11-15T07:10:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "phq9",
+      "version": "PHQ-9",
+      "language": "en-US",
+      "answered_by": "Sofía Navarro",
+      "answered_at": "2026-11-15T07:10:00Z",
+      "answers": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 2
+        },
+        {
+          "n": 2,
+          "answer": 2
+        },
+        {
+          "n": 3,
+          "answer": 1
+        },
+        {
+          "n": 4,
+          "answer": 2
+        },
+        {
+          "n": 5,
+          "answer": 1
+        },
+        {
+          "n": 6,
+          "answer": 2
+        },
+        {
+          "n": 7,
+          "answer": 1
+        },
+        {
+          "n": 8,
+          "answer": 0
+        },
+        {
+          "n": 9,
+          "answer": 1
+        }
+      ],
+      "score": 12,
+      "severity": "Moderate",
+      "recommendation": "Follow-up plan with the behavioral health team. Question 9 is greater than 0: assess the risk now."
+    }
+  },
+  {
+    "id": 128,
+    "astronaut_id": "AST-01",
+    "questionnaire": "phq9",
+    "answered_by": "Lucía Fernández",
+    "score": 2,
+    "severity": "Minimal",
+    "answered_at": "2026-11-15T07:10:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "phq9",
+      "version": "PHQ-9",
+      "language": "en-US",
+      "answered_by": "Lucía Fernández",
+      "answered_at": "2026-11-15T07:10:00Z",
+      "answers": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 0
+        },
+        {
+          "n": 2,
+          "answer": 1
+        },
+        {
+          "n": 3,
+          "answer": 0
+        },
+        {
+          "n": 4,
+          "answer": 0
+        },
+        {
+          "n": 5,
+          "answer": 1
+        },
+        {
+          "n": 6,
+          "answer": 0
+        },
+        {
+          "n": 7,
+          "answer": 0
+        },
+        {
+          "n": 8,
+          "answer": 0
+        },
+        {
+          "n": 9,
+          "answer": 0
+        }
+      ],
+      "score": 2,
+      "severity": "Minimal",
+      "recommendation": "No action. Repeat at the next check-up."
+    }
+  },
+  {
+    "id": 129,
+    "astronaut_id": "AST-02",
+    "questionnaire": "phq9",
+    "answered_by": "Tomás Herrera",
+    "score": 6,
+    "severity": "Mild",
+    "answered_at": "2026-11-15T07:10:00+00:00",
+    "received_at": "2026-11-15T15:11:58.213110+00:00",
+    "response": {
+      "questionnaire": "phq9",
+      "version": "PHQ-9",
+      "language": "en-US",
+      "answered_by": "Tomás Herrera",
+      "answered_at": "2026-11-15T07:10:00Z",
+      "answers": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "items": [
+        {
+          "n": 1,
+          "answer": 1
+        },
+        {
+          "n": 2,
+          "answer": 1
+        },
+        {
+          "n": 3,
+          "answer": 1
+        },
+        {
+          "n": 4,
+          "answer": 1
+        },
+        {
+          "n": 5,
+          "answer": 0
+        },
+        {
+          "n": 6,
+          "answer": 1
+        },
+        {
+          "n": 7,
+          "answer": 1
+        },
+        {
+          "n": 8,
+          "answer": 0
+        },
+        {
+          "n": 9,
+          "answer": 0
+        }
+      ],
+      "score": 6,
+      "severity": "Mild",
+      "recommendation": "Monitor; repeat the questionnaire at the next check-up."
+    }
+  }
+]

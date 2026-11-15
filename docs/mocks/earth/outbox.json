@@ -1,0 +1,100 @@
+[
+  {
+    "id": 210,
+    "astronaut_id": "AST-02",
+    "kind": "message",
+    "payload": {
+      "body": "Optic disc follow-up: report any change in vision straight away.",
+      "kind": "note",
+      "severity": "info",
+      "astronaut_id": "AST-02"
+    },
+    "created_at": "2026-11-15T15:11:44.397920+00:00",
+    "deliver_at": "2026-11-15T15:11:46.999019+00:00",
+    "delivered_at": "2026-11-15T15:11:47.849824+00:00",
+    "attempts": 1,
+    "last_error": null
+  },
+  {
+    "id": 209,
+    "astronaut_id": "AST-03",
+    "kind": "message",
+    "payload": {
+      "body": "Sleep has been under 6 h for three nights. We will review the schedule at the next call.",
+      "kind": "note",
+      "severity": "info",
+      "astronaut_id": "AST-03"
+    },
+    "created_at": "2026-11-15T15:11:44.380497+00:00",
+    "deliver_at": "2026-11-15T15:11:46.981513+00:00",
+    "delivered_at": "2026-11-15T15:11:47.839309+00:00",
+    "attempts": 1,
+    "last_error": null
+  },
+  {
+    "id": 208,
+    "astronaut_id": "AST-03",
+    "kind": "message",
+    "payload": {
+      "body": "Light exposure for 15 minutes after waking and no screens in the last hour before sleep.",
+      "kind": "prescription",
+      "severity": "info",
+      "astronaut_id": "AST-03"
+    },
+    "created_at": "2026-11-15T15:11:44.362459+00:00",
+    "deliver_at": "2026-11-15T15:11:46.963736+00:00",
+    "delivered_at": "2026-11-15T15:11:47.829810+00:00",
+    "attempts": 1,
+    "last_error": null
+  },
+  {
+    "id": 207,
+    "astronaut_id": "AST-03",
+    "kind": "config",
+    "payload": {
+      "data": {
+        "notes": "Reduced load while sleep recovers",
+        "ared_sessions_per_week": 3,
+        "ared_minutes_per_session": 40
+      },
+      "section": "exercise_goals",
+      "version": 1,
+      "updated_by": "Dr. Rivera (demo)",
+      "astronaut_id": "AST-03"
+    },
+    "created_at": "2026-11-15T15:11:44.341355+00:00",
+    "deliver_at": "2026-11-15T15:11:46.943993+00:00",
+    "delivered_at": "2026-11-15T15:11:47.817333+00:00",
+    "attempts": 1,
+    "last_error": null
+  },
+  {
+    "id": 206,
+    "astronaut_id": "AST-03",
+    "kind": "config",
+    "payload": {
+      "data": {
+        "name": "Sofía Navarro",
+        "agency": "CSA",
+        "gender": "female",
+        "oct_notes": "Normal (demo data)",
+        "weight_kg": 57.0,
+        "birth_date": "1990-12-15",
+        "baseline_hr": 60.0,
+        "dxa_t_score": -1.4,
+        "prior_radiation_msv": 40.0,
+        "baseline_bp_systolic": 110.0,
+        "baseline_bp_diastolic": 70.0
+      },
+      "section": "profile",
+      "version": 1,
+      "updated_by": "Dr. Rivera (demo)",
+      "astronaut_id": "AST-03"
+    },
+    "created_at": "2026-11-15T15:11:44.316353+00:00",
+    "deliver_at": "2026-11-15T15:11:46.923633+00:00",
+    "delivered_at": "2026-11-15T15:11:47.807399+00:00",
+    "attempts": 1,
+    "last_error": null
+  }
+]

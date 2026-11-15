@@ -1,0 +1,12 @@
+{
+  "agency": "ESA",
+  "career_limit_msv": 1000,
+  "prior_msv": 120.0,
+  "mission_msv": 283.02,
+  "total_msv": 403.02,
+  "percent_of_limit": 40.3,
+  "rate_msv_day": 0.417,
+  "solar_event_threshold_msv": 250,
+  "solar_event_alert": false,
+  "last_solar_event_at": "2026-11-15T12:59:00+00:00"
+}

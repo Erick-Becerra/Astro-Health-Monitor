@@ -1,0 +1,41 @@
+{
+  "profile": {
+    "data": {
+      "name": "Tomás Herrera",
+      "agency": "ESA",
+      "gender": "male",
+      "oct_notes": "Mild optic disc swelling, to be followed (demo data)",
+      "weight_kg": 82.5,
+      "birth_date": "1983-09-03",
+      "baseline_hr": 62.0,
+      "dxa_t_score": -0.8,
+      "prior_radiation_msv": 120.0,
+      "baseline_bp_systolic": 118.0,
+      "baseline_bp_diastolic": 74.0
+    },
+    "version": 1,
+    "updated_by": "Dr. Rivera (demo)",
+    "updated_at": "2026-11-15T15:11:47.768809+00:00"
+  },
+  "thresholds": {
+    "data": {
+      "body_temperature": {
+        "red": 38.3,
+        "orange": 37.8,
+        "yellow": 37.3
+      }
+    },
+    "version": 1,
+    "updated_by": "Dr. Rivera (demo)",
+    "updated_at": "2026-11-15T15:11:47.779349+00:00"
+  },
+  "exercise_goals": {
+    "data": {
+      "ared_sessions_per_week": 5,
+      "ared_minutes_per_session": 45
+    },
+    "version": 1,
+    "updated_by": "Dr. Rivera (demo)",
+    "updated_at": "2026-11-15T15:11:47.789203+00:00"
+  }
+}

@@ -1,0 +1,240 @@
+[
+  {
+    "at": "2026-11-15T14:51:00+00:00",
+    "level": "orange",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 128.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "orange",
+        "value": 38.29,
+        "indicator": "body_temperature"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T14:50:00+00:00",
+    "level": "red",
+    "status": "critical",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 131.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "°C",
+        "label": "Body temperature",
+        "level": "red",
+        "value": 38.44,
+        "indicator": "body_temperature"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T14:30:00+00:00",
+    "level": "yellow",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 138.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "mmHg",
+        "label": "Diastolic pressure",
+        "level": "yellow",
+        "value": 81.0,
+        "indicator": "blood_pressure_diastolic"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T14:29:00+00:00",
+    "level": "orange",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "orange",
+        "value": 140.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "mmHg",
+        "label": "Diastolic pressure",
+        "level": "yellow",
+        "value": 82.0,
+        "indicator": "blood_pressure_diastolic"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T13:00:00+00:00",
+    "level": "yellow",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T12:30:00+00:00",
+    "level": "red",
+    "status": "critical",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 135.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      },
+      {
+        "unit": "mSv/day",
+        "label": "Radiation rate",
+        "level": "red",
+        "value": 8.0,
+        "indicator": "radiation_rate_msv_day"
+      },
+      {
+        "unit": "mSv",
+        "label": "Solar particle event",
+        "level": "yellow",
+        "value": 8.3,
+        "indicator": "spe_active"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T12:28:00+00:00",
+    "level": "yellow",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "yellow",
+        "value": 136.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "rpm",
+        "label": "Respiratory rate",
+        "level": "yellow",
+        "value": 21.0,
+        "indicator": "respiratory_rate"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-15T11:42:00+00:00",
+    "level": "orange",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "mmHg",
+        "label": "Systolic pressure",
+        "level": "orange",
+        "value": 140.0,
+        "indicator": "blood_pressure_systolic"
+      },
+      {
+        "unit": "mmHg",
+        "label": "Diastolic pressure",
+        "level": "yellow",
+        "value": 82.0,
+        "indicator": "blood_pressure_diastolic"
+      },
+      {
+        "unit": "rpm",
+        "label": "Respiratory rate",
+        "level": "yellow",
+        "value": 24.0,
+        "indicator": "respiratory_rate"
+      },
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-13T09:10:00+00:00",
+    "level": "yellow",
+    "status": "attention",
+    "reasons": [
+      {
+        "unit": "h",
+        "label": "Sleep last night",
+        "level": "yellow",
+        "value": 6.4,
+        "indicator": "sleep_hours"
+      }
+    ]
+  }
+]

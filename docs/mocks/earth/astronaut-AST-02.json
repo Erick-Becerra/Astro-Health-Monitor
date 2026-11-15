@@ -1,0 +1,152 @@
+{
+  "astronaut_id": "AST-02",
+  "name": "Tomás Herrera",
+  "gender": "male",
+  "first_seen": "2026-11-15T15:11:44.246442+00:00",
+  "level": "orange",
+  "manual_level": "yellow",
+  "overall_level": "orange",
+  "overall_status": "attention",
+  "latest": {
+    "timestamp": "2026-11-15T15:09:00+00:00",
+    "received_at": "2026-11-15T15:12:00.678049+00:00",
+    "heart_rate": 61.0,
+    "hrv_ms": null,
+    "body_temperature": 38.06,
+    "blood_pressure_systolic": 125.0,
+    "blood_pressure_diastolic": 75.0,
+    "sleep_hours": 6.4,
+    "consecutive_nights_under_6h": 0,
+    "consecutive_nights_under_4h": 0,
+    "pvt_b_ms": 290.0,
+    "spo2": 98.4,
+    "respiratory_rate": 15.0,
+    "radiation_rate_msv_day": 0.417,
+    "radiation_dose_msv": 283.023,
+    "spe_active": false,
+    "spe_event_dose_msv": 0.0,
+    "cabin_co2_mmhg": 2.0,
+    "crew_state": "resting",
+    "mission_day": 78,
+    "packet_id": "SEED-AST-02-0359",
+    "meta": {
+      "source": "automated_sensor_stream",
+      "sensors": {
+        "respiratory": "Pulse Oximeter",
+        "cardiovascular": "Bio-Monitor ECG",
+        "daily_assessment": "Actiwatch / PVT-B",
+        "thermoregulation": "Double Sensor Forehead",
+        "radiation_dosimetry": "RAD / Liulin Active Dosimeter"
+      },
+      "state_since": "2026-11-15T14:50:00+00:00",
+      "signal_quality": {
+        "respiratory": "good",
+        "cardiovascular": "good",
+        "daily_assessment": "good",
+        "thermoregulation": "good",
+        "radiation_dosimetry": "good"
+      }
+    },
+    "status": "attention",
+    "level": "orange",
+    "findings": [
+      {
+        "indicator": "blood_pressure_systolic",
+        "label": "Systolic pressure",
+        "value": 125.0,
+        "unit": "mmHg",
+        "level": "yellow",
+        "status": "attention",
+        "level_name": "Caution",
+        "criteria": "Systolic 120 – 139 or diastolic 80 – 89; or low: systolic 90 – 99 or diastolic 60 – 64",
+        "action": "Review hydration, exercise (ARED) and fluid shift toward the head.",
+        "advice": "Review hydration, exercise (ARED) and fluid shift toward the head.",
+        "message": "Blood pressure outside optimal range (125/75 mmHg). Check hydration and exercise load.",
+        "procedure": [
+          "Repeat at rest after 5 min, arm at heart level.",
+          "Check hydration and sodium.",
+          "Review exercise load.",
+          "Repeat in 1–2 h."
+        ],
+        "context": null
+      },
+      {
+        "indicator": "body_temperature",
+        "label": "Body temperature",
+        "value": 38.06,
+        "unit": "°C",
+        "level": "orange",
+        "status": "attention",
+        "level_name": "Moderate risk",
+        "criteria": "38.0 – 38.9 °C",
+        "action": "Possible fever or hyperthermia: alert the physician.",
+        "advice": "Possible fever or hyperthermia: alert the physician.",
+        "message": "Elevated temperature (38.06 °C). Possible fever or hyperthermia. Notify the medical team.",
+        "procedure": [
+          "Remove clothing layers / increase local ventilation.",
+          "Hydrate.",
+          "Look for symptoms of infection.",
+          "Notify the physician.",
+          "Repeat every 15 min."
+        ],
+        "context": "temp_rest"
+      },
+      {
+        "indicator": "sleep_hours",
+        "label": "Sleep last night",
+        "value": 6.4,
+        "unit": "h",
+        "level": "yellow",
+        "status": "attention",
+        "level_name": "Caution",
+        "criteria": "6.0 – 6.9 h (or < 6 h on a single night)",
+        "action": "Improve sleep hygiene.",
+        "advice": "Improve sleep hygiene.",
+        "message": "Sleep below recommended (6.4 h). Review your rest routine.",
+        "procedure": [
+          "Avoid bright light before sleeping (sunrises in the cupola).",
+          "Reduce pending tasks before bed.",
+          "Check noise and temperature.",
+          "Re-evaluate the next night."
+        ],
+        "context": null
+      }
+    ]
+  },
+  "profile": {
+    "name": "Tomás Herrera",
+    "agency": "ESA",
+    "gender": "male",
+    "oct_notes": "Mild optic disc swelling, to be followed (demo data)",
+    "weight_kg": 82.5,
+    "birth_date": "1983-09-03",
+    "baseline_hr": 62.0,
+    "dxa_t_score": -0.8,
+    "prior_radiation_msv": 120.0,
+    "baseline_bp_systolic": 118.0,
+    "baseline_bp_diastolic": 74.0
+  },
+  "thresholds": {
+    "body_temperature": {
+      "red": 38.3,
+      "orange": 37.8,
+      "yellow": 37.3
+    }
+  },
+  "exercise_goals": {
+    "ared_sessions_per_week": 5,
+    "ared_minutes_per_session": 45
+  },
+  "radiation": {
+    "agency": "ESA",
+    "career_limit_msv": 1000,
+    "prior_msv": 120.0,
+    "mission_msv": 283.02,
+    "total_msv": 403.02,
+    "percent_of_limit": 40.3,
+    "rate_msv_day": 0.417,
+    "solar_event_threshold_msv": 250,
+    "solar_event_alert": false,
+    "last_solar_event_at": "2026-11-15T12:59:00+00:00"
+  }
+}
