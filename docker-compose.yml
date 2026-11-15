@@ -1,6 +1,27 @@
 # Starts the whole development environment with one command:
 #   docker compose up --build
 # Everything has a default value, so no .env file is needed to get started.
+#
+#   frontend ──► earth-base (:8000) ◄── uplink ── space-station (:8001)
+#                     │                                   │
+#                     └──────── db (schemas earth / station) ───────┘
+#
+# earth-base and space-station run the SAME image (built from ./backend);
+# only the start command changes.
+
+x-backend: &backend
+  build: ./backend
+  image: astro-backend
+  environment: &backend-env
+    # Browsers allowed to call the APIs: this computer, and teammates that open
+    # the app through the host's LAN address (HOST_IP in .env, see docs/lan.md).
+    # How Earth gets the station data: "db" = Earth reads the station tables (no HTTP uplink), "http" = old uplink.
+    UPLINK_MODE: ${UPLINK_MODE:-db}
+    CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173,http://${HOST_IP:-localhost}:5173,null
+    # Makes auto-reload detect file changes on Docker Desktop (Windows/macOS).
+    WATCHFILES_FORCE_POLLING: "true"
+  volumes:
+    - ./backend:/app
 
 services:
   db:
@@ -10,7 +31,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-astro}
       POSTGRES_DB: ${POSTGRES_DB:-astro_health}
     ports:
-      - "5432:5432"
+      # Only this computer. Teammates use the APIs, not the database directly.
+      - "127.0.0.1:5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
       # Scripts here run only the FIRST time the database is created.
@@ -21,25 +43,54 @@ services:
       timeout: 5s
       retries: 10
 
-  backend:
-    build: ./backend
+  earth-base:
+    <<: *backend
+    command: uvicorn earth_base.main:app --host 0.0.0.0 --port 8000 --reload
     environment:
-      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-astro}:${POSTGRES_PASSWORD:-astro}@db:5432/${POSTGRES_DB:-astro_health}
-      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
-      # Makes auto-reload detect file changes on Docker Desktop (Windows/macOS).
-      WATCHFILES_FORCE_POLLING: "true"
+      <<: *backend-env
+      DATABASE_URL: postgresql+psycopg://earth_svc:earth@db:5432/${POSTGRES_DB:-astro_health}
+      STATION_URL: http://space-station:8001
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  space-station:
+    <<: *backend
+    command: uvicorn space_station.main:app --host 0.0.0.0 --port 8001 --reload
+    environment:
+      <<: *backend-env
+      DATABASE_URL: postgresql+psycopg://station_svc:station@db:5432/${POSTGRES_DB:-astro_health}
+      EARTH_URL: http://earth-base:8000
+      # Simulation knobs. LINK_DELAY_SECONDS is the one-way delay to Earth
+      # (real Mars delay: 180 to 1320 seconds).
+      SIM_ASTRONAUTS: ${SIM_ASTRONAUTS:-A001,A002,A003}
+      SIM_INTERVAL_SECONDS: ${SIM_INTERVAL_SECONDS:-2}
+      LINK_DELAY_SECONDS: ${LINK_DELAY_SECONDS:-3}
+    ports:
+      - "8001:8001"
+    # Does NOT wait for earth-base: the station must work on its own.
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/api/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   frontend:
     build: ./frontend
     environment:
-      VITE_API_URL: http://localhost:8000
+      # The browser (not the container) calls this address, so for teammates it
+      # must be the host's LAN IP, never "localhost".
+      VITE_API_URL: http://${HOST_IP:-localhost}:8000
     ports:
       - "5173:5173"
     volumes:
@@ -47,7 +98,7 @@ services:
       # Keeps the container's own node_modules instead of the host folder's.
       - /app/node_modules
     depends_on:
-      - backend
+      - earth-base
 
 volumes:
   db_data:

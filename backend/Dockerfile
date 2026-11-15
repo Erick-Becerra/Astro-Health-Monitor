@@ -11,7 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8000 8001
 
-# --reload restarts the server when you edit a file (development only).
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# One image, two services. docker-compose.yml chooses which one to start;
+# this default starts the Earth base. --reload restarts the server when you
+# edit a file (development only).
+CMD ["uvicorn", "earth_base.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

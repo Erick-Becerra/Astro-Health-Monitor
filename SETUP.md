@@ -48,7 +48,9 @@ You are done when you see lines like these (order may vary):
 | http://localhost:5173 | The app, with "Backend: online" |
 | http://localhost:8000/api/health | `{"status":"ok"}` |
 | http://localhost:8000/api/health/db | `{"status":"ok"}` |
-| http://localhost:8000/docs | Interactive API documentation |
+| http://localhost:8000/docs | Interactive documentation of the Earth base API |
+| http://localhost:8001/api/status | Space station state (link up, crew, readings waiting) |
+| http://localhost:8000/api/astronauts | A001, A002 and A003 with their latest reading |
 | http://localhost:5173/astronaut/demo | A rotating 3D body made of points. Click a body part. |
 
 ## Step 4: Daily use
@@ -83,6 +85,9 @@ Wait a few seconds and reload. If it continues: `docker compose down` and then `
 Rebuild the containers and renew the stored packages:
 `docker compose up --build -V`
 
+**Services fail with "password authentication failed for user earth_svc" (or station_svc)**
+Your database was created before the two services existed. Recreate it (this DELETES stored data): `docker compose down -v` and then `docker compose up --build`.
+
 **I changed the database schema and nothing changed**
 Scripts in `database/init/` only run when the database is first created. To start the database from scratch (this DELETES stored data): `docker compose down -v` and then `docker compose up --build`.
 
@@ -90,7 +95,7 @@ Scripts in `database/init/` only run when the database is first created. To star
 Make sure the project folder is on your normal disk (for example `Documents`), not in a network or synced folder.
 
 **The ESP32 cannot reach the backend**
-Both must be on the same Wi-Fi network. Use your computer's local IP address (not `localhost`) in the firmware. If it still fails, allow ports 8000 in your firewall for private networks.
+Both must be on the same Wi-Fi network. Use your computer's local IP address (not `localhost`) in the firmware, with port 8001 (the space station). If it still fails, allow port 8001 in your firewall for private networks.
 
 ## For AI assistants
 
