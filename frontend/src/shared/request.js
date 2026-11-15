@@ -5,6 +5,8 @@
 //   VITE_EARTH_URL=http://172.20.10.2:8000       server of the Earth base
 //   VITE_USE_MOCKS=true                          read docs/mocks instead of the servers (copy them to public/mocks)
 //   VITE_ACTOR=Dr. Rivera                        who is using the screen: it goes to the change log
+import { connection } from "../connection.js";
+
 const env = import.meta.env ?? {};
 
 export const USE_MOCKS = env.VITE_USE_MOCKS === "true";
@@ -51,8 +53,10 @@ export async function request(base, method, path, { body, mock, actor } = {}) {
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   } catch {
+    connection.failed(); // the floating warning (ConnectionToast) follows what really happens
     throw new ApiError(0, "No answer from the server", url);
   }
+  connection.ok(); // any answer, even an error status, means the server is reachable
   const data = await response.json().catch(() => null);
   if (!response.ok) throw new ApiError(response.status, data?.detail ?? response.statusText, url);
   return data;

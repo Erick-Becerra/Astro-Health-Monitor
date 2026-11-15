@@ -42,6 +42,15 @@ export function makeTranslator(dict) {
     agency: (a) => text("agencies", a),
     scenario: (s) => text("scenarios", s),
     card: (c) => text("cards", c),
-    ui: (k) => dict.ui[k] ?? k,
+    // ui("key") or ui("key", { n: 9 }) for texts with {n} placeholders
+    ui: (k, vars) => {
+      const text = dict.ui[k] ?? k;
+      return vars ? text.replace(/\{(\w+)\}/g, (_, name) => String(vars[name] ?? "")) : text;
+    },
+    levelWord: (l) => dict.levelWords?.[l] ?? "–",
+    bodyLabel: (id) => dict.bodyLabels?.[id] ?? id.toUpperCase(),
+    symptom: (k) => dict.symptoms?.[k] ?? k,
+    bodyArea: (k) => dict.bodyAreas?.[k] ?? k,
+    symptomSeverity: (k) => dict.symptomSeverity?.[k] ?? k,
   };
 }

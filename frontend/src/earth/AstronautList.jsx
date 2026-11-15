@@ -19,7 +19,7 @@ export default function AstronautList({ astronauts, t, selectedId, onSelect }) {
             <span className="dot" style={{ background: t.levelColor(a.overall_level) }} />
             <strong>{a.name ?? a.astronaut_id}</strong>
             {a.gender && <small>{t.gender(a.gender)}</small>}
-            <span className="badge">{t.badge(a.overall_level)}</span>
+            <span className="badge">{t.badge(a.overall_level).split(" // ").pop()}</span>
             {a.latest ? (
               <span className="latest">
                 {show(a.latest.heart_rate)} {t.unit("heart_rate")} · {show(a.latest.body_temperature, 1)} °C

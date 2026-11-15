@@ -1,0 +1,460 @@
+/* Earth page: body diagram, side column and connection warning.
+   The diagram and the toast come from the first-UI branch; the variables below map its names to the Earth theme. */
+.body-frame{--text:var(--bone);--muted:var(--steel);--link:#8fb4ff;--signal:var(--red);--font-display:var(--head);--font-body:var(--head)}
+.side{display:grid;gap:12px;align-content:start;min-width:0}
+.dashboard>.system-panel{align-self:start}
+.body-frame{position:relative;border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px;padding:12px 12px 4px}
+.body-frame header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.body-frame h2{margin:0;font-size:1.15rem}
+.body-frame .sub{margin:2px 0 6px;font:.74rem var(--mono);color:var(--steel)}
+.body-frame .badge{font:.68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lv);border:1px solid var(--lv);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.body-frame .diagram{max-height:640px}
+
+/* Body diagram */
+
+.diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 440 / 640;
+}
+
+.grid-line {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 0.5;
+  opacity: 0.55;
+}
+
+.aura {
+  fill: none;
+  stroke: #8fa0ff;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 7;
+  opacity: 0.55;
+}
+
+.aura-inner {
+  stroke: #5cc0ff;
+  stroke-dasharray: 1 9;
+  opacity: 0.35;
+}
+
+.body {
+  fill: url(#bodyFill);
+  stroke: #5cc0ff;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.limb {
+  stroke-width: 1.7;
+}
+
+.hair {
+  fill: none;
+  stroke: #5cc0ff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+/* Click areas: invisible until hovered or selected */
+.area {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.area:hover {
+  fill: rgba(92, 192, 255, 0.14);
+}
+
+.area.is-selected {
+  fill: rgba(143, 180, 255, 0.24);
+}
+
+/* Organs */
+.organ {
+  cursor: pointer;
+}
+
+.organ .shape {
+  fill: rgba(92, 192, 255, 0.14);
+  stroke: #5cc0ff;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.organ .line {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.organ .thin {
+  stroke-width: 1.3;
+}
+
+.organ-soft .shape {
+  opacity: 0.3;
+}
+
+.organ-dashed .shape {
+  fill: none;
+  stroke: #8fb4ff;
+  stroke-dasharray: 5 4;
+  pointer-events: stroke;
+}
+
+.organ .hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 14;
+}
+
+.organ:hover .shape {
+  stroke: #ffffff;
+}
+
+.organ.is-selected .shape {
+  fill: rgba(143, 180, 255, 0.4);
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 4px #8fb4ff);
+}
+
+.organ.is-selected .line {
+  fill: none;
+}
+
+/* Levels from the backend: yellow, orange or red. Green draws nothing special. */
+.flag-yellow { --flag: #ffd24a; }
+.flag-orange { --flag: #ff8a3d; }
+.flag-red { --flag: #ff3b3b; }
+
+.organ.flag .shape,
+.body.flag {
+  stroke: var(--flag);
+}
+
+.organ.flag .shape {
+  fill: color-mix(in srgb, var(--flag) 38%, transparent);
+  animation: alert-pulse 1.8s ease-in-out infinite;
+}
+
+.organ.flag .line {
+  fill: none;
+}
+
+.organ.flag-red .shape,
+.body.flag-red {
+  animation-duration: 0.8s;
+}
+
+.body.flag {
+  fill: color-mix(in srgb, var(--flag) 14%, transparent);
+  animation: alert-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes alert-pulse {
+  0%, 100% { filter: drop-shadow(0 0 2px var(--flag)); }
+  50% { filter: drop-shadow(0 0 9px var(--flag)); }
+}
+
+.beat {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: beat 0.85s ease-in-out infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.1); }
+  28% { transform: scale(0.97); }
+  40% { transform: scale(1.05); }
+}
+
+/* Labels */
+.label {
+  cursor: pointer;
+}
+
+.label polyline {
+  fill: none;
+  stroke: #5cc0ff;
+  stroke-width: 0.8;
+  opacity: 0.45;
+}
+
+.label text {
+  fill: #8fb4ff;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+}
+
+.label .value {
+  fill: var(--text);
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+.label:hover text,
+.label.is-selected text {
+  fill: #ffffff;
+}
+
+.label.flag text {
+  fill: var(--flag);
+}
+
+.label.flag polyline {
+  stroke: var(--flag);
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura,
+  .beat,
+  .organ.flag .shape,
+  .body.flag {
+    animation: none;
+  }
+}
+
+/* A flagged organ that is also the selected one keeps its colour and gets a white outline */
+.organ.flag.is-selected .shape{stroke:#fff;stroke-width:2.4}
+.organ.flag.is-selected .line{stroke:#fff}
+.organ.is-selected .shape{stroke-width:2.4}
+
+/* Floating connection warning */
+.toast{--text:var(--bone);--muted:var(--steel);--signal:var(--red)}
+.toast {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  width: min(26rem, calc(100vw - 2rem));
+  padding: 0.9rem 1rem;
+  background: #1a0a24;
+  border: 1px solid var(--signal);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+.toast-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: var(--signal);
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+}
+
+.toast-text {
+  flex: 1;
+}
+
+.toast-text p {
+  margin: 0.2rem 0 0;
+  max-width: none;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.toast-close {
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: none;
+  background: rgba(143, 180, 255, 0.12);
+  border: 0;
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  background: rgba(143, 180, 255, 0.28);
+}
+
+
+/* Skin areas (arms, legs) and the whole body can be painted too */
+.area.flag{fill:color-mix(in srgb,var(--flag) 30%,transparent)}
+.body.is-selected{stroke:#fff;stroke-width:2.8;fill:rgba(143,180,255,.3)}
+.body.is-selected.flag{fill:color-mix(in srgb,var(--flag) 32%,transparent)}
+
+/* While the skeleton is shown, the organs step back so the bones can be seen */
+.skeleton-on .organ:not(.skeleton-organ){opacity:.1;pointer-events:none}
+.skeleton-on .label:not(.is-selected){opacity:.25}
+.skeleton-on .skeleton-organ .shape{stroke-width:1.2}
+.skeleton-on .skeleton-organ .line{stroke-width:1.6}
+
+.organ .shape.hole,.organ .hole{fill:#050a30;stroke:#5cc0ff;stroke-width:1;opacity:.9}
+.organ.flag .hole{fill:#050a30;animation:none}
+
+/* Alert history: a fixed box, it never grows with the number of alerts */
+.alerts{overflow:hidden;display:flex;flex-direction:column;align-items:stretch}
+.alerts:empty{display:block}
+.alerts h2{margin:0}
+.alerts article p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+.alerts .history-button{align-self:flex-end;margin-top:2px;padding:2px 10px;font-size:.72rem}
+.alerts .history-button:disabled{opacity:.4;cursor:default}
+.dashboard>.overview{display:grid;gap:16px;align-self:start;min-width:0}
+
+
+/* Thermal view ("Termorregulador"): warm background and a body seen like through a heat camera */
+.thermal-bg{animation:heat-breathe 4s ease-in-out infinite}
+@keyframes heat-breathe{0%,100%{opacity:.8}50%{opacity:1}}
+.thermal-halo{fill:var(--h-halo);stroke:var(--h-halo);stroke-width:26;stroke-linejoin:round;opacity:.45}
+.thermal-on .body{fill:url(#heatBody);stroke:var(--h-stroke);filter:none;animation:none}
+.thermal-on .organ{opacity:.3;pointer-events:none}
+.thermal-on .label:not(.is-selected){opacity:.45}
+.thermal-on .aura{stroke:var(--h-stroke)}
+@media (prefers-reduced-motion: reduce){.thermal-bg{animation:none}}
+
+/* Thermal palettes: calm (violet background, warm body) when the system is normal, hotter as its level rises */
+.heat-ok{--h-bg0:#c0569a;--h-bg1:#7a3fa8;--h-bg2:#3b2a8c;--h-bg3:#1a1a5a;--h-halo:#d9609e;--h-stroke:#ffc27a;--h-b0:#ff9a3d;--h-b1:#ffd24a;--h-b2:#ff8a3d}
+.heat-yellow{--h-bg0:#ffb04a;--h-bg1:#d9604a;--h-bg2:#8a3a8a;--h-bg3:#2a2070;--h-halo:#ff9a4a;--h-stroke:#ffd08a;--h-b0:#ff9a3d;--h-b1:#ffe066;--h-b2:#ff8a3d}
+.heat-orange{--h-bg0:#ffd24a;--h-bg1:#ff7a2e;--h-bg2:#c0302e;--h-bg3:#5a1030;--h-halo:#ff6a2e;--h-stroke:#ffb067;--h-b0:#ff7a2e;--h-b1:#ffd24a;--h-b2:#ff6a2e}
+.heat-red{--h-bg0:#ffd24a;--h-bg1:#ff5a2a;--h-bg2:#dc0000;--h-bg3:#7a0010;--h-halo:#ff3b1f;--h-stroke:#ffb067;--h-b0:#ff5a2a;--h-b1:#ffd24a;--h-b2:#ff4a1f}
+
+/* Scanner line: sweeps the body from head to feet, then starts again */
+.scan{animation:scan-sweep 5.5s linear infinite}
+@keyframes scan-sweep{
+  0%{transform:translateY(42px);opacity:0}
+  8%{opacity:1}
+  92%{opacity:1}
+  100%{transform:translateY(612px);opacity:0}
+}
+@media (prefers-reduced-motion: reduce){.scan{animation:none;opacity:0}}
+
+.card .value .scale{font-size:.62em;font-weight:400;color:var(--steel);margin-left:1px}
+
+/* Astronaut list: the badge sits on its own line under the name (horizontal), never squeezed into a narrow column */
+.astronaut-list .badge{grid-column:2/-1;justify-self:start;white-space:nowrap;width:max-content}
+
+
+/* ===== Layout: three columns that fill the screen (no page scroll) =====
+   left: astronauts + last alert | middle: body + tabs | right: overview or the chosen system */
+html,body,#root{height:100%;overflow:hidden}
+body{background-attachment:fixed}
+.ui-root{display:flex;flex-direction:column;overflow:hidden}
+.ui-root>.topbar{flex:none;padding:.4rem 1rem;line-height:1.2}
+.ui-root>main{flex:1;min-height:0}
+.earth{height:100%;box-sizing:border-box;display:grid;grid-template-columns:290px 390px minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:12px;padding:12px;margin:0;max-width:none;align-items:stretch}
+.dashboard{display:contents}
+
+.col-left{display:flex;flex-direction:column;gap:12px;min-height:0;min-width:0}
+/* The list takes the space it needs; only when the astronauts do not fit does it scroll (the alert box never shrinks) */
+.col-left .astronaut-list{flex:0 1 auto;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.col-left .alerts{flex:1 1 150px;min-height:150px}
+
+.side{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
+.body-frame{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+.body-frame .diagram{flex:1 1 0;min-height:0;width:100%;height:auto;aspect-ratio:auto;max-height:none}
+.system-map{flex:none;grid-template-columns:1fr 1fr;gap:4px}
+.system-map button{padding:5px 8px;font-size:.7rem;letter-spacing:.04em;min-width:0}
+.system-map button:first-child{grid-column:1/-1}
+.system-map button span:not(.dot){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.dashboard>.overview,.dashboard>.system-panel{align-self:start;max-height:100%;overflow-y:auto;min-width:0;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+
+/* Compact cards so six or seven astronauts fit in the column without scrolling */
+.col-left .astronaut-list{padding:4px;gap:4px}
+.col-left .astronaut-list button{padding:6px 10px;gap:1px 10px}
+.col-left .astronaut-list .badge{font-size:.6rem;padding:1px 7px;letter-spacing:.08em}
+.col-left .astronaut-list .latest{font-size:.68rem}
+.col-left .alerts{padding:6px 8px;gap:4px}
+.col-left .alerts article p{-webkit-line-clamp:2}
+
+/* Alert box: fills the rest of the left column and shows as many whole alerts as fit */
+.col-left .alerts{flex:1 1 150px;min-height:150px}
+.alert-feed{flex:1 1 0;min-height:0;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:4px 12px;overflow:hidden}
+.alert-feed>*{width:100%;flex:none;box-sizing:border-box}
+
+/* Each alert shows its whole text (no "…" unless it is very long) and the visible ones grow to fill the box */
+.col-left .alerts article p{-webkit-line-clamp:6}
+.alert-feed>*{flex:1 0 auto;max-height:100%}
+.alert-feed>article{display:flex;flex-direction:column;justify-content:center}
+.alert-feed>.muted{flex:none}
+
+/* AlertFeed decides how many alerts fit and how many lines each gets (see AlertFeed.jsx) */
+.alert-feed{flex-wrap:nowrap;gap:4px;overflow:hidden}
+.alert-feed>*{width:auto;flex:1 1 0;max-height:none;min-height:0}
+.alert-feed>.muted{flex:none}
+.col-left .alert-feed article p{-webkit-line-clamp:var(--lines,2)}
+
+/* Astronaut selector: a titled box, like "Alertas recientes"; only the list inside it scrolls */
+.crew-box{flex:0 1 auto;min-height:0;display:flex;flex-direction:column;gap:4px;padding:6px 8px;border:1px solid var(--line);background:rgba(0,36,86,.72);border-radius:4px}
+.crew-box h2{margin:0}
+.crew-box .astronaut-list{flex:1 1 auto;min-height:0;overflow-y:auto;padding:0;border:0;background:none;border-radius:0}
+
+/* System panel: fills the column; the general advice is a drop-down that takes the empty room */
+.dashboard>.system-panel{align-self:stretch;display:flex;flex-direction:column;overflow-y:auto;max-height:none;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.system-panel .sp-top{flex:none}
+.system-panel .general{flex:0 0 auto;display:flex;flex-direction:column;min-height:0;margin-top:12px;border:1px solid var(--line);border-radius:4px;background:rgba(6,14,61,.55)}
+.system-panel .general.is-open{flex:1 1 0}
+.system-panel .general-head{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px;border:0;border-radius:0;background:transparent;text-align:left;
+  font:600 .74rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.system-panel .general-head small{flex:1;font:400 .66rem var(--mono);letter-spacing:.04em;text-transform:none;opacity:.8}
+.system-panel .general-head .chevron{font-size:.6rem}
+.system-panel .general-body{flex:1 1 0;min-height:0;overflow-y:auto;margin:0;padding:2px 14px 12px 30px;display:grid;gap:6px;align-content:start;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.system-panel .general-body li{padding-left:2px;line-height:1.4}
+.system-panel .general-body li::marker{color:var(--lv,var(--steel))}
+
+/* General advice: the tips share the whole height of the box, so there is never an empty gap */
+.system-panel .general-body{display:flex;flex-direction:column;gap:0;padding:0 14px 8px 14px;list-style:none;overflow-y:auto}
+.system-panel .general-body li{flex:1 1 0;min-height:2.2rem;max-height:9rem;display:flex;align-items:center;gap:12px;padding:4px 2px;border-top:1px solid rgba(27,63,122,.55);line-height:1.4}
+.system-panel .general-body li:first-child{border-top:0}
+.system-panel .general-body li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--lv,var(--steel));box-shadow:0 0 8px var(--lv,var(--steel))}
+
+/* Settings button: bottom right corner. The right column leaves a strip for it so nothing is covered. */
+.earth{position:relative}
+.dashboard>.overview,.dashboard>.system-panel{margin-bottom:46px}
+.settings{position:absolute;right:12px;bottom:8px;z-index:20;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.settings-button{display:grid;place-items:center;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(0,36,86,.9);border:1px solid var(--line);color:var(--steel);cursor:pointer}
+.settings-button:hover,.settings-button[aria-expanded=true]{color:var(--bone);border-color:var(--steel)}
+.settings-panel{min-width:230px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--deep);box-shadow:0 12px 32px rgba(0,0,0,.55);display:grid;gap:8px}
+.settings-panel h2{margin:0}
+.settings-row-label{margin:0;font-size:.85rem;color:var(--steel)}
+
+/* Nothing selected yet: a hint that takes the empty columns */
+.empty-state{grid-column:2/-1;align-self:center;justify-self:center;max-width:460px;display:grid;justify-items:center;gap:10px;padding:34px 40px;text-align:center;
+  border:1px dashed var(--line);border-radius:10px;background:rgba(0,36,86,.35);color:var(--steel)}
+.empty-state h2{margin:0;font-size:1.5rem;color:var(--bone)}
+.empty-state p{margin:0;line-height:1.5}
+.empty-state svg{color:var(--steel)}
+.empty-arrow{font-size:1.6rem;color:var(--bone);animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+@media (prefers-reduced-motion: reduce){.empty-arrow{animation:none}}
+
+/* Cursor: a little spaceship (shared/cursor.js sets the two variables). Engine off on normal ground; engine on, with a
+   flickering flame, over what can be clicked. */
+html,body,*{cursor:var(--cursor-ship,auto)!important}
+:is(a,button,summary,label,select,[role=button],.organ,.label,.area,.choice,.chip,.severity,.card,.history button,.steps button):not(:disabled),
+input[type=radio],input[type=checkbox]{cursor:var(--cursor-ship-active,pointer)!important}
+textarea,input[type=text],input[type=number]{cursor:text!important}
+button:disabled,input:disabled,.is-blocked{cursor:not-allowed!important}
+
+/* Bottom right corner: "Mandar alerta" and the settings button, visible in every tab */
+.corner{position:absolute;right:12px;bottom:8px;z-index:20;display:flex;align-items:center;gap:8px}
+.corner .settings{position:relative;right:auto;bottom:auto;display:block}
+.corner .settings-panel{position:absolute;right:0;bottom:44px}
+.alert-pill{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px 0 6px;border-radius:999px;border:1px solid rgba(255,59,59,.65);
+  background:linear-gradient(160deg,rgba(255,59,59,.22),rgba(5,10,48,.7));color:var(--bone);font:600 .85rem var(--head);letter-spacing:.02em;cursor:pointer}
+.alert-pill:hover:not(:disabled){border-color:var(--signal,#ff3b3b);background:linear-gradient(160deg,rgba(255,59,59,.34),rgba(5,10,48,.7))}
+.alert-pill:disabled{opacity:.45}
+.alert-pill-icon{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;font-weight:700}
+
+.overview-title{margin:0;font-size:1.4rem}

@@ -16,10 +16,13 @@ import { useEffect, useRef, useState } from "react";
  * useQuery({ queryKey, queryFn, refetchInterval: 2000 }). Use them instead if the project already has them.
  */
 export function usePolling(fetcher, { seconds = 2, enabled = true, deps = [] } = {}) {
-  const [state, setState] = useState({ data: null, error: null, loading: true, updatedAt: null });
+  const key = JSON.stringify(deps);
+  const [state, setState] = useState({ key, data: null, error: null, loading: true, updatedAt: null });
   const [bump, setBump] = useState(0);
   const latest = useRef(fetcher);
   latest.current = fetcher;
+  // The last good answer of each key (for example each astronaut): coming back to one shows its last data at once.
+  const cache = useRef(new Map());
 
   useEffect(() => {
     if (!enabled) return undefined;
@@ -29,9 +32,13 @@ export function usePolling(fetcher, { seconds = 2, enabled = true, deps = [] } =
       if (!document.hidden) {
         try {
           const data = await latest.current();
-          if (!stopped) setState({ data, error: null, loading: false, updatedAt: Date.now() });
+          const next = { key, data, error: null, loading: false, updatedAt: Date.now() };
+          cache.current.set(key, next);
+          if (!stopped) setState(next);
         } catch (error) {
-          if (!stopped) setState((s) => ({ ...s, error, loading: false }));
+          const next = { ...(cache.current.get(key) ?? { data: null, updatedAt: null }), key, error, loading: false };
+          cache.current.set(key, next);
+          if (!stopped) setState(next);
         }
       }
       if (!stopped) timer = setTimeout(tick, seconds * 1000);
@@ -42,8 +49,10 @@ export function usePolling(fetcher, { seconds = 2, enabled = true, deps = [] } =
       clearTimeout(timer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seconds, enabled, bump, ...deps]);
+  }, [seconds, enabled, bump, key]);
 
+  // Data of another key (the astronaut just changed) is never shown as if it were this one's.
+  const current = state.key === key ? state : (cache.current.get(key) ?? { data: null, error: null, loading: true, updatedAt: null });
   // refresh(): ask again right now (for example after saving something) instead of waiting for the next turn.
-  return { ...state, refresh: () => setBump((n) => n + 1) };
+  return { ...current, refresh: () => setBump((n) => n + 1) };
 }

@@ -8,6 +8,11 @@ import "@fontsource/chakra-petch/600.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/600.css";
 import "./theme.css";
+import "./earth/earth.css";
+import "./earth/wellbeing.css";
+import { startCursor } from "./shared/cursor.js";
+
+startCursor();
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
